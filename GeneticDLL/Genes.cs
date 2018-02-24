@@ -295,11 +295,11 @@ namespace GeneticDLL
                 Random roll = new Random(Guid.NewGuid().GetHashCode());
                 if (roll.Next(1, 101) < 51)
                 {
-                    temp.Add(gk, new List<double> { _alpha[gk][0], _alpha[gk][1], _alpha[gk][2] + Mutation(gk) });
+                    temp.Add(gk, new List<double> { _alpha[gk][0] + _alpha[gk][2], _alpha[gk][1], Mutation(gk) });
                 }
                 else
                 {
-                    temp.Add(gk, new List<double> { _beta[gk][0], _beta[gk][1], _beta[gk][2] + Mutation(gk) });
+                    temp.Add(gk, new List<double> { _beta[gk][0] + _beta[gk][2], _beta[gk][1], Mutation(gk) });
                 }
             }
             Enforcement(temp);
@@ -313,7 +313,7 @@ namespace GeneticDLL
         private double Mutation(string key)
         {
             Random roll = new Random(Guid.NewGuid().GetHashCode());
-            if (roll.Next(1, 101) < 10)
+            if (roll.Next(1, 101) < 6)
             {
                 return roll.Next(-2, 3);
             }
