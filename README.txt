@@ -29,13 +29,14 @@ At least one dominate gene:
   Result = Alpha[(Value + Aberration) * Weight] + Beta[(Value + Aberration) * Weight].
 Both recessive genes:
   Result = Alpha[Value + Aberration].
+(Changes have beeen made to these formulas, will update when changes are completed)
 
 These genes are stored as parallel Dictionary<string, double[]> _alpha and _beta (as private fields).
 
 A full diagnostic of an indiviual can be called upon, showing the following text for each gene-key.
   {Gene Key}: Alpha: Value #; Weight #; Aberration #.
               Beta: Value #; Weight #; Aberration #.
-              Result: # ({Description}
+              Result: #
               
               
 During development, the following Genes will be implemented:
