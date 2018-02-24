@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace GeneticDLL
 {
@@ -85,8 +83,15 @@ namespace GeneticDLL
         public double Result(string key)
         {
             if (_alpha[key][1] == 1 || _beta[key][1] == 1)
-                return ((_alpha[key][0] + _alpha[key][2]) * _alpha[key][1]) + ((_beta[key][0] + _beta[key][2] * _beta[key][1]));
-            else return (_alpha[key][0] + _alpha[key][2]);
+                return ((_alpha[key][0] * _alpha[key][1]) + (_beta[key][0]  * _beta[key][1]) + _alpha[key][2] + _beta[key][2]);
+            else
+            {
+                if (_alpha[key][0] > _beta[key][0])
+                {
+                    return _alpha[key][0] + _alpha[key][2] + _beta[key][2];
+                }
+                else return _beta[key][0] + _beta[key][2] + _alpha[key][2];
+            }
         }
         #endregion PROPERTIES
         #region CONSTRUCTORS
@@ -109,6 +114,7 @@ namespace GeneticDLL
             _beta = beta;
             bool check = Enforcement();
         }
+        public string[] GeneKeys { get { return _geneKeys; } private set { _geneKeys = value; } }
         #endregion CONSTRUCTORS
         #region METHODS
         /// <summary>
@@ -268,7 +274,7 @@ namespace GeneticDLL
         /// <returns>Returns a full Dictionary<string, List<double>) of genes</returns>
         private Dictionary<string, List<double>> RandomGenes()
         {
-            Random roll = new Random();
+            Random roll = new Random(Guid.NewGuid().GetHashCode());
             Dictionary<string, List<double>> temp = new Dictionary<string, List<double>>();
             foreach (string gk in _geneKeys)
             {
@@ -286,7 +292,7 @@ namespace GeneticDLL
             Dictionary<string, List<double>> temp = new Dictionary<string, List<double>>();
             foreach(string gk in _geneKeys)
             {
-                Random roll = new Random();
+                Random roll = new Random(Guid.NewGuid().GetHashCode());
                 if (roll.Next(1, 101) < 51)
                 {
                     temp.Add(gk, new List<double> { _alpha[gk][0], _alpha[gk][1], _alpha[gk][2] + Mutation(gk) });
@@ -306,7 +312,7 @@ namespace GeneticDLL
         /// <returns></returns>
         private double Mutation(string key)
         {
-            Random roll = new Random();
+            Random roll = new Random(Guid.NewGuid().GetHashCode());
             if (roll.Next(1, 101) < 10)
             {
                 return roll.Next(-2, 3);
