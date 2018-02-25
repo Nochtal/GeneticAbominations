@@ -2,7 +2,7 @@
 Algorithm testing through mini genetics based game.
 
 Starting with three individuals, choose which genetic sequence will reproduce. 
-Offspring will have genetic code resulting from parents. 
+Offspring will have genetic code resulting from parents. (Creatures now record parents)
 See what you can get! 
 
 Individuals have a double helix setup. Alpha Helix and Beta Helix.
@@ -23,7 +23,7 @@ and the new gene will roll for random aberration seperately.
 
 Each gene governs a statistic or attribute of the individual. The Result is determiend by the 
 Alpha-Beta Compromise Formula (ABCF).
-This gives each gene a Result range of -4 through 24, as two dominate genes will compound, and a recessive
+This gives each gene a Result range of -3 through 24, as two dominate genes will compound, and a recessive
 gene will be nullified by the dominate gene. If both genes are recessive, the value will be the Alpha Helix
 recessive gene values only.
 At least one dominate gene:
@@ -31,7 +31,6 @@ At least one dominate gene:
 Both recessive genes:
   The gene with the highest value will be used for calcuation:
   Result = [Value + Aberrations].
-(Changes have beeen made to these formulas, will update when changes are completed)
 
 These genes are stored as parallel Dictionary<string, double[]> _alpha and _beta (as private fields).
 
