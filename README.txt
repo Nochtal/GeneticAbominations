@@ -41,6 +41,7 @@ A full diagnostic of an indiviual can be called upon, showing the following text
               
               
 During development, the following Genes will be implemented:
+  Race
   Strength
   Dexterity
   Constitution
@@ -50,6 +51,15 @@ During development, the following Genes will be implemented:
   Eyes
   Arcane
   Divine
+  
+Races include: Trolls, Dwarves, Humans, Half-Elves, and Elves. Each creature has a maximum age they will live.
+  MaxAge = (Constitution * Race + Divinity) / AberrationIndex + 50.
+They have the following lifespans [race: gene range: min through max; age range: min to max]:
+  Troll:    Race Gene: -3 through 0;  Age Range: 47 to 74  years
+  Dwarf:    Race Gene:  1 through 4;  Age Range: 49 to 170 years
+  Human:    Race Gene:  5 through 12; Age Range: 49 to 362 years
+  Half-Elf: Race Gene: 13 through 18; Age Range: 48 to 506 years
+  Elf:      Race Gene: 19 through 24; Age Range: 48 to 650 years
 
 They are a bit arbitrary, and kept to 9 for simplicity. An actual system of gene-keys will be 
 implemented further into development (and when I get more of an idea of what attributes I want
