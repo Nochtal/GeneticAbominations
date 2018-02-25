@@ -36,6 +36,7 @@ namespace GeneticDLL
         /// </summary>
         private string[] _geneKeys = new string[]
         {
+            "Race",
             "Strength",
             "Dexterity",
             "Constitution",
@@ -296,16 +297,99 @@ namespace GeneticDLL
         public Dictionary<string, List<double>> Zygot()
         {
             Dictionary<string, List<double>> temp = new Dictionary<string, List<double>>();
-            foreach(string gk in _geneKeys)
+            Random roll = new Random(Guid.NewGuid().GetHashCode());
+            foreach (string gk in _geneKeys)
             {
-                Random roll = new Random(Guid.NewGuid().GetHashCode());
+                double abyNormal = 0;
                 if (roll.Next(1, 101) < 51)
                 {
                     temp.Add(gk, new List<double> { _alpha[gk][0] + _alpha[gk][2], _alpha[gk][1], Mutation(gk) });
+                    if (_alpha[gk][2] != 0) abyNormal = _alpha[gk][2];
                 }
                 else
                 {
                     temp.Add(gk, new List<double> { _beta[gk][0] + _beta[gk][2], _beta[gk][1], Mutation(gk) });
+                    if (_beta[gk][2] != 0) abyNormal = _beta[gk][2];
+                }
+                if (abyNormal != 0)
+                {
+                    double abnormality = (roll.Next(-5, 6) + abyNormal);
+                    switch ((int)abnormality)
+                    {
+                        /// -7 through 7
+                        case -7:
+                            /// Gene breaks! Wah wah.
+                            temp[gk][0] = 1;
+                            temp[gk][1] = 1;
+                            temp[gk][2] = -2;
+                            break;
+                        case -6:
+                            if (temp[gk][0] > 6) temp[gk][0] = 2;
+                            else temp[gk][0] -= 2;
+                            temp[gk][1] = 0;
+                            break;
+                        case -5:
+                            if (temp[gk][0] > 3) temp[gk][0] = 3;
+                            else temp[gk][0] -= 1;
+                            temp[gk][1] = 0;
+                            break;
+                        case -4:
+                            if (temp[gk][0] > 4) temp[gk][0] = 4;
+                            else temp[gk][0] -= 1;
+                            break;
+                        case -3:
+                            if (temp[gk][0] > 5) temp[gk][0] = 5;
+                            else temp[gk][0] -= 1;
+                            break;
+                        case -2:
+                            if (temp[gk][0] > 6) temp[gk][0] = 6;
+                            else temp[gk][0] -= 1;
+                            break;
+                        case -1:
+                            if (temp[gk][0] > 7) temp[gk][0] = 7;
+                            else temp[gk][0] -= 1;
+                            break;
+                        case 0:
+                            /// Lucked out, no changes
+                            /// Good or bad.
+                            break;
+                        case 1:
+                            if (temp[gk][0] <= 2) temp[gk][0] = 4;
+                            else temp[gk][0] += 2;
+                            temp[gk][1] = 1;
+                            break;
+                        case 2:
+                            if (temp[gk][0] <= 3) temp[gk][0] = 5;
+                            else temp[gk][0] += 2;
+                            temp[gk][1] = 1;
+                            break;
+                        case 3:
+                            if (temp[gk][0] <= 4) temp[gk][0] = 6;
+                            else temp[gk][0] += 2;
+                            temp[gk][1] = 1;
+                            break;
+                        case 4:
+                            if (temp[gk][0] <= 5) temp[gk][0] = 7;
+                            else temp[gk][0] += 1;
+                            temp[gk][1] = 1;
+                            break;
+                        case 5:
+                            if (temp[gk][0] <= 6) temp[gk][0] = 8;
+                            else temp[gk][0] += 1;
+                            temp[gk][1] = 1;
+                            break;
+                        case 6:
+                            if (temp[gk][0] <= 7) temp[gk][0] = 9;
+                            else temp[gk][0] += 1;
+                            temp[gk][1] = 1;
+                            break;
+                        case 7:
+                            /// This gene took "supplements"...
+                            temp[gk][0] = 10;
+                            temp[gk][1] = 1;
+                            temp[gk][2] = 2;
+                            break;
+                    }
                 }
             }
             Enforcement(temp);
@@ -324,6 +408,52 @@ namespace GeneticDLL
                 return roll.Next(-2, 3);
             }
             else return 0;
+        }
+        /// <summary>
+        /// Determines Race based on final result of genetics
+        /// </summary>
+        /// <returns>Returns string name of Race to which creature belongs</returns>
+        public string Race()
+        {
+            switch ((int)Result("Race"))
+            {
+                case -3:
+                case -2:
+                case -1:
+                case 0:
+                    return "Troll";
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    return "Dwarf";
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                    return "Human";
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                    return "Half-Elf";
+                case 19:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                    return "Elf";
+                default:
+                    return "Human";
+            }
+            
         }
         #endregion METHODS
     }

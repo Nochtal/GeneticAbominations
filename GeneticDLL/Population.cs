@@ -25,6 +25,10 @@ namespace GeneticDLL
             _creatures.Add(new Creature());
             _creatures.Add(new Creature());
             _creatures.Add(new Creature());
+            foreach (Creature c in _creatures)
+            {
+                c.Age = 1;
+            }
         }
         public Population(List<Creature> creatures)
         {
@@ -39,14 +43,19 @@ namespace GeneticDLL
         /// <param name="nc">Creature to be added</param>
         public void Add(Creature nc)
         {
+            foreach (Creature c in _creatures)
+            {
+                c.AdvanceAge();
+                if (c.Age > c.MaxAge() + 1) _creatures.Remove(c);
+            }
             _creatures.Add(nc);
         }
         /// <summary>
-        /// Sort Population by generation, lowest to highest
+        /// Sort Population by generation, descending.
         /// </summary>
         public void SortByGeneration()
         {
-            _creatures.Sort((x, y) => x.Generation.CompareTo(y.Generation));
+            _creatures.Sort((x, y) => -1 * x.Generation.CompareTo(y.Generation));
         }
         /// <summary>
         /// Sort Population by name, alphabetically.
@@ -56,20 +65,20 @@ namespace GeneticDLL
             _creatures.Sort((x, y) => x.Name.CompareTo(y.Name));
         }
         /// <summary>
-        /// Sort Population by specified Gene Value.
+        /// Sort Population by specified Gene Value, descending.
         /// </summary>
         /// <param name="geneKey">Gene-Key value to sort by</param>
         public void SortByGene(string geneKey)
         {
-            _creatures.Sort((x, y) => x.GeneSequence.Result(geneKey).CompareTo(y.GeneSequence.Result(geneKey)));
+            _creatures.Sort((x, y) => -1 * x.GeneSequence.Result(geneKey).CompareTo(y.GeneSequence.Result(geneKey)));
         }
         /// <summary>
         /// Sort by Aberration Index, absolute value of total
-        /// aberrations within creature
+        /// aberrations within creature, descending.
         /// </summary>
         public void SortByAberration()
         {
-            _creatures.Sort((x, y) => x.AberrationIndex().CompareTo(y.AberrationIndex()));
+            _creatures.Sort((x, y) => -1 * x.AberrationIndex().CompareTo(y.AberrationIndex()));
         }
         #endregion METHODS
     }

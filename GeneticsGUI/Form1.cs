@@ -25,6 +25,7 @@ namespace GeneticsGUI
             }
             /// Add Creatures to ListView and to Mate selection comboBoxes.
             RefreshPopulation();
+            RefreshMates();
         }
         #endregion LOAD
         #region FIELDS
@@ -60,8 +61,12 @@ namespace GeneticsGUI
             cboMateTwo.Items.Clear();
             foreach (Creature c in _population.Populace)
             {
-                cboMateOne.Items.Add(c.Name);
-                cboMateTwo.Items.Add(c.Name);
+                if (c.Age < c.MaxAge())
+                {
+
+                    cboMateOne.Items.Add(c.Name);
+                    cboMateTwo.Items.Add(c.Name);
+                }
             }
             cboMateOne.SelectedIndex = 0;
             cboMateTwo.SelectedIndex = 1;
