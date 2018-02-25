@@ -27,7 +27,7 @@ namespace GeneticDLL
             _creatures.Add(new Creature());
             foreach (Creature c in _creatures)
             {
-                c.Age = 1;
+                c.Age = 25;
             }
         }
         public Population(List<Creature> creatures)
@@ -43,10 +43,14 @@ namespace GeneticDLL
         /// <param name="nc">Creature to be added</param>
         public void Add(Creature nc)
         {
+            /// Make thread safe.
             foreach (Creature c in _creatures)
             {
                 c.AdvanceAge();
-                if (c.Age > c.MaxAge() + 1) _creatures.Remove(c);
+            }
+            for (int i = 0; i < _creatures.Count; i++)
+            {
+                if (_creatures[i].Age > _creatures[i].MaxAge() + 1) _creatures.Remove(_creatures[i]);
             }
             _creatures.Add(nc);
         }

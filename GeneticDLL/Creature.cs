@@ -113,7 +113,7 @@ namespace GeneticDLL
         }
         /// <summary>
         /// Determines max age of creature.
-        /// Minumum: 50 years
+        /// Minumum: 47 years
         /// Maximum: 650 years
         /// </summary>
         /// <returns>(Con+Race+Div)/AberrationIndex + 50</returns>
