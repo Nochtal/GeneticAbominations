@@ -32,7 +32,7 @@ namespace GeneticDLL
         public Creature()
         {
             _name = Utility.Name();
-            _parents = new string[] { "Developer", "Developer" };
+            _parents = new string[] { "Underlord Ada", "Mysterious B" };
             _generation = 1;
             _genes = new Genes();
         }

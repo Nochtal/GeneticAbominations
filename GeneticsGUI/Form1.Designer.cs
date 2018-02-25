@@ -179,6 +179,11 @@
             // 
             this.nudRandAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nudRandAmount.Location = new System.Drawing.Point(126, 516);
+            this.nudRandAmount.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.nudRandAmount.Minimum = new decimal(new int[] {
             1,
             0,
