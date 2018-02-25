@@ -39,6 +39,9 @@
             this.btnMate = new System.Windows.Forms.Button();
             this.cboMateOne = new System.Windows.Forms.ComboBox();
             this.cboMateTwo = new System.Windows.Forms.ComboBox();
+            this.btnRandMate = new System.Windows.Forms.Button();
+            this.nudRandAmount = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRandAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // rtbDisplay
@@ -46,10 +49,12 @@
             this.rtbDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbDisplay.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.rtbDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbDisplay.Location = new System.Drawing.Point(268, 37);
             this.rtbDisplay.Name = "rtbDisplay";
-            this.rtbDisplay.Size = new System.Drawing.Size(422, 574);
+            this.rtbDisplay.ReadOnly = true;
+            this.rtbDisplay.Size = new System.Drawing.Size(422, 634);
             this.rtbDisplay.TabIndex = 0;
             this.rtbDisplay.Text = "";
             // 
@@ -68,7 +73,7 @@
             this.lsvPopulation.Location = new System.Drawing.Point(12, 37);
             this.lsvPopulation.MultiSelect = false;
             this.lsvPopulation.Name = "lsvPopulation";
-            this.lsvPopulation.Size = new System.Drawing.Size(250, 451);
+            this.lsvPopulation.Size = new System.Drawing.Size(250, 457);
             this.lsvPopulation.TabIndex = 1;
             this.lsvPopulation.UseCompatibleStateImageBehavior = false;
             this.lsvPopulation.View = System.Windows.Forms.View.Details;
@@ -97,18 +102,18 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Name";
-            this.columnHeader1.Width = 120;
+            this.columnHeader1.Width = 149;
             // 
             // Generation
             // 
             this.Generation.Text = "Generation";
-            this.Generation.Width = 120;
+            this.Generation.Width = 95;
             // 
             // btnSort
             // 
             this.btnSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSort.Location = new System.Drawing.Point(12, 488);
+            this.btnSort.Location = new System.Drawing.Point(12, 548);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(107, 42);
             this.btnSort.TabIndex = 4;
@@ -121,7 +126,7 @@
             this.cboSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cboSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboSort.FormattingEnabled = true;
-            this.cboSort.Location = new System.Drawing.Point(125, 496);
+            this.cboSort.Location = new System.Drawing.Point(125, 556);
             this.cboSort.Name = "cboSort";
             this.cboSort.Size = new System.Drawing.Size(137, 28);
             this.cboSort.TabIndex = 5;
@@ -130,9 +135,9 @@
             // 
             this.btnMate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnMate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMate.Location = new System.Drawing.Point(12, 569);
+            this.btnMate.Location = new System.Drawing.Point(12, 629);
             this.btnMate.Name = "btnMate";
-            this.btnMate.Size = new System.Drawing.Size(248, 42);
+            this.btnMate.Size = new System.Drawing.Size(250, 42);
             this.btnMate.TabIndex = 6;
             this.btnMate.Text = "Mate";
             this.btnMate.UseVisualStyleBackColor = true;
@@ -143,9 +148,9 @@
             this.cboMateOne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cboMateOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMateOne.FormattingEnabled = true;
-            this.cboMateOne.Location = new System.Drawing.Point(12, 535);
+            this.cboMateOne.Location = new System.Drawing.Point(12, 595);
             this.cboMateOne.Name = "cboMateOne";
-            this.cboMateOne.Size = new System.Drawing.Size(121, 28);
+            this.cboMateOne.Size = new System.Drawing.Size(124, 28);
             this.cboMateOne.TabIndex = 7;
             // 
             // cboMateTwo
@@ -153,17 +158,49 @@
             this.cboMateTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cboMateTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMateTwo.FormattingEnabled = true;
-            this.cboMateTwo.Location = new System.Drawing.Point(139, 535);
+            this.cboMateTwo.Location = new System.Drawing.Point(139, 595);
             this.cboMateTwo.Name = "cboMateTwo";
-            this.cboMateTwo.Size = new System.Drawing.Size(121, 28);
+            this.cboMateTwo.Size = new System.Drawing.Size(123, 28);
             this.cboMateTwo.TabIndex = 8;
+            // 
+            // btnRandMate
+            // 
+            this.btnRandMate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRandMate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRandMate.Location = new System.Drawing.Point(12, 500);
+            this.btnRandMate.Name = "btnRandMate";
+            this.btnRandMate.Size = new System.Drawing.Size(107, 42);
+            this.btnRandMate.TabIndex = 9;
+            this.btnRandMate.Text = "Randomly Mate";
+            this.btnRandMate.UseVisualStyleBackColor = true;
+            this.btnRandMate.Click += new System.EventHandler(this.btnRandMate_Click);
+            // 
+            // nudRandAmount
+            // 
+            this.nudRandAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.nudRandAmount.Location = new System.Drawing.Point(126, 516);
+            this.nudRandAmount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudRandAmount.Name = "nudRandAmount";
+            this.nudRandAmount.Size = new System.Drawing.Size(136, 20);
+            this.nudRandAmount.TabIndex = 10;
+            this.nudRandAmount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(702, 623);
+            this.ClientSize = new System.Drawing.Size(702, 683);
+            this.Controls.Add(this.nudRandAmount);
+            this.Controls.Add(this.btnRandMate);
             this.Controls.Add(this.cboMateTwo);
             this.Controls.Add(this.cboMateOne);
             this.Controls.Add(this.btnMate);
@@ -176,6 +213,7 @@
             this.Name = "Form1";
             this.Text = "Genetic Abominations";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nudRandAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,6 +232,8 @@
         private System.Windows.Forms.Button btnMate;
         private System.Windows.Forms.ComboBox cboMateOne;
         private System.Windows.Forms.ComboBox cboMateTwo;
+        private System.Windows.Forms.Button btnRandMate;
+        private System.Windows.Forms.NumericUpDown nudRandAmount;
     }
 }
 

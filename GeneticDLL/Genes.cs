@@ -93,6 +93,12 @@ namespace GeneticDLL
                 else return _beta[key][0] + _beta[key][2] + _alpha[key][2];
             }
         }
+        public Dictionary<string, List<double>>[] Helices
+        { get
+            {
+                return new Dictionary<string, List<double>>[] { _alpha, _beta };
+            }
+        }
         #endregion PROPERTIES
         #region CONSTRUCTORS
         /// <summary>

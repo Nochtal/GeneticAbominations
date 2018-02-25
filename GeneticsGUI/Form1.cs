@@ -18,24 +18,18 @@ namespace GeneticsGUI
             /// after adding save options.
             _population = new Population();
             /// Add Sort options to cboSort. Name and Generation hard, rest responsive.
-            cboSort.Items.AddRange(new string[] { "Name", "Generation" });
+            cboSort.Items.AddRange(new string[] { "Name", "Generation", "Aberration" });
             foreach (string gk in _population.GeneKeys)
             {
                 cboSort.Items.Add(gk);
             }
             /// Add Creatures to ListView and to Mate selection comboBoxes.
-            foreach (Creature c in _population.Populace)
-            {
-                cboMateOne.Items.Add(c.Name);
-                cboMateTwo.Items.Add(c.Name);
-                ListViewItem row = new ListViewItem(c.Name);
-                row.SubItems.Add(c.Generation.ToString());
-                lsvPopulation.Items.Add(row);
-            }
+            RefreshPopulation();
         }
         #endregion LOAD
         #region FIELDS
         private Population _population;
+        Random roll = new Random(Guid.NewGuid().GetHashCode());
         #endregion FIELDS
         #region METHODS
         private void UpdateDisplay(int i)
@@ -55,6 +49,7 @@ namespace GeneticsGUI
                 row.SubItems.Add(c.Generation.ToString());
                 lsvPopulation.Items.Add(row);
             }
+            lblPopulation.Text = String.Format("Population ({0})", _population.Count);
         }
         /// <summary>
         /// Refreshes both Mate option comboBoxes when population grows.
@@ -70,6 +65,14 @@ namespace GeneticsGUI
             }
             cboMateOne.SelectedIndex = 0;
             cboMateTwo.SelectedIndex = 1;
+        }
+        /// <summary>
+        /// Selects a creature at random from _population.Populace
+        /// </summary>
+        /// <returns>Randomly selected Creature from population</returns>
+        private Creature RandomCreature()
+        {
+            return _population.Populace[roll.Next(0, _population.Count)];
         }
         #endregion METHODS
         #region BUTTONS
@@ -92,6 +95,9 @@ namespace GeneticsGUI
                         break;
                     case "Generation":
                         _population.SortByGeneration();
+                        break;
+                    case "Aberration":
+                        _population.SortByAberration();
                         break;
                     default:
                         _population.SortByGene(selection);
@@ -128,7 +134,28 @@ namespace GeneticsGUI
         private void lsvPopulation_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lsvPopulation.SelectedIndices.Count != 0)
+            {
                 UpdateDisplay(lsvPopulation.SelectedItems[0].Index);
+                lblDisplay.Text = String.Format("Display: {0}", _population.Populace[lsvPopulation.SelectedItems[0].Index].Name);
+            }
+        }
+        /// <summary>
+        /// Randomly Mate two creatures from population.
+        /// nudRandAmount will determine how many to mate.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRandMate_Click(object sender, EventArgs e)
+        {
+            Creature temp = null;
+            for (int i = 0; i < nudRandAmount.Value; i++)
+            {
+                temp = new Creature(RandomCreature(), RandomCreature());
+                _population.Add(temp);
+                temp = null;
+            }
+            RefreshPopulation();
+            RefreshMates();
         }
         #endregion BUTTONS
 
