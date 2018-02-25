@@ -10,8 +10,8 @@ namespace GeneticDLL
 
         public Gene()
         {
-            Value = Utility.GetRandom(1, 10);
-            Weight = Utility.GetRandom(0, 1);
+            Value = ExtensionMethods.GetRandom(1, 10);
+            Weight = ExtensionMethods.GetRandom(0, 1);
             Deviation = Mutate();
         }
         public Gene(int value, int weight)
@@ -29,8 +29,8 @@ namespace GeneticDLL
 
         private int Mutate()
         {
-            if (Utility.GetRandom(1, 100) < 51)
-                return Utility.GetRandom(-2, 2);
+            if (ExtensionMethods.GetRandom(1, 100) < 51)
+                return ExtensionMethods.GetRandom(-2, 2);
             else
                 return 0;
         }

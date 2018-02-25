@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeneticDLL
 {
-    public static class Utility
+    public static class ExtensionMethods
     {
         private static Random roll = new Random(Guid.NewGuid().GetHashCode());
         private static string[] parts = new string[]
