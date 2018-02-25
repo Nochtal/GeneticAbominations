@@ -9,7 +9,7 @@ namespace GeneticDLL
         #endregion FIELDS
         #region PROPERITES
         public List<Creature> Populace { get { return _creatures; } private set { _creatures = value; } }
-        public string[] GeneKeys { get { return _creatures[0].GeneKeys; } }
+        //public string[] GeneKeys { get { return _creatures[0].GeneKeys; } }
         public int Count { get { return _creatures.Count; } }
         #endregion PROPERTIES
         #region CONSTRUCTORS
@@ -21,10 +21,10 @@ namespace GeneticDLL
         public Population()
         {
             _creatures = new List<Creature>();
-            _creatures.Add(new Creature());
-            _creatures.Add(new Creature());
-            _creatures.Add(new Creature());
-            _creatures.Add(new Creature());
+            //_creatures.Add(new Creature());
+            //_creatures.Add(new Creature());
+            //_creatures.Add(new Creature());
+            //_creatures.Add(new Creature());
             foreach (Creature c in _creatures)
             {
                 c.Age = 25;
@@ -41,26 +41,26 @@ namespace GeneticDLL
         /// this.Add(Populace[i].Mate(Populace[i]));
         /// </summary>
         /// <param name="nc">Creature to be added</param>
-        public void Add(Creature nc)
-        {
-            /// Make thread safe.
-            foreach (Creature c in _creatures)
-            {
-                c.AdvanceAge();
-            }
-            for (int i = 0; i < _creatures.Count; i++)
-            {
-                if (_creatures[i].Age > _creatures[i].MaxAge() + 1) _creatures.Remove(_creatures[i]);
-            }
-            _creatures.Add(nc);
-        }
+        //public void Add(Creature nc)
+        //{
+        //    /// Make thread safe.
+        //    foreach (Creature c in _creatures)
+        //    {
+        //        c.AdvanceAge();
+        //    }
+        //    for (int i = 0; i < _creatures.Count; i++)
+        //    {
+        //        if (_creatures[i].Age > _creatures[i].MaxAge() + 1) _creatures.Remove(_creatures[i]);
+        //    }
+        //    _creatures.Add(nc);
+        //}
         /// <summary>
         /// Sort Population by generation, descending.
         /// </summary>
-        public void SortByGeneration()
-        {
-            _creatures.Sort((x, y) => -1 * x.Generation.CompareTo(y.Generation));
-        }
+        //public void SortByGeneration()
+        //{
+        //    _creatures.Sort((x, y) => -1 * x.Generation.CompareTo(y.Generation));
+        //}
         /// <summary>
         /// Sort Population by name, alphabetically.
         /// </summary>
@@ -72,18 +72,18 @@ namespace GeneticDLL
         /// Sort Population by specified Gene Value, descending.
         /// </summary>
         /// <param name="geneKey">Gene-Key value to sort by</param>
-        public void SortByGene(string geneKey)
-        {
-            _creatures.Sort((x, y) => -1 * x.GeneSequence.Result(geneKey).CompareTo(y.GeneSequence.Result(geneKey)));
-        }
+        //public void SortByGene(string geneKey)
+        //{
+        //    _creatures.Sort((x, y) => -1 * x.GeneSequence.Result(geneKey).CompareTo(y.GeneSequence.Result(geneKey)));
+        //}
         /// <summary>
         /// Sort by Aberration Index, absolute value of total
         /// aberrations within creature, descending.
         /// </summary>
-        public void SortByAberration()
-        {
-            _creatures.Sort((x, y) => -1 * x.AberrationIndex().CompareTo(y.AberrationIndex()));
-        }
+        //public void SortByAberration()
+        //{
+        //    _creatures.Sort((x, y) => -1 * x.AberrationIndex().CompareTo(y.AberrationIndex()));
+        //}
         #endregion METHODS
     }
 }

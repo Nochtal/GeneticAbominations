@@ -47,5 +47,11 @@ namespace GeneticDLL
             return sb.ToString();
         }
 
+        public static int Random(int min, int max)
+        {
+            Random roll = new Random(Guid.NewGuid().GetHashCode());
+            return roll.Next(min, max + 1);
+        }
+
     }
 }

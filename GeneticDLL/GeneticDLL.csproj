@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Creature.cs" />
-    <Compile Include="Genes.cs" />
+    <Compile Include="DNA.cs" />
+    <Compile Include="Gene.cs" />
+    <Compile Include="Helix.cs" />
     <Compile Include="Population.cs" />
+    <Compile Include="Society.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
