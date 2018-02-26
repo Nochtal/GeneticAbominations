@@ -15,28 +15,34 @@ namespace GeneticDLL
             Creatures = creatures;
         }
 
-        public Dictionary<string, Creature> GetCreatures()
+        public bool GetCreatures(out IList<Creature> CreaturesList)
         {
-            return null;
+            /// Get full List of Creatures
+            CreaturesList = new List<Creature>(); /// currently here to remove error
+            return false;
+        }
+
+        public bool GetCreatures(Creature c, out Creature creature)
+        {
+            /// Get single specific Creature
+            return Creatures.TryGetValue(c.Name, out creature);
         }
 
         public bool AddCreature(Creature c)
         {
-            return false;   
+            return Creatures.TryAdd(c.Name, c);
         }
 
-        public bool RemoveCreature(Creature c)
+        public bool RemoveCreature(Creature c, Creature CreatureCheck = null)
         {
-            Creature CreatureCheck = null;
-            bool check = Creatures.TryRemove(c.Name, out CreatureCheck);
-            if (check && CreatureCheck == c)
-                return true;
-            else return false;
+            return Creatures.TryRemove(c.Name, out CreatureCheck);
         }
 
-        public bool UpdateCreature(Creature c)
+        public bool UpdateCreature(Creature c, Creature CreatureCheck = null)
         {
-            return Creatures.TryUpdate(c.Name, c, c);
+            bool cc = GetCreatures(c, out CreatureCheck);
+            if (!cc) return AddCreature(c);
+            return Creatures.TryUpdate(c.Name, c, CreatureCheck);
         }
     }
 }
