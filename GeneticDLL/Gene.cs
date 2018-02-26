@@ -27,7 +27,7 @@ namespace GeneticDLL
             Deviation = deviation;
         }
 
-        private int Mutate()
+        public int Mutate()
         {
             if (ExtensionMethods.GetRandom(1, 100) < 51)
                 return ExtensionMethods.GetRandom(-2, 2);

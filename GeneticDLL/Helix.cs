@@ -14,6 +14,18 @@ namespace GeneticDLL
         public Gene Arcane { get; set; }
         public Gene Divine { get; set; }
 
+        public Helix()
+        {
+            Race = new Gene();
+            Strength = new Gene();
+            Dexterity = new Gene();
+            Constitution = new Gene();
+            Intelligence = new Gene();
+            Charisma = new Gene();
+            Wisdom = new Gene();
+            Arcane = new Gene();
+            Divine = new Gene();
+        }
         public Helix(Gene race, 
                      Gene strength, 
                      Gene dexterity, 

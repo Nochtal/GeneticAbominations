@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GeneticDLL
 {
@@ -20,7 +21,9 @@ namespace GeneticDLL
         {
             /// Get full List of Creatures
             CreaturesList = new List<Creature>(); /// currently here to remove error
-            return false;
+            CreaturesList = new List<Creature>(Creatures.Values.ToList());
+            if (CreaturesList.Count > 0) return true;
+            else return false;
         }
 
         public bool GetCreatures(Creature c, out Creature creature)
