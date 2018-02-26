@@ -50,5 +50,7 @@ namespace GeneticDLL
         }
 
         public static int GetRandom(int min, int max) { return roll.Next(min, max + 1); }
+
+        public static int GetChance() { return GetRandom(1, 100); }
     }
 }
