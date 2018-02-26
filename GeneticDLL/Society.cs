@@ -12,7 +12,8 @@ namespace GeneticDLL
         public Society(string name, ConcurrentDictionary<string, Creature> creatures)
         {
             Name = name;
-            Creatures = creatures;
+            if (Creatures.Count > 0) Creatures = creatures;
+            else Creatures = new ConcurrentDictionary<string, Creature>();
         }
 
         public bool GetCreatures(out IList<Creature> CreaturesList)
