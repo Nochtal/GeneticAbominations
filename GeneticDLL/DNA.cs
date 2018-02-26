@@ -39,35 +39,17 @@ namespace GeneticDLL
         public bool GenerateZygot(out Helix zygot)
         {
             zygot = Alpha;
-            foreach (string geneName in ExtensionMethods.GetGeneNames())
-            {
-                // zygot = GetRandomGene(geneName);
-            }
+            if (ExtensionMethods.GetChance() < 51) zygot.Race = Beta.Race;
+            if (ExtensionMethods.GetChance() < 51) zygot.Strength = Beta.Strength;
+            if (ExtensionMethods.GetChance() < 51) zygot.Dexterity = Beta.Dexterity;
+            if (ExtensionMethods.GetChance() < 51) zygot.Constitution = Beta.Constitution;
+            if (ExtensionMethods.GetChance() < 51) zygot.Intelligence = Beta.Intelligence;
+            if (ExtensionMethods.GetChance() < 51) zygot.Wisdom = Beta.Wisdom;
+            if (ExtensionMethods.GetChance() < 51) zygot.Charisma = Beta.Charisma;
+            if (ExtensionMethods.GetChance() < 51) zygot.Arcane = Beta.Arcane;
+            if (ExtensionMethods.GetChance() < 51) zygot.Divine = Beta.Divine;
             if (zygot != Alpha && zygot != Beta) return true;
             else return false;
-        }
-
-        private Gene GetRandomGene(string input)
-        {
-            if (ExtensionMethods.GetChance() < 51) return GetProperty(input, Alpha);
-            else return GetProperty(input, Beta);
-        }
-
-        private Gene GetProperty(string name, Helix helix)
-        {
-            switch (name)
-            {
-                case "Race": return helix.Race;
-                case "Strength": return helix.Strength;
-                case "Dexterity": return helix.Dexterity;
-                case "Constitution": return helix.Constitution;
-                case "Intelligence": return helix.Intelligence;
-                case "Wisdom": return helix.Wisdom;
-                case "Charisma": return helix.Charisma;
-                case "Arcane": return helix.Arcane;
-                case "Divine": return helix.Divine;
-                default: return new Gene();
-            }
         }
     }
 }
