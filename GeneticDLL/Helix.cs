@@ -56,6 +56,7 @@ namespace GeneticDLL
                 Constitution.ToString(),
                 Intelligence.ToString(),
                 Wisdom.ToString(),
+                Charisma.ToString(),
                 Arcane.ToString(),
                 Divine.ToString());
         }

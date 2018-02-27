@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GeneticDLL;
+using System.Diagnostics;
 
 namespace GeneticTest
 {
@@ -104,7 +105,10 @@ namespace GeneticTest
             Gene divine = new Gene(1, 1, 1);
             Helix helix = new Helix(race, strength, dexterity, constitution, intelligence, wisdom, charisma, arcane, divine);
             string check = "Race: Value 1, Weight 1, Aberration 1.\nStrength: Value 1, Weight 1, Aberration 1.\nDexterity: Value 1, Weight 1, Aberration 1.\nConstitution: Value 1, Weight 1, Aberration 1.\nIntelligence: Value 1, Weight 1, Aberration 1.\nCharisma: Value 1, Weight 1, Aberration 1.\nWisdom: Value 1, Weight 1, Aberration 1.\nArcane: Value 1, Weight 1, Aberration 1.\nDivine: Value 1, Weight 1, Aberration 1.";
+            Debug.WriteLine("Helix => " + helix.ToString());
+            Debug.WriteLine("Check => " + check);
             Assert.AreEqual(check, helix.ToString());
+            /// Surprisingly, this test actually found the missing Charisma.ToString() argument for the Helix.ToString() arguments.
         }
     }
 }
