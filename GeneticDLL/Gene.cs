@@ -37,7 +37,7 @@ namespace GeneticDLL
 
         public override string ToString()
         {
-            return String.Format("Value {0}. Weight {1}. Aberration {2}.", Value, Weight, Deviation);
+            return String.Format("Value {0}, Weight {1}, Aberration {2}.", Value, Weight, Deviation);
         }
     }
 }

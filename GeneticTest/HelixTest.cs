@@ -53,33 +53,41 @@ namespace GeneticTest
             Gene arcane = new Gene(1, 1, 1);
             Gene divine = new Gene(1, 1, 1);
             Helix helix = new Helix(race, strength, dexterity, constitution, intelligence, wisdom, charisma, arcane, divine);
-            Assert.AreNotEqual(1, helix.Race.Value);
-            Assert.AreNotEqual(1, helix.Race.Weight);
-            Assert.AreNotEqual(1, helix.Race.Deviation);
-            Assert.AreNotEqual(1, helix.Strength.Value);
-            Assert.AreNotEqual(1, helix.Strength.Weight);
-            Assert.AreNotEqual(1, helix.Strength.Deviation);
-            Assert.AreNotEqual(1, helix.Dexterity.Value);
-            Assert.AreNotEqual(1, helix.Dexterity.Weight);
-            Assert.AreNotEqual(1, helix.Dexterity.Deviation);
-            Assert.AreNotEqual(1, helix.Constitution.Value);
-            Assert.AreNotEqual(1, helix.Constitution.Weight);
-            Assert.AreNotEqual(1, helix.Constitution.Deviation);
-            Assert.AreNotEqual(1, helix.Intelligence.Value);
-            Assert.AreNotEqual(1, helix.Intelligence.Weight);
-            Assert.AreNotEqual(1, helix.Intelligence.Deviation);
-            Assert.AreNotEqual(1, helix.Charisma.Value);
-            Assert.AreNotEqual(1, helix.Charisma.Weight);
-            Assert.AreNotEqual(1, helix.Charisma.Deviation);
-            Assert.AreNotEqual(1, helix.Wisdom.Value);
-            Assert.AreNotEqual(1, helix.Wisdom.Weight);
-            Assert.AreNotEqual(1, helix.Wisdom.Deviation);
-            Assert.AreNotEqual(1, helix.Arcane.Value);
-            Assert.AreNotEqual(1, helix.Arcane.Weight);
-            Assert.AreNotEqual(1, helix.Arcane.Deviation);
-            Assert.AreNotEqual(1, helix.Divine.Value);
-            Assert.AreNotEqual(1, helix.Divine.Weight);
-            Assert.AreNotEqual(1, helix.Divine.Deviation);
+            Assert.AreEqual(1, helix.Race.Value);
+            Assert.AreEqual(1, helix.Race.Weight);
+            Assert.AreEqual(1, helix.Race.Deviation);
+
+            Assert.AreEqual(1, helix.Strength.Value);
+            Assert.AreEqual(1, helix.Strength.Weight);
+            Assert.AreEqual(1, helix.Strength.Deviation);
+
+            Assert.AreEqual(1, helix.Dexterity.Value);
+            Assert.AreEqual(1, helix.Dexterity.Weight);
+            Assert.AreEqual(1, helix.Dexterity.Deviation);
+
+            Assert.AreEqual(1, helix.Constitution.Value);
+            Assert.AreEqual(1, helix.Constitution.Weight);
+            Assert.AreEqual(1, helix.Constitution.Deviation);
+
+            Assert.AreEqual(1, helix.Intelligence.Value);
+            Assert.AreEqual(1, helix.Intelligence.Weight);
+            Assert.AreEqual(1, helix.Intelligence.Deviation);
+
+            Assert.AreEqual(1, helix.Charisma.Value);
+            Assert.AreEqual(1, helix.Charisma.Weight);
+            Assert.AreEqual(1, helix.Charisma.Deviation);
+
+            Assert.AreEqual(1, helix.Wisdom.Value);
+            Assert.AreEqual(1, helix.Wisdom.Weight);
+            Assert.AreEqual(1, helix.Wisdom.Deviation);
+
+            Assert.AreEqual(1, helix.Arcane.Value);
+            Assert.AreEqual(1, helix.Arcane.Weight);
+            Assert.AreEqual(1, helix.Arcane.Deviation);
+
+            Assert.AreEqual(1, helix.Divine.Value);
+            Assert.AreEqual(1, helix.Divine.Weight);
+            Assert.AreEqual(1, helix.Divine.Deviation);
         }
 
         [TestMethod]
@@ -95,7 +103,8 @@ namespace GeneticTest
             Gene arcane = new Gene(1, 1, 1);
             Gene divine = new Gene(1, 1, 1);
             Helix helix = new Helix(race, strength, dexterity, constitution, intelligence, wisdom, charisma, arcane, divine);
-            Assert.AreEqual("Race: Value 1. Weight 1. Aberration 1.\nStrength: Value 1. Weight 1. Aberration 1.\nDexterity: Value 1. Weight 1. Aberration 1.\nConstitution: Value 1. Weight 1. Aberration 1.\nIntelligence: 1\nCharisma: 1\nWisdom: Value 1. Weight 1. Aberration 1.\nArcane Value 1. Weight 1. Aberration 1.\nDivine: Value 1. Weight 1. Aberration 1.", helix.ToString());
+            string check = "Race: Value 1, Weight 1, Aberration 1.\nStrength: Value 1, Weight 1, Aberration 1.\nDexterity: Value 1, Weight 1, Aberration 1.\nConstitution: Value 1, Weight 1, Aberration 1.\nIntelligence: Value 1, Weight 1, Aberration 1.\nCharisma: Value 1, Weight 1, Aberration 1.\nWisdom: Value 1, Weight 1, Aberration 1.\nArcane: Value 1, Weight 1, Aberration 1.\nDivine: Value 1, Weight 1, Aberration 1.";
+            Assert.AreEqual(check, helix.ToString());
         }
     }
 }

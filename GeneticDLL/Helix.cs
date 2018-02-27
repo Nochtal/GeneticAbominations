@@ -49,7 +49,7 @@ namespace GeneticDLL
 
         public override string ToString()
         {
-            return String.Format("Race: {0}\nStrength: {1}\nDexterity: {2}\nConstitution: {3}\nIntelligence: {4}\nCharisma: {5}\nWisdom: {6}\nArcane {7}\nDivine: {8}",
+            return String.Format("Race: {0}\nStrength: {1}\nDexterity: {2}\nConstitution: {3}\nIntelligence: {4}\nCharisma: {5}\nWisdom: {6}\nArcane: {7}\nDivine: {8}",
                 Race.ToString(),
                 Strength.ToString(),
                 Dexterity.ToString(),
