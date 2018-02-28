@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GeneticDLL;
 
 namespace GeneticTest
@@ -77,7 +72,8 @@ namespace GeneticTest
         [TestMethod]
         public void TestGeneResultCalculation()
         {
-            // Result should be Value * 2 + 2
+            // Result should be (Value * 2 + 2)
+            // Gene(Value, Weight, Deviation)
             Gene race = new Gene(1, 1, 1); // 4
             Gene strength = new Gene(2, 1, 1); // 6
             Gene dexterity = new Gene(3, 1, 1); // 8

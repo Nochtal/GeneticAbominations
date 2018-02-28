@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
 using System.Text;
 
 namespace GeneticDLL
@@ -8,7 +6,7 @@ namespace GeneticDLL
     public static class ExtensionMethods
     {
         private static Random roll = new Random(Guid.NewGuid().GetHashCode());
-        private static string[] parts = new string[]
+        private static string[] nameParts = new string[]
         {
             "a", "e", "u", "i", "o",
             "ka", "ke", "ku", "ki", "ko",
@@ -38,13 +36,66 @@ namespace GeneticDLL
             "tu", "dyu", "fi", "fe", "fo","fyu"
         };
 
+        public static string[] SocietyType = new string[]
+        {
+            "Republic",
+            "Kingdom",
+            "Empire",
+            "Commonwealth",
+            "Federation",
+            "Colony",
+            "Principality",
+            "Protectorate",
+            "United States",
+            "United Kingdom",
+            "People's Republic",
+            "Democratic Republic",
+            "Confederacy",
+            "Dominion",
+            "Sultanate",
+            "Holy Empire",
+            "Theocracy",
+            "Most Serene Republic",
+            "United Socialist States",
+            "Democratic States",
+            "Allied States",
+            "Queendom",
+            "Fiefdom",
+            "Constitutional Monarchy",
+            "Dictatorship",
+            "Matriarchy",
+            "Emirate",
+            "Grand Duchy",
+            "Free Land",
+            "Community",
+            "Disputed Territories",
+            "Jingoistic States",
+            "Armed Republic",
+            "Nomadic Peoples",
+            "Oppressed Peoples",
+            "Borderlands",
+            "Rogue Nation",
+            "Incorporated States",
+            "Federal Republic"
+        };
+
+        public static string GenerateSocietyName()
+        {
+            return GenerateName() + (GetChance() < 51 ? (" " + GenerateName()) : GenerateName() );
+        }
+
+        public static string GenerateSocietyClassifier()
+        {
+            return SocietyType[GetRandom(0, SocietyType.Length)];
+        }
+
         public static string GenerateName()
         {
             StringBuilder sb = new StringBuilder();
-            int length = roll.Next(2, 6);
+            int length = roll.Next(2, 5);
             for (int i = 0; i < length; i++)
             {
-                sb.Append(parts[roll.Next(0, parts.Length)]);
+                sb.Append(nameParts[roll.Next(0, nameParts.Length)]);
             }
 
             sb[0] = char.ToUpper(sb[0]);

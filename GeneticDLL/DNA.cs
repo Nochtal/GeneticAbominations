@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace GeneticDLL
+﻿namespace GeneticDLL
 {
     public class DNA
     {
@@ -33,21 +31,20 @@ namespace GeneticDLL
             if (alphaGene.Weight == 1 || betaGene.Weight == 1)
                 return (alphaGene.Value * alphaGene.Weight) + (betaGene.Value * betaGene.Weight) + (alphaGene.Deviation + betaGene.Deviation);
             else return (alphaGene.Value > betaGene.Value ? alphaGene.Value : betaGene.Value) + (alphaGene.Deviation + betaGene.Deviation);
-           
         }
 
         public bool GenerateZygot(out Helix zygot)
         {
-            zygot = Alpha;
-            if (ExtensionMethods.GetChance() < 51) zygot.Race = Beta.Race;
-            if (ExtensionMethods.GetChance() < 51) zygot.Strength = Beta.Strength;
-            if (ExtensionMethods.GetChance() < 51) zygot.Dexterity = Beta.Dexterity;
-            if (ExtensionMethods.GetChance() < 51) zygot.Constitution = Beta.Constitution;
-            if (ExtensionMethods.GetChance() < 51) zygot.Intelligence = Beta.Intelligence;
-            if (ExtensionMethods.GetChance() < 51) zygot.Wisdom = Beta.Wisdom;
-            if (ExtensionMethods.GetChance() < 51) zygot.Charisma = Beta.Charisma;
-            if (ExtensionMethods.GetChance() < 51) zygot.Arcane = Beta.Arcane;
-            if (ExtensionMethods.GetChance() < 51) zygot.Divine = Beta.Divine;
+            zygot = new Helix(
+                ((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Race.Value + Alpha.Race.Deviation), Alpha.Race.Weight) : new Gene((Beta.Race.Value + Beta.Race.Deviation), Beta.Race.Weight)),
+                ((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Strength.Value + Alpha.Strength.Deviation), Alpha.Strength.Weight) : new Gene((Beta.Strength.Value + Beta.Strength.Deviation), Beta.Strength.Weight)),
+                ((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Dexterity.Value + Alpha.Dexterity.Deviation), Alpha.Dexterity.Weight) : new Gene((Beta.Dexterity.Value + Beta.Dexterity.Deviation), Beta.Dexterity.Weight)),
+                ((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Constitution.Value + Alpha.Constitution.Deviation), Alpha.Constitution.Weight) : new Gene((Beta.Constitution.Value + Beta.Constitution.Deviation), Beta.Constitution.Weight)),
+                ((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Intelligence.Value + Alpha.Intelligence.Deviation), Alpha.Intelligence.Weight) : new Gene((Beta.Intelligence.Value + Beta.Intelligence.Deviation), Beta.Intelligence.Weight)),
+                ((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Wisdom.Value + Alpha.Wisdom.Deviation), Alpha.Wisdom.Weight) : new Gene((Beta.Wisdom.Value + Beta.Wisdom.Deviation), Beta.Wisdom.Weight)),
+                ((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Charisma.Value + Alpha.Charisma.Deviation), Alpha.Charisma.Weight) : new Gene((Beta.Charisma.Value + Beta.Charisma.Deviation), Beta.Charisma.Weight)),
+                ((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Arcane.Value + Alpha.Arcane.Deviation), Alpha.Arcane.Weight) : new Gene((Beta.Arcane.Value + Beta.Arcane.Deviation), Beta.Arcane.Weight)),
+                ((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Divine.Value + Alpha.Divine.Deviation), Alpha.Divine.Weight) : new Gene((Beta.Divine.Value + Beta.Divine.Deviation), Beta.Divine.Weight)));
             if (zygot != Alpha && zygot != Beta) return true;
             else return false;
         }

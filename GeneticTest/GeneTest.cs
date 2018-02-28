@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GeneticDLL;
 
 namespace GeneticTest
@@ -29,7 +28,7 @@ namespace GeneticTest
         public void GeneToString()
         {
             Gene gene = new Gene(10, 1, 2);
-            Assert.AreEqual("Value 10, Weight 1, Aberration 2.", gene.ToString());
+            Assert.AreEqual("Value 10, Weight 1, Deviation 2.", gene.ToString());
         }
     }
 }
