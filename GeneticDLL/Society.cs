@@ -1,6 +1,8 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace GeneticDLL
@@ -97,6 +99,55 @@ namespace GeneticDLL
                 }
             });
             if (Creatures.Count == 0) Parallel.For(0, 4, i => { AddCreature(new Creature()); });
+        }
+
+        public int GetPopulation()
+        {
+            return Creatures.Count;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} of {1}. Population: {2}. Deceased: {3}. Highest Generation: {4}",
+                Classification,
+                Name,
+                Creatures.Count,
+                Graveyard.Count,
+                GetHighestGeneartion());
+        }
+
+        private string GetHighestGeneartion()
+        {
+            StringBuilder sb = new StringBuilder();
+            List<Creature> cl = new List<Creature>();
+            if (GetCreatures(out cl))
+            {
+                cl.Sort((x, y) => -1 * x.Generation.CompareTo(y.Generation));
+                sb.Append(cl[0].Generation);
+                switch (sb[sb.Length -1])
+                {
+                    case '1':
+                        sb.Append("st");
+                        break;
+                    case '2':
+                        sb.Append("nd");
+                        break;
+                    case '3':
+                        sb.Append("rd");
+                        break;
+                    case '0':
+                    case '4':
+                    case '5':
+                    case '6':
+                    case '7':
+                    case '8':
+                    case '9':
+                        sb.Append("th");
+                        break;
+                }
+            }
+            else return "0";
+            return sb.ToString();
         }
     }
 }
