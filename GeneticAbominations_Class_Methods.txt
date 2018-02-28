@@ -1,0 +1,156 @@
+public class Society
+{
+	public bool GetCreatures(out List<Creature> CreaturesList)
+	{
+		CreaturesList = new List<Creature>(Creatures.Values.ToList());
+		if (CreaturesList.Count > 0) return true;
+		else return false;
+	}
+
+	public bool GetCreatures(Creature c, out Creature creature)
+	{
+		return Creatures.TryGetValue(c.Name, out creature);
+	}
+
+	public bool GetGraveyard(out List<string> graveyard)
+	{
+		graveyard = Graveyard.ToList();
+		if (graveyard.Count == Graveyard.Count) return true;
+		else return false;
+	}
+
+	public bool AddCreature(Creature c)
+	{
+		return Creatures.TryAdd(c.Name, c);
+	}
+
+	public bool RemoveCreature(Creature c)
+	{
+		Creature CreatureCheck;
+		return Creatures.TryRemove(c.Name, out CreatureCheck);
+
+	}
+
+	public bool UpdateCreature(Creature c)
+	{
+		Creature CreatureCheck;
+		bool cc = GetCreatures(c, out CreatureCheck);
+		if (!cc) return false;
+		return Creatures.TryUpdate(c.Name, c, CreatureCheck);
+	}
+
+	public void AdvanceAge(int years)
+	{
+		Parallel.ForEach(Creatures, (currentCreature) =>
+		{
+			currentCreature.Value.Age += years;
+			if (currentCreature.Value.Age > currentCreature.Value.GetMaxAge())
+			{
+				RemoveCreature(currentCreature.Value);
+				Graveyard.Add(currentCreature.Value.DeathString());
+			}
+		});
+		if (Creatures.Count == 0) Parallel.For(0, 4, i => { AddCreature(new Creature()); });
+	}
+
+	public int GetPopulation()
+	{
+		return Creatures.Count;
+	}
+
+	public override string ToString()
+	{
+		return string.Format("{0} of {1}. Population: {2}. Deceased: {3}. Highest Generation: {4}",
+			Classification,
+			Name,
+			Creatures.Count,
+			Graveyard.Count,
+			GetHighestGeneartion());
+	}
+}
+
+public class Creature
+{
+	public int GetMaxAge()
+	{
+		return (Genetics.Constitution * Genetics.Race + Genetics.Divine) + 50;
+	}
+
+	public string GetRace()
+	{
+		if (Genetics.Race <= 0) return "Troll";
+		else if (Genetics.Race >= 1 && Genetics.Race <= 4) return "Dwarf";
+		else if (Genetics.Race >= 5 && Genetics.Race <= 12) return "Human";
+		else if (Genetics.Race >= 13 && Genetics.Race <= 18) return "Half-Elf";
+		else return "Elf";
+	}
+
+	public string DeathString()
+	{
+		return String.Format("{0}, Died at {1} years of age. Generation: {2}. Parents: {3} and {4}",
+			Name,
+			GetMaxAge(),
+			Generation,
+			ParentOne,
+			ParentTwo);
+	}
+}
+
+public class DNA
+{
+	private int CalculateGeneResult(Gene alphaGene, Gene betaGene)
+	{
+		if (alphaGene.Weight == 1 || betaGene.Weight == 1)
+			return (alphaGene.Value * alphaGene.Weight) + (betaGene.Value * betaGene.Weight) + (alphaGene.Deviation + betaGene.Deviation);
+		else return (alphaGene.Value > betaGene.Value ? alphaGene.Value : betaGene.Value) + (alphaGene.Deviation + betaGene.Deviation);
+	}
+
+	public bool GenerateZygot(out Helix zygot)
+	{
+		zygot = new Helix(
+			((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Race.Value + Alpha.Race.Deviation), Alpha.Race.Weight) : new Gene((Beta.Race.Value + Beta.Race.Deviation), Beta.Race.Weight)),
+			((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Strength.Value + Alpha.Strength.Deviation), Alpha.Strength.Weight) : new Gene((Beta.Strength.Value + Beta.Strength.Deviation), Beta.Strength.Weight)),
+			((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Dexterity.Value + Alpha.Dexterity.Deviation), Alpha.Dexterity.Weight) : new Gene((Beta.Dexterity.Value + Beta.Dexterity.Deviation), Beta.Dexterity.Weight)),
+			((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Constitution.Value + Alpha.Constitution.Deviation), Alpha.Constitution.Weight) : new Gene((Beta.Constitution.Value + Beta.Constitution.Deviation), Beta.Constitution.Weight)),
+			((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Intelligence.Value + Alpha.Intelligence.Deviation), Alpha.Intelligence.Weight) : new Gene((Beta.Intelligence.Value + Beta.Intelligence.Deviation), Beta.Intelligence.Weight)),
+			((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Wisdom.Value + Alpha.Wisdom.Deviation), Alpha.Wisdom.Weight) : new Gene((Beta.Wisdom.Value + Beta.Wisdom.Deviation), Beta.Wisdom.Weight)),
+			((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Charisma.Value + Alpha.Charisma.Deviation), Alpha.Charisma.Weight) : new Gene((Beta.Charisma.Value + Beta.Charisma.Deviation), Beta.Charisma.Weight)),
+			((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Arcane.Value + Alpha.Arcane.Deviation), Alpha.Arcane.Weight) : new Gene((Beta.Arcane.Value + Beta.Arcane.Deviation), Beta.Arcane.Weight)),
+			((ExtensionMethods.GetChance() < 51) ? new Gene((Alpha.Divine.Value + Alpha.Divine.Deviation), Alpha.Divine.Weight) : new Gene((Beta.Divine.Value + Beta.Divine.Deviation), Beta.Divine.Weight)));
+		if (zygot != Alpha && zygot != Beta) return true;
+		else return false;
+	}
+}
+
+public class Helix
+{
+	public override string ToString()
+	{
+		return String.Format("Race: {0}\nStrength: {1}\nDexterity: {2}\nConstitution: {3}\nIntelligence: {4}\nWisdom: {5}\nCharisma: {6}\nArcane: {7}\nDivine: {8}",
+			Race.ToString(),
+			Strength.ToString(),
+			Dexterity.ToString(),
+			Constitution.ToString(),
+			Intelligence.ToString(),
+			Wisdom.ToString(),
+			Charisma.ToString(),
+			Arcane.ToString(),
+			Divine.ToString());
+	}
+}
+
+public class Gene
+{
+	public int Mutate()
+	{
+		if (ExtensionMethods.GetRandom(1, 100) < 51)
+			return ExtensionMethods.GetRandom(-2, 2);
+		else
+			return 0;
+	}
+
+	public override string ToString()
+	{
+		return String.Format("Value {0}, Weight {1}, Deviation {2}.", Value, Weight, Deviation);
+	}
+}

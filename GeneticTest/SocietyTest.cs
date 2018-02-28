@@ -84,7 +84,7 @@ namespace GeneticTest
             Society society = new Society(NAME, CLASSIFICATION, CREATURES);
             List<Creature> creaturesList = new List<Creature>();
             Assert.IsTrue(society.GetCreatures(out creaturesList));
-            Assert.IsTrue(society.RemoveCreature(creaturesList[1]));
+            Assert.IsTrue(society.RemoveCreature(cTWo));
             Assert.IsTrue(society.GetCreatures(out creaturesList));
             CollectionAssert.Contains(creaturesList, cOne);
             CollectionAssert.DoesNotContain(creaturesList, cTWo);
