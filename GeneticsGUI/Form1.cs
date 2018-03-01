@@ -16,7 +16,6 @@ namespace GeneticsGUI
         {
             society = new Society();
             society.GetCreatures(out creatureList);
-            /// Add Sort options to cboSort. Name and Generation hard, rest responsive.
             cboSort.Items.AddRange(new string[] 
             {
                 "Name",
@@ -34,7 +33,6 @@ namespace GeneticsGUI
                 "Arcane",
                 "Divine"
             });
-            /// Add Creatures to ListView and to Mate selection comboBoxes.
             RefreshPopulation();
             nudRandAmount.Maximum = creatureList.Count;
         }
@@ -53,9 +51,7 @@ namespace GeneticsGUI
             creatureList.Clear();
             society.GetCreatures(out creatureList);
         }
-        /// <summary>
-        /// Refreshes the ListView anytime the population grows or is sorted.
-        /// </summary>
+        
         private void RefreshPopulation()
         {
             lsvPopulation.Items.Clear();
@@ -70,22 +66,12 @@ namespace GeneticsGUI
                 society.Name,
                 creatureList.Count);
         }
-        /// <summary>
-        /// Selects a creature at random from _population.Populace
-        /// </summary>
-        /// <returns>Randomly selected Creature from population</returns>
+        
         private Creature GetRandomCreature()
         {
             return creatureList[ExtensionMethods.GetRandom(0, creatureList.Count - 1)];
         }
         
-        /// <summary>
-        /// Sorts the population by selected option in cboSort and refreshes
-        /// the ListView utilizing RefreshPopulation() and mating options via
-        /// RefreshMates(), so that index lines up.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnSort_Click(object sender, EventArgs e)
         {
             SortCreatureList(cboSort.Text);
@@ -148,12 +134,7 @@ namespace GeneticsGUI
                 RefreshPopulation();
             }
         }
-        /// <summary>
-        /// Mates both selected mates!
-        /// Refreshes both listview and mates comboBoxes.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void btnMate_Click(object sender, EventArgs e)
         {
             if (siOne > -1 && siTwo > -1 && siOne != siTwo)
@@ -168,11 +149,7 @@ namespace GeneticsGUI
             siOne = siTwo = -1;
             UpdateMateSelected();
         }
-        /// <summary>
-        /// When a creature is selected, display its stats.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void lsvPopulation_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lsvPopulation.SelectedIndices.Count != 0)
@@ -184,12 +161,7 @@ namespace GeneticsGUI
                 UpdateMateSelected();
             }
         }
-        /// <summary>
-        /// Randomly Mate two creatures from population.
-        /// nudRandAmount will determine how many to mate.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void btnRandMate_Click(object sender, EventArgs e)
         {
             List<Creature> temp = new List<Creature>();
