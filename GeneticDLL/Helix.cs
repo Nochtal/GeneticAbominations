@@ -2,6 +2,7 @@
 
 namespace GeneticDLL
 {
+    [Serializable]
     public class Helix
     {
         public Gene Race { get; set; }

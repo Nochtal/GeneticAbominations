@@ -102,7 +102,7 @@ namespace GeneticTest
             Gene arcane = new Gene(8, 1, 1);
             Gene divine = new Gene(9, 1, 1);
             Helix helix = new Helix(race, strength, dexterity, constitution, intelligence, wisdom, charisma, arcane, divine);
-            string check = "Race: Value 1, Weight 1, Deviation 1.\nStrength: Value 2, Weight 1, Deviation 1.\nDexterity: Value 3, Weight 1, Deviation 1.\nConstitution: Value 4, Weight 1, Deviation 1.\nIntelligence: Value 5, Weight 1, Deviation 1.\nWisdom: Value 6, Weight 1, Deviation 1.\nCharisma: Value 7, Weight 1, Deviation 1.\nArcane: Value 8, Weight 1, Deviation 1.\nDivine: Value 9, Weight 1, Deviation 1.";
+            string check = "Race: Value 1, Weight 1, Deviation 1.\nStrength: Value 2, Weight 1, Deviation 1.\nDexterity: Value 3, Weight 1, Deviation 1.\nConstitution: Value 4, Weight 1, Deviation 1.\nIntelligence: Value 5, Weight 1, Deviation 1.\nWisdom: Value 6, Weight 1, Deviation 1.\nCharisma: Value 7, Weight 1, Deviation 1.\nArcane: Value 8, Weight 1, Deviation 1.\nDivine: Value 9, Weight 1, Deviation 1.\nDeviation Index: 9";
             Assert.AreEqual(check, helix.ToString());
         }
     }

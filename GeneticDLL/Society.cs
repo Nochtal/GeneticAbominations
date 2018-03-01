@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace GeneticDLL
 {
+    [Serializable]
     public class Society
     {
         public string Name { get; set; }

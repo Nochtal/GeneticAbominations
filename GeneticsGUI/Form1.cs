@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 using GeneticDLL;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace GeneticsGUI
 {
@@ -16,31 +19,15 @@ namespace GeneticsGUI
         {
             society = new Society();
             society.GetCreatures(out creatureList);
-            cboSort.Items.AddRange(new string[] 
-            {
-                "Name",
-                "Youngest",
-                "Oldest",
-                "Generation",
-                "Deviation",
-                "Race",
-                "Strength",
-                "Dexterity",
-                "Constitution",
-                "Intelligence",
-                "Wisdom",
-                "Charisma",
-                "Arcane",
-                "Divine"
-            });
             RefreshPopulation();
             nudRandAmount.Maximum = creatureList.Count;
         }
-        
+
         private Society society;
         private List<Creature> creatureList = new List<Creature>();
         int siOne = -1, siTwo = -1;
-        
+        string fileName;
+
         private void UpdateDisplay(int i)
         {
             rtbDisplay.Clear();
@@ -51,27 +38,32 @@ namespace GeneticsGUI
             creatureList.Clear();
             society.GetCreatures(out creatureList);
         }
-        
+
         private void RefreshPopulation()
         {
-            lsvPopulation.Items.Clear();
-            foreach (Creature c in creatureList)
+            if (society != null)
             {
-                ListViewItem row = new ListViewItem(c.Name);
-                row.SubItems.Add(c.Generation.ToString());
-                lsvPopulation.Items.Add(row);
+                lsvPopulation.Items.Clear();
+                foreach (Creature c in creatureList)
+                {
+                    ListViewItem row = new ListViewItem(c.Name);
+                    row.SubItems.Add(c.Generation.ToString());
+                    lsvPopulation.Items.Add(row);
+                }
+                lblPopulation.Text = String.Format("{0} of {1}: Population ({2}), Deceased ({3})",
+                    society.Classification,
+                    society.Name,
+                    creatureList.Count,
+                    (society.Graveyard.Count > 0 ? society.Graveyard.Count : 0));
             }
-            lblPopulation.Text = String.Format("{0} of {1}: Population ({2})", 
-                society.Classification,
-                society.Name,
-                creatureList.Count);
+            else lblPopulation.Text = "No Society Opened.";
         }
-        
+
         private Creature GetRandomCreature()
         {
             return creatureList[ExtensionMethods.GetRandom(0, creatureList.Count - 1)];
         }
-        
+
         private void btnSort_Click(object sender, EventArgs e)
         {
             SortCreatureList(cboSort.Text);
@@ -149,7 +141,7 @@ namespace GeneticsGUI
             siOne = siTwo = -1;
             UpdateMateSelected();
         }
-        
+
         private void lsvPopulation_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lsvPopulation.SelectedIndices.Count != 0)
@@ -161,25 +153,29 @@ namespace GeneticsGUI
                 UpdateMateSelected();
             }
         }
-        
+
         private void btnRandMate_Click(object sender, EventArgs e)
         {
-            List<Creature> temp = new List<Creature>();
-            for (int i = 0; i < nudRandAmount.Value; i++)
+            if (society != null)
             {
-                while (temp.Count < i + 1)
+                List<Creature> temp = new List<Creature>();
+                for (int i = 0; i < nudRandAmount.Value; i++)
                 {
-                    temp.Add(new Creature(GetRandomCreature(), GetRandomCreature()));
+                    while (temp.Count < i + 1)
+                    {
+                        temp.Add(new Creature(GetRandomCreature(), GetRandomCreature()));
+                    }
                 }
+                society.AdvanceAge(1);
+                society.AddCreature(temp);
+                RefreshCreatureList();
+                SortCreatureList("Youngest");
+                RefreshPopulation();
+                UpdateMateSelected();
+                nudRandAmount.Value = 1;
             }
-            society.AdvanceAge(1);
-            society.AddCreature(temp);
-            RefreshCreatureList();
-            SortCreatureList("Youngest");
-            RefreshPopulation();
-            UpdateMateSelected();
         }
-                
+
         private void nudRandAmount_ValueChanged(object sender, EventArgs e)
         {
             nudRandAmount.Maximum = creatureList.Count;
@@ -196,6 +192,154 @@ namespace GeneticsGUI
                 lblMateSelected.Text = String.Format("Selected: {0}, select one more", (siOne > siTwo ? creatureList[siOne].Name : creatureList[siTwo].Name));
             }
             else lblMateSelected.Text = "Select Two Creatures Above";
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Data File|*.dat";
+            sfd.Title = "Save Society As...";
+            sfd.ShowDialog();
+            if (sfd.FileName != "")
+            {
+                FileStream fs = (FileStream)sfd.OpenFile();
+                BinaryFormatter bf = new BinaryFormatter();
+                try
+                {
+                    bf.Serialize(fs, society);
+                    fileName = sfd.FileName;
+                }
+                catch (SerializationException se)
+                {
+                    MessageBox.Show(se.Message);
+                }
+                finally { fs.Close(); }
+            }
+        }
+
+        private void closeSocietyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lsvPopulation.Items.Clear();
+            creatureList.Clear();
+            society = null;
+            rtbDisplay.Clear();
+            lblPopulation.Text = "No Society Opened.";
+        }
+
+        private void newSocietyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (society != null)
+            {
+                DialogResult saveCheck = MessageBox.Show(String.Format("Do you want to save {0} first?", society.Name), "Confirmation", MessageBoxButtons.YesNoCancel);
+                if (saveCheck == DialogResult.Yes)
+                {
+                    saveAsToolStripMenuItem_Click(this, null);
+                    closeSocietyToolStripMenuItem_Click(this, null);
+                    society = new Society();
+                    RefreshCreatureList();
+                    RefreshPopulation();
+                }
+                else if (saveCheck == DialogResult.No)
+                {
+                    closeSocietyToolStripMenuItem_Click(this, null);
+                    society = new Society();
+                    RefreshCreatureList();
+                    RefreshPopulation();
+                }
+                else { }
+            }
+            else
+            {
+                society = new Society();
+                RefreshCreatureList();
+                RefreshPopulation();
+            }
+        }
+
+        private void openSocietyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Data Files|*.dat";
+            ofd.FilterIndex = 2;
+            ofd.RestoreDirectory = true;
+            if (society != null)
+            {
+                DialogResult saveCheck = MessageBox.Show(String.Format("Do you want to save {0} first?", society.Name), "Confirmation", MessageBoxButtons.YesNoCancel);
+                if (saveCheck == DialogResult.Yes)
+                {
+                    saveAsToolStripMenuItem_Click(this, null);
+                }
+                else if (saveCheck == DialogResult.No)
+                {
+                    
+                }
+                else { return; }
+            }
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                FileStream fs;
+                try
+                {
+                    if (ofd.FileName != null)
+                    {
+                        fileName = ofd.FileName;
+                        fs = new FileStream(fileName, FileMode.Open);
+                        BinaryFormatter bf = new BinaryFormatter();
+                        society = null;
+                        society = (Society)bf.Deserialize(fs);
+                        fs.Close();
+                        rtbDisplay.Clear();
+                        RefreshCreatureList();
+                        RefreshPopulation();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (society != null)
+            {
+                DialogResult saveCheck = MessageBox.Show(String.Format("Do you want to save {0} Before Exit?", society.Name), "Confirmation", MessageBoxButtons.YesNoCancel);
+                if (saveCheck == DialogResult.Yes)
+                {
+                    saveAsToolStripMenuItem_Click(this, null);
+                    Application.Exit();
+                }
+                else if (saveCheck == DialogResult.No)
+                {
+                    Application.Exit();
+                }
+                else { }
+            }
+        }
+
+        private void changeSocietyNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (fileName == "" || fileName == null) fileName = @"Societies\" + society.Name + ".dat";
+            string filePath = "Societies";
+            bool exists = Directory.Exists(filePath);
+            if (!exists) Directory.CreateDirectory(filePath);
+            FileStream fs = new FileStream(fileName, FileMode.Create);
+            BinaryFormatter bf = new BinaryFormatter();
+            try
+            {
+                bf.Serialize(fs, society);
+            }
+            catch (SerializationException se)
+            {
+                MessageBox.Show(se.Message);
+            }
+            finally { fs.Close(); }
         }
     }
 }

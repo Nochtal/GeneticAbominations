@@ -2,6 +2,7 @@
 
 namespace GeneticDLL
 {
+    [Serializable]
     public class DNA
     {
         public Helix Alpha { get; set; }

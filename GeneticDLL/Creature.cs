@@ -3,6 +3,7 @@ using System.Text;
 
 namespace GeneticDLL
 {
+    [Serializable]
     public class Creature
     {
         public string Name { get; set; }

@@ -2,6 +2,7 @@
 
 namespace GeneticDLL
 {
+    [Serializable]
     public class Gene
     {
         public int Value { get; set; }
