@@ -1,4 +1,6 @@
-﻿namespace GeneticDLL
+﻿using System;
+
+namespace GeneticDLL
 {
     public class DNA
     {
@@ -25,6 +27,10 @@
         public int Charisma { get { return CalculateGeneResult(Alpha.Charisma, Beta.Charisma); } }
         public int Arcane { get { return CalculateGeneResult(Alpha.Arcane, Beta.Arcane); } }
         public int Divine { get { return CalculateGeneResult(Alpha.Divine, Beta.Divine); } }
+
+        public int DeviationIndex { get {
+                return Alpha.DeviationIndex + Beta.DeviationIndex;
+            } }
 
         private int CalculateGeneResult(Gene alphaGene, Gene betaGene)
         {

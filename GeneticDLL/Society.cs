@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,6 +70,10 @@ namespace GeneticDLL
         public bool AddCreature(Creature c)
         {
             return Creatures.TryAdd(c.Name, c);
+        }
+        public void AddCreature(List<Creature> temp)
+        {
+            Parallel.ForEach(temp, creature => { AddCreature(creature); });
         }
 
         public bool RemoveCreature(Creature c)
@@ -148,5 +153,7 @@ namespace GeneticDLL
             else return "0";
             return sb.ToString();
         }
+
+        
     }
 }

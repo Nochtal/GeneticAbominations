@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
 using GeneticDLL;
+using System.Collections.Generic;
 
 namespace GeneticsGUI
 {
     public partial class Form1 : Form
     {
-        #region LOAD
         public Form1()
         {
             InitializeComponent();
@@ -14,73 +14,71 @@ namespace GeneticsGUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            /// Will be replaced to detect if saved population exists
-            /// after adding save options.
-            //_population = new Population();
+            society = new Society();
+            society.GetCreatures(out creatureList);
             /// Add Sort options to cboSort. Name and Generation hard, rest responsive.
-            //cboSort.Items.AddRange(new string[] { "Name", "Generation", "Aberration" });
-            //foreach (string gk in _population.GeneKeys)
-            //{
-            //    cboSort.Items.Add(gk);
-            //}
+            cboSort.Items.AddRange(new string[] 
+            {
+                "Name",
+                "Youngest",
+                "Oldest",
+                "Generation",
+                "Deviation",
+                "Race",
+                "Strength",
+                "Dexterity",
+                "Constitution",
+                "Intelligence",
+                "Wisdom",
+                "Charisma",
+                "Arcane",
+                "Divine"
+            });
             /// Add Creatures to ListView and to Mate selection comboBoxes.
-            //RefreshPopulation();
-            //RefreshMates();
+            RefreshPopulation();
+            nudRandAmount.Maximum = creatureList.Count;
         }
-        #endregion LOAD
-        #region FIELDS
-        //private Population _population;
-        //Random roll = new Random(Guid.NewGuid().GetHashCode());
-        #endregion FIELDS
-        #region METHODS
-        //private void UpdateDisplay(int i)
-        //{
-        //    rtbDisplay.Clear();
-        //    rtbDisplay.AppendText(_population.Populace[i].ToString());
-        //}
+        
+        private Society society;
+        private List<Creature> creatureList = new List<Creature>();
+        int siOne = -1, siTwo = -1;
+        
+        private void UpdateDisplay(int i)
+        {
+            rtbDisplay.Clear();
+            rtbDisplay.AppendText(creatureList[i].ToString());
+        }
+        private void RefreshCreatureList()
+        {
+            creatureList.Clear();
+            society.GetCreatures(out creatureList);
+        }
         /// <summary>
         /// Refreshes the ListView anytime the population grows or is sorted.
         /// </summary>
-        //private void RefreshPopulation()
-        //{
-        //    lsvPopulation.Items.Clear();
-        //    foreach (Creature c in _population.Populace)
-        //    {
-        //        ListViewItem row = new ListViewItem(c.Name);
-        //        row.SubItems.Add(c.Generation.ToString());
-        //        lsvPopulation.Items.Add(row);
-        //    }
-        //    lblPopulation.Text = String.Format("Population ({0})", _population.Count);
-        //}
-        /// <summary>
-        /// Refreshes both Mate option comboBoxes when population grows.
-        /// </summary>
-        //private void RefreshMates()
-        //{
-        //    cboMateOne.Items.Clear();
-        //    cboMateTwo.Items.Clear();
-        //    foreach (Creature c in _population.Populace)
-        //    {
-        //        if (c.Age < c.MaxAge())
-        //        {
-
-        //            cboMateOne.Items.Add(c.Name);
-        //            cboMateTwo.Items.Add(c.Name);
-        //        }
-        //    }
-        //    cboMateOne.SelectedIndex = 0;
-        //    cboMateTwo.SelectedIndex = 1;
-        //}
+        private void RefreshPopulation()
+        {
+            lsvPopulation.Items.Clear();
+            foreach (Creature c in creatureList)
+            {
+                ListViewItem row = new ListViewItem(c.Name);
+                row.SubItems.Add(c.Generation.ToString());
+                lsvPopulation.Items.Add(row);
+            }
+            lblPopulation.Text = String.Format("{0} of {1}: Population ({2})", 
+                society.Classification,
+                society.Name,
+                creatureList.Count);
+        }
         /// <summary>
         /// Selects a creature at random from _population.Populace
         /// </summary>
         /// <returns>Randomly selected Creature from population</returns>
-        //private Creature RandomCreature()
-        //{
-        //    return _population.Populace[roll.Next(0, _population.Count)];
-        //}
-        #endregion METHODS
-        #region BUTTONS
+        private Creature GetRandomCreature()
+        {
+            return creatureList[ExtensionMethods.GetRandom(0, creatureList.Count - 1)];
+        }
+        
         /// <summary>
         /// Sorts the population by selected option in cboSort and refreshes
         /// the ListView utilizing RefreshPopulation() and mating options via
@@ -90,28 +88,65 @@ namespace GeneticsGUI
         /// <param name="e"></param>
         private void btnSort_Click(object sender, EventArgs e)
         {
-            //string selection = cboSort.Text;
-            //if (selection != "")
-            //{
-            //    switch (selection)
-            //    {
-            //        case "Name":
-            //            _population.SortByName();
-            //            break;
-            //        case "Generation":
-            //            _population.SortByGeneration();
-            //            break;
-            //        case "Aberration":
-            //            _population.SortByAberration();
-            //            break;
-            //        default:
-            //            _population.SortByGene(selection);
-            //            break;
-            //    }
-            //    RefreshPopulation();
-            //    RefreshMates();
-            //    cboSort.SelectedIndex = 0;
-            //}
+            SortCreatureList(cboSort.Text);
+            siOne = siTwo = -1;
+            UpdateMateSelected();
+        }
+
+        private void SortCreatureList(string sortKey)
+        {
+            if (sortKey != "")
+            {
+                switch (sortKey)
+                {
+                    case "Name":
+                        creatureList.Sort((x, y) => x.Name.CompareTo(y.Name));
+                        break;
+                    case "Youngest":
+                        creatureList.Sort((x, y) => x.Age.CompareTo(y.Age));
+                        break;
+                    case "Oldest":
+                        creatureList.Sort((x, y) => -1 * x.Age.CompareTo(y.Age));
+                        break;
+                    case "Generation":
+                        creatureList.Sort((x, y) => -1 * x.Genetics.Race.CompareTo(y.Genetics.Race));
+                        break;
+                    case "Deviation":
+                        creatureList.Sort((x, y) => -1 * x.Genetics.DeviationIndex.CompareTo(y.Genetics.DeviationIndex));
+                        break;
+                    case "Race":
+                        creatureList.Sort((x, y) => -1 * x.Genetics.Race.CompareTo(y.Genetics.Race));
+                        break;
+                    case "Strength":
+                        creatureList.Sort((x, y) => -1 * x.Genetics.Strength.CompareTo(y.Genetics.Strength));
+                        break;
+                    case "Dexterity":
+                        creatureList.Sort((x, y) => -1 * x.Genetics.Dexterity.CompareTo(y.Genetics.Dexterity));
+                        break;
+                    case "Constitution":
+                        creatureList.Sort((x, y) => -1 * x.Genetics.Constitution.CompareTo(y.Genetics.Constitution));
+                        break;
+                    case "Intelligence":
+                        creatureList.Sort((x, y) => -1 * x.Genetics.Intelligence.CompareTo(y.Genetics.Intelligence));
+                        break;
+                    case "Wisdom":
+                        creatureList.Sort((x, y) => -1 * x.Genetics.Wisdom.CompareTo(y.Genetics.Wisdom));
+                        break;
+                    case "Charisma":
+                        creatureList.Sort((x, y) => -1 * x.Genetics.Charisma.CompareTo(y.Genetics.Charisma));
+                        break;
+                    case "Arcane":
+                        creatureList.Sort((x, y) => -1 * x.Genetics.Arcane.CompareTo(y.Genetics.Arcane));
+                        break;
+                    case "Divine":
+                        creatureList.Sort((x, y) => -1 * x.Genetics.Divine.CompareTo(y.Genetics.Divine));
+                        break;
+                    default:
+                        creatureList.Sort((x, y) => x.Name.CompareTo(y.Name));
+                        break;
+                }
+                RefreshPopulation();
+            }
         }
         /// <summary>
         /// Mates both selected mates!
@@ -121,15 +156,17 @@ namespace GeneticsGUI
         /// <param name="e"></param>
         private void btnMate_Click(object sender, EventArgs e)
         {
-            //int mOne = cboMateOne.SelectedIndex;
-            //int mTwo = cboMateTwo.SelectedIndex;
-            //if (mOne > -1 && mTwo > -1)
-            //{
-            //    Creature offspring = new Creature(_population.Populace[mOne], _population.Populace[mTwo]);
-            //    _population.Add(offspring);
-            //    RefreshPopulation();
-            //    RefreshMates();
-            //}
+            if (siOne > -1 && siTwo > -1 && siOne != siTwo)
+            {
+                Creature offspring = new Creature(creatureList[siOne], creatureList[siTwo]);
+                society.AdvanceAge(1);
+                society.AddCreature(offspring);
+                RefreshCreatureList();
+                SortCreatureList("Youngest");
+                RefreshPopulation();
+            }
+            siOne = siTwo = -1;
+            UpdateMateSelected();
         }
         /// <summary>
         /// When a creature is selected, display its stats.
@@ -138,11 +175,14 @@ namespace GeneticsGUI
         /// <param name="e"></param>
         private void lsvPopulation_SelectedIndexChanged(object sender, EventArgs e)
         {
-        //    if (lsvPopulation.SelectedIndices.Count != 0)
-        //    {
-        //        UpdateDisplay(lsvPopulation.SelectedItems[0].Index);
-        //        lblDisplay.Text = String.Format("Display: {0}", _population.Populace[lsvPopulation.SelectedItems[0].Index].Name);
-        //    }
+            if (lsvPopulation.SelectedIndices.Count != 0)
+            {
+                siTwo = siOne;
+                siOne = lsvPopulation.SelectedIndices[0];
+                UpdateDisplay(lsvPopulation.SelectedItems[lsvPopulation.SelectedItems.Count - 1].Index);
+                lblDisplay.Text = String.Format("Display: {0}", creatureList[siOne].Name);
+                UpdateMateSelected();
+            }
         }
         /// <summary>
         /// Randomly Mate two creatures from population.
@@ -152,18 +192,38 @@ namespace GeneticsGUI
         /// <param name="e"></param>
         private void btnRandMate_Click(object sender, EventArgs e)
         {
-            //Creature temp = null;
-            //for (int i = 0; i < nudRandAmount.Value; i++)
-            //{
-            //    temp = new Creature(RandomCreature(), RandomCreature());
-            //    _population.Add(temp);
-            //    temp = null;
-            //}
-            //RefreshPopulation();
-            //RefreshMates();
+            List<Creature> temp = new List<Creature>();
+            for (int i = 0; i < nudRandAmount.Value; i++)
+            {
+                while (temp.Count < i + 1)
+                {
+                    temp.Add(new Creature(GetRandomCreature(), GetRandomCreature()));
+                }
+            }
+            society.AdvanceAge(1);
+            society.AddCreature(temp);
+            RefreshCreatureList();
+            SortCreatureList("Youngest");
+            RefreshPopulation();
+            UpdateMateSelected();
         }
-        #endregion BUTTONS
+                
+        private void nudRandAmount_ValueChanged(object sender, EventArgs e)
+        {
+            nudRandAmount.Maximum = creatureList.Count;
+        }
 
-
+        private void UpdateMateSelected()
+        {
+            if (siOne > -1 && siTwo > -1)
+            {
+                lblMateSelected.Text = String.Format("Selected: {0} and {1}", creatureList[siOne].Name, creatureList[siTwo].Name);
+            }
+            else if (siOne > -1 || siTwo > -1)
+            {
+                lblMateSelected.Text = String.Format("Selected: {0}, select one more", (siOne > siTwo ? creatureList[siOne].Name : creatureList[siTwo].Name));
+            }
+            else lblMateSelected.Text = "Select Two Creatures Above";
+        }
     }
 }

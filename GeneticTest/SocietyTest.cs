@@ -79,7 +79,7 @@ namespace GeneticTest
             Creature cFour = new Creature();
             Creature cFive = new Creature();
             string NAME = "Balzeria";
-            string CLASSIFICATION = "Republic";      // index    0,    1,      2,     3,     4
+            string CLASSIFICATION = "Republic";
             List<Creature> CREATURES = new List<Creature>() { cOne, cTWo, cThree, cFour, cFive };
             Society society = new Society(NAME, CLASSIFICATION, CREATURES);
             List<Creature> creaturesList = new List<Creature>();
@@ -121,11 +121,11 @@ namespace GeneticTest
             Creature cFour = new Creature();
             Creature cFive = new Creature();
             string NAME = "Balzeria";
-            string CLASSIFICATION = "Republic";      // index    0,    1,      2,     3,     4
+            string CLASSIFICATION = "Republic";
             List<Creature> CREATURES = new List<Creature>() { cOne, cTWo, cThree, cFour, cFive };
             Society society = new Society(NAME, CLASSIFICATION, CREATURES);
             List<Creature> creaturesList = new List<Creature>();
-            society.AdvanceAge(650);
+            society.AdvanceAge(650); // 650 is the maximum age possible.
             List<string> graveyard = new List<string>();
             Assert.IsTrue(society.GetGraveyard(out graveyard));
             Assert.IsTrue(society.GetCreatures(out creaturesList));

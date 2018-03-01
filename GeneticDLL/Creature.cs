@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace GeneticDLL
 {
@@ -14,7 +15,7 @@ namespace GeneticDLL
         public Creature()
         {
             Name = ExtensionMethods.GenerateName();
-            Age = ExtensionMethods.GetRandom(1, 40);
+            Age = ExtensionMethods.GetRandom(16, 50);
             Generation = 1;
             ParentOne = "Underlord Ada";
             ParentTwo = "Mysterious B";
@@ -67,6 +68,74 @@ namespace GeneticDLL
                 Generation,
                 ParentOne,
                 ParentTwo);
+        }
+
+        public override string ToString()
+        {
+            /// Name
+            /// Age year old Race
+            /// Generation generation
+            /// Parents: ParentOne, ParentTwo
+            /// 
+            /// Strength:       Result (2 tabs)
+            /// Dexterity:      Result (2 tabs)
+            /// Constitution:   Result (1 tab)
+            /// Intelligence:   Result (1 tab)
+            /// Wisdom:         Result (3 tab)
+            /// Charisma:       Result (2 tab)
+            /// Arcane:         Result (3 tab)
+            /// Divine:         Result (3 tab)
+            /// 
+            /// Alpha Helix string
+            /// Beta Helix string
+
+            return String.Format("{0}\n{1} year old {2}\n{3} generation\nParents: {4} and {5}\n\nStrength:\t\t{6, 2}\nDexterity:\t\t{7, 2}\nConstitution:\t\t{8, 2}\nIntelligence:\t\t{9, 2}\nWisdom:\t\t{10, 2}\nCharisma:\t\t{11, 2}\nArcane:\t\t{12, 2}\nDivine:\t\t\t{13, 2}\n\nAlpha Helix:\n{14}\n\nBeta Helix:\n{15}",
+                Name,
+                Age,
+                GetRace(),
+                GetGenerationString(),
+                ParentOne,
+                ParentTwo,
+                Genetics.Strength,
+                Genetics.Dexterity,
+                Genetics.Constitution,
+                Genetics.Intelligence,
+                Genetics.Wisdom,
+                Genetics.Charisma,
+                Genetics.Arcane,
+                Genetics.Divine,
+                Genetics.Alpha.ToString(),
+                Genetics.Beta.ToString()
+                );
+
+        }
+
+        private string GetGenerationString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Generation);
+            switch (sb[sb.Length -1])
+            {
+                case '1':
+                    sb.Append("st");
+                    break;
+                case '2':
+                    sb.Append("nd");
+                    break;
+                case '3':
+                    sb.Append("rd");
+                    break;
+                case '0':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    sb.Append("th");
+                    break;
+            }
+            return sb.ToString();
         }
     }
 }

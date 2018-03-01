@@ -86,7 +86,7 @@ namespace GeneticDLL
 
         public static string GenerateSocietyClassifier()
         {
-            return SocietyType[GetRandom(0, SocietyType.Length)];
+            return SocietyType[GetRandom(0, SocietyType.Length - 1)];
         }
 
         public static string GenerateName()
