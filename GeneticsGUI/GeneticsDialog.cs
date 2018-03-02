@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using GeneticDLL;
 
 namespace GeneticsGUI
 {
@@ -35,5 +27,28 @@ namespace GeneticsGUI
         public string Title;
         public string Content;
         public string ReturnValue { get; set; }
+        
+
+        private void btnYes_Click(object sender, EventArgs e)
+        {
+            if (txtInput.Text.Length > 0 && txtInput.Text.Length < 25)
+            {
+                this.ReturnValue = txtInput.Text;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(Title + "Confirmation", "Invalid name. Please be sure input is between 1 and 25 characters long", MessageBoxButtons.OK);
+            }
+                
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ReturnValue = "CANCEL";
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }
 }

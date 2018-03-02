@@ -50,13 +50,18 @@ namespace GeneticsGUI
                     row.SubItems.Add(c.Generation.ToString());
                     lsvPopulation.Items.Add(row);
                 }
-                lblPopulation.Text = String.Format("{0} of {1}: Population ({2}), Deceased ({3})",
+                UpdatePopulationLabel();
+            }
+            else lblPopulation.Text = "No Society Opened.";
+        }
+
+        private void UpdatePopulationLabel()
+        {
+            lblPopulation.Text = String.Format("{0} of {1}: Population ({2}), Deceased ({3})",
                     society.Classification,
                     society.Name,
                     creatureList.Count,
                     (society.Graveyard.Count > 0 ? society.Graveyard.Count : 0));
-            }
-            else lblPopulation.Text = "No Society Opened.";
         }
 
         private Creature GetRandomCreature()
@@ -185,11 +190,11 @@ namespace GeneticsGUI
         {
             if (siOne > -1 && siTwo > -1)
             {
-                lblMateSelected.Text = String.Format("Selected: {0} and {1}", creatureList[siOne].Name, creatureList[siTwo].Name);
+                lblMateSelected.Text = string.Format("{0} and {1}", creatureList[siOne].Name, creatureList[siTwo].Name);
             }
             else if (siOne > -1 || siTwo > -1)
             {
-                lblMateSelected.Text = String.Format("Selected: {0}, select one more", (siOne > siTwo ? creatureList[siOne].Name : creatureList[siTwo].Name));
+                lblMateSelected.Text = string.Format("{0}, select one more", (siOne > siTwo ? creatureList[siOne].Name : creatureList[siTwo].Name));
             }
             else lblMateSelected.Text = "Select Two Creatures Above";
         }
@@ -230,7 +235,7 @@ namespace GeneticsGUI
         {
             if (society != null)
             {
-                DialogResult saveCheck = MessageBox.Show(String.Format("Do you want to save {0} first?", society.Name), "Confirmation", MessageBoxButtons.YesNoCancel);
+                DialogResult saveCheck = MessageBox.Show(string.Format("Do you want to save {0} first?", society.Name), "Confirmation", MessageBoxButtons.YesNoCancel);
                 if (saveCheck == DialogResult.Yes)
                 {
                     saveAsToolStripMenuItem_Click(this, null);
@@ -264,7 +269,7 @@ namespace GeneticsGUI
             ofd.RestoreDirectory = true;
             if (society != null)
             {
-                DialogResult saveCheck = MessageBox.Show(String.Format("Do you want to save {0} first?", society.Name), "Confirmation", MessageBoxButtons.YesNoCancel);
+                DialogResult saveCheck = MessageBox.Show(string.Format("Do you want to save {0} first?", society.Name), "Confirmation", MessageBoxButtons.YesNoCancel);
                 if (saveCheck == DialogResult.Yes)
                 {
                     saveAsToolStripMenuItem_Click(this, null);
@@ -304,7 +309,7 @@ namespace GeneticsGUI
         {
             if (society != null)
             {
-                DialogResult saveCheck = MessageBox.Show(String.Format("Do you want to save {0} Before Exit?", society.Name), "Confirmation", MessageBoxButtons.YesNoCancel);
+                DialogResult saveCheck = MessageBox.Show(string.Format("Do you want to save {0} Before Exit?", society.Name), "Confirmation", MessageBoxButtons.YesNoCancel);
                 if (saveCheck == DialogResult.Yes)
                 {
                     saveAsToolStripMenuItem_Click(this, null);
@@ -320,7 +325,28 @@ namespace GeneticsGUI
 
         private void changeSocietyNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            using (var dialog = new GeneticsDialog("Society Name Change", "Change name of " + society.Name))
+            {
+                var result = dialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    society.Name = dialog.ReturnValue;
+                    UpdatePopulationLabel();
+                }
+            }
+        }
 
+        private void changeSocietyClassifierToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new GeneticsDialog("Society Classifier Change", "Change name of " + society.Name + " from " + society.Classification + " to:"))
+            {
+                var result = dialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    society.Classification = dialog.ReturnValue;
+                    UpdatePopulationLabel();
+                }
+            }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)

@@ -82,7 +82,7 @@
             this.rtbDisplay.Location = new System.Drawing.Point(268, 80);
             this.rtbDisplay.Name = "rtbDisplay";
             this.rtbDisplay.ReadOnly = true;
-            this.rtbDisplay.Size = new System.Drawing.Size(645, 538);
+            this.rtbDisplay.Size = new System.Drawing.Size(644, 539);
             this.rtbDisplay.TabIndex = 0;
             this.rtbDisplay.Text = "";
             // 
@@ -101,7 +101,7 @@
             this.lsvPopulation.Location = new System.Drawing.Point(12, 52);
             this.lsvPopulation.MultiSelect = false;
             this.lsvPopulation.Name = "lsvPopulation";
-            this.lsvPopulation.Size = new System.Drawing.Size(250, 389);
+            this.lsvPopulation.Size = new System.Drawing.Size(250, 390);
             this.lsvPopulation.TabIndex = 1;
             this.lsvPopulation.UseCompatibleStateImageBehavior = false;
             this.lsvPopulation.View = System.Windows.Forms.View.Details;
@@ -141,7 +141,7 @@
             // 
             this.btnSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSort.Location = new System.Drawing.Point(12, 495);
+            this.btnSort.Location = new System.Drawing.Point(12, 496);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(107, 42);
             this.btnSort.TabIndex = 4;
@@ -169,7 +169,7 @@
             "Charisma",
             "Arcane",
             "Divine"});
-            this.cboSort.Location = new System.Drawing.Point(125, 503);
+            this.cboSort.Location = new System.Drawing.Point(125, 504);
             this.cboSort.Name = "cboSort";
             this.cboSort.Size = new System.Drawing.Size(137, 28);
             this.cboSort.TabIndex = 5;
@@ -178,7 +178,7 @@
             // 
             this.btnMate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnMate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMate.Location = new System.Drawing.Point(12, 576);
+            this.btnMate.Location = new System.Drawing.Point(12, 577);
             this.btnMate.Name = "btnMate";
             this.btnMate.Size = new System.Drawing.Size(250, 42);
             this.btnMate.TabIndex = 6;
@@ -190,7 +190,7 @@
             // 
             this.btnRandMate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRandMate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRandMate.Location = new System.Drawing.Point(12, 447);
+            this.btnRandMate.Location = new System.Drawing.Point(12, 448);
             this.btnRandMate.Name = "btnRandMate";
             this.btnRandMate.Size = new System.Drawing.Size(107, 42);
             this.btnRandMate.TabIndex = 9;
@@ -201,7 +201,7 @@
             // nudRandAmount
             // 
             this.nudRandAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nudRandAmount.Location = new System.Drawing.Point(126, 463);
+            this.nudRandAmount.Location = new System.Drawing.Point(126, 464);
             this.nudRandAmount.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -227,7 +227,7 @@
             this.lblMateSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMateSelected.AutoSize = true;
             this.lblMateSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMateSelected.Location = new System.Drawing.Point(8, 553);
+            this.lblMateSelected.Location = new System.Drawing.Point(8, 554);
             this.lblMateSelected.Name = "lblMateSelected";
             this.lblMateSelected.Size = new System.Drawing.Size(210, 20);
             this.lblMateSelected.TabIndex = 11;
@@ -242,7 +242,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(925, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(924, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -336,6 +336,7 @@
             this.changeSocietyClassifierToolStripMenuItem.Name = "changeSocietyClassifierToolStripMenuItem";
             this.changeSocietyClassifierToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.changeSocietyClassifierToolStripMenuItem.Text = "Change Society Classifier";
+            this.changeSocietyClassifierToolStripMenuItem.Click += new System.EventHandler(this.changeSocietyClassifierToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -443,7 +444,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(925, 630);
+            this.ClientSize = new System.Drawing.Size(924, 631);
             this.Controls.Add(this.lblMateSelected);
             this.Controls.Add(this.nudRandAmount);
             this.Controls.Add(this.btnRandMate);
