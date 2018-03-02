@@ -14,6 +14,7 @@ namespace GeneticDLL
         public string Classification { get; set; }
         public ConcurrentDictionary<string, Creature> Creatures { get; private set; }
         public ConcurrentBag<string> Graveyard { get; private set; }
+        public int Year { get; set; }
 
         public Society()
         {
@@ -21,7 +22,7 @@ namespace GeneticDLL
             Classification = ExtensionMethods.GenerateSocietyClassifier();
             Creatures = new ConcurrentDictionary<string, Creature>();
             Graveyard = new ConcurrentBag<string>();
-            bool check = false;
+            Year = 1;
             Parallel.For(0, 4, i => { AddCreature(new Creature()); });
         }
         public Society(params Creature[] creatures)
@@ -30,6 +31,7 @@ namespace GeneticDLL
             Classification = ExtensionMethods.GenerateSocietyClassifier();
             Creatures = new ConcurrentDictionary<string, Creature>();
             Graveyard = new ConcurrentBag<string>();
+            Year = 1;
             Parallel.ForEach(creatures, (currentCreature) => { AddCreature(currentCreature); });
         }
         public Society(string name, string classifier, params Creature[] creatures)
@@ -38,14 +40,16 @@ namespace GeneticDLL
             Classification = classifier;
             Creatures = new ConcurrentDictionary<string, Creature>();
             Graveyard = new ConcurrentBag<string>();
+            Year = 1;
             Parallel.ForEach(creatures, (currentCreature) => { AddCreature(currentCreature); } );
         }
-        public Society(string name, string classifier, List<Creature> creatures)
+        public Society(string name, string classifier, List<Creature> creatures, int year = 1)
         {
             Name = name;
             Classification = classifier;
             Creatures = new ConcurrentDictionary<string, Creature>();
             Graveyard = new ConcurrentBag<string>();
+            Year = year;
             Parallel.ForEach(creatures, (currentCreature) => { AddCreature(currentCreature); });
         }
 
@@ -103,6 +107,7 @@ namespace GeneticDLL
                     Graveyard.Add(currentCreature.Value.DeathString());
                 }
             });
+            Year += years;
             if (Creatures.Count == 0) Parallel.For(0, 4, i => { AddCreature(new Creature()); });
         }
 

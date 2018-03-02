@@ -206,8 +206,8 @@
             this.nudAlphaRaceValue = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudAge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGeneration)).BeginInit();
             this.gbxDNA.SuspendLayout();
@@ -301,6 +301,7 @@
             this.cbxNameRandom.Name = "cbxNameRandom";
             this.cbxNameRandom.Size = new System.Drawing.Size(15, 14);
             this.cbxNameRandom.TabIndex = 3;
+            this.cbxNameRandom.TabStop = false;
             this.cbxNameRandom.UseVisualStyleBackColor = true;
             this.cbxNameRandom.CheckedChanged += new System.EventHandler(this.cbxNameRandom_CheckedChanged);
             // 
@@ -340,7 +341,7 @@
             0});
             this.nudGeneration.Name = "nudGeneration";
             this.nudGeneration.Size = new System.Drawing.Size(100, 26);
-            this.nudGeneration.TabIndex = 5;
+            this.nudGeneration.TabIndex = 2;
             this.nudGeneration.Value = new decimal(new int[] {
             1,
             0,
@@ -370,14 +371,14 @@
             this.txtParentOne.Location = new System.Drawing.Point(107, 102);
             this.txtParentOne.Name = "txtParentOne";
             this.txtParentOne.Size = new System.Drawing.Size(200, 26);
-            this.txtParentOne.TabIndex = 8;
+            this.txtParentOne.TabIndex = 3;
             // 
             // txtParentTwo
             // 
             this.txtParentTwo.Location = new System.Drawing.Point(107, 134);
             this.txtParentTwo.Name = "txtParentTwo";
             this.txtParentTwo.Size = new System.Drawing.Size(200, 26);
-            this.txtParentTwo.TabIndex = 9;
+            this.txtParentTwo.TabIndex = 4;
             // 
             // cbxParentsRandom
             // 
@@ -386,6 +387,7 @@
             this.cbxParentsRandom.Name = "cbxParentsRandom";
             this.cbxParentsRandom.Size = new System.Drawing.Size(15, 14);
             this.cbxParentsRandom.TabIndex = 11;
+            this.cbxParentsRandom.TabStop = false;
             this.cbxParentsRandom.UseVisualStyleBackColor = true;
             this.cbxParentsRandom.CheckedChanged += new System.EventHandler(this.cbxParentsRandom_CheckedChanged);
             // 
@@ -506,7 +508,9 @@
             this.cboBetaDivine.Name = "cboBetaDivine";
             this.cboBetaDivine.Size = new System.Drawing.Size(15, 14);
             this.cboBetaDivine.TabIndex = 86;
+            this.cboBetaDivine.TabStop = false;
             this.cboBetaDivine.UseVisualStyleBackColor = true;
+            this.cboBetaDivine.CheckedChanged += new System.EventHandler(this.cboBetaDivine_CheckedChanged_1);
             // 
             // nudBetaDivineDeviation
             // 
@@ -523,7 +527,7 @@
             -2147483648});
             this.nudBetaDivineDeviation.Name = "nudBetaDivineDeviation";
             this.nudBetaDivineDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaDivineDeviation.TabIndex = 84;
+            this.nudBetaDivineDeviation.TabIndex = 58;
             // 
             // label47
             // 
@@ -553,7 +557,7 @@
             0});
             this.nudBetaDivineWeight.Name = "nudBetaDivineWeight";
             this.nudBetaDivineWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaDivineWeight.TabIndex = 82;
+            this.nudBetaDivineWeight.TabIndex = 57;
             // 
             // label49
             // 
@@ -568,7 +572,7 @@
             // 
             this.nudBetaDivineValue.Location = new System.Drawing.Point(170, 238);
             this.nudBetaDivineValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -579,7 +583,7 @@
             0});
             this.nudBetaDivineValue.Name = "nudBetaDivineValue";
             this.nudBetaDivineValue.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaDivineValue.TabIndex = 80;
+            this.nudBetaDivineValue.TabIndex = 56;
             this.nudBetaDivineValue.Value = new decimal(new int[] {
             1,
             0,
@@ -611,7 +615,9 @@
             this.cboBetaArcane.Name = "cboBetaArcane";
             this.cboBetaArcane.Size = new System.Drawing.Size(15, 14);
             this.cboBetaArcane.TabIndex = 77;
+            this.cboBetaArcane.TabStop = false;
             this.cboBetaArcane.UseVisualStyleBackColor = true;
+            this.cboBetaArcane.CheckedChanged += new System.EventHandler(this.cboBetaArcane_CheckedChanged_1);
             // 
             // nudBetaArcaneDeviation
             // 
@@ -628,7 +634,7 @@
             -2147483648});
             this.nudBetaArcaneDeviation.Name = "nudBetaArcaneDeviation";
             this.nudBetaArcaneDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaArcaneDeviation.TabIndex = 75;
+            this.nudBetaArcaneDeviation.TabIndex = 55;
             // 
             // label52
             // 
@@ -658,7 +664,7 @@
             0});
             this.nudBetaArcaneWeight.Name = "nudBetaArcaneWeight";
             this.nudBetaArcaneWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaArcaneWeight.TabIndex = 73;
+            this.nudBetaArcaneWeight.TabIndex = 54;
             // 
             // label54
             // 
@@ -673,7 +679,7 @@
             // 
             this.nudBetaArcaneValue.Location = new System.Drawing.Point(170, 210);
             this.nudBetaArcaneValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -684,7 +690,7 @@
             0});
             this.nudBetaArcaneValue.Name = "nudBetaArcaneValue";
             this.nudBetaArcaneValue.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaArcaneValue.TabIndex = 71;
+            this.nudBetaArcaneValue.TabIndex = 53;
             this.nudBetaArcaneValue.Value = new decimal(new int[] {
             1,
             0,
@@ -716,7 +722,9 @@
             this.cboBetaCharisma.Name = "cboBetaCharisma";
             this.cboBetaCharisma.Size = new System.Drawing.Size(15, 14);
             this.cboBetaCharisma.TabIndex = 68;
+            this.cboBetaCharisma.TabStop = false;
             this.cboBetaCharisma.UseVisualStyleBackColor = true;
+            this.cboBetaCharisma.CheckedChanged += new System.EventHandler(this.cboBetaCharisma_CheckedChanged_1);
             // 
             // nudBetaCharismaDeviation
             // 
@@ -733,7 +741,7 @@
             -2147483648});
             this.nudBetaCharismaDeviation.Name = "nudBetaCharismaDeviation";
             this.nudBetaCharismaDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaCharismaDeviation.TabIndex = 66;
+            this.nudBetaCharismaDeviation.TabIndex = 52;
             // 
             // label57
             // 
@@ -763,7 +771,7 @@
             0});
             this.nudBetaCharismaWeight.Name = "nudBetaCharismaWeight";
             this.nudBetaCharismaWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaCharismaWeight.TabIndex = 64;
+            this.nudBetaCharismaWeight.TabIndex = 51;
             // 
             // label59
             // 
@@ -778,7 +786,7 @@
             // 
             this.nudBetaCharismaValue.Location = new System.Drawing.Point(170, 183);
             this.nudBetaCharismaValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -789,7 +797,7 @@
             0});
             this.nudBetaCharismaValue.Name = "nudBetaCharismaValue";
             this.nudBetaCharismaValue.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaCharismaValue.TabIndex = 62;
+            this.nudBetaCharismaValue.TabIndex = 50;
             this.nudBetaCharismaValue.Value = new decimal(new int[] {
             1,
             0,
@@ -821,7 +829,9 @@
             this.cboBetaWisdom.Name = "cboBetaWisdom";
             this.cboBetaWisdom.Size = new System.Drawing.Size(15, 14);
             this.cboBetaWisdom.TabIndex = 59;
+            this.cboBetaWisdom.TabStop = false;
             this.cboBetaWisdom.UseVisualStyleBackColor = true;
+            this.cboBetaWisdom.CheckedChanged += new System.EventHandler(this.cboBetaWisdom_CheckedChanged_1);
             // 
             // nudBetaWisdomDeviation
             // 
@@ -838,7 +848,7 @@
             -2147483648});
             this.nudBetaWisdomDeviation.Name = "nudBetaWisdomDeviation";
             this.nudBetaWisdomDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaWisdomDeviation.TabIndex = 57;
+            this.nudBetaWisdomDeviation.TabIndex = 49;
             // 
             // label62
             // 
@@ -868,7 +878,7 @@
             0});
             this.nudBetaWisdomWeight.Name = "nudBetaWisdomWeight";
             this.nudBetaWisdomWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaWisdomWeight.TabIndex = 55;
+            this.nudBetaWisdomWeight.TabIndex = 48;
             // 
             // label64
             // 
@@ -883,7 +893,7 @@
             // 
             this.nudBetaWisdomValue.Location = new System.Drawing.Point(170, 156);
             this.nudBetaWisdomValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -894,7 +904,7 @@
             0});
             this.nudBetaWisdomValue.Name = "nudBetaWisdomValue";
             this.nudBetaWisdomValue.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaWisdomValue.TabIndex = 53;
+            this.nudBetaWisdomValue.TabIndex = 47;
             this.nudBetaWisdomValue.Value = new decimal(new int[] {
             1,
             0,
@@ -926,7 +936,9 @@
             this.cboBetaIntelligence.Name = "cboBetaIntelligence";
             this.cboBetaIntelligence.Size = new System.Drawing.Size(15, 14);
             this.cboBetaIntelligence.TabIndex = 50;
+            this.cboBetaIntelligence.TabStop = false;
             this.cboBetaIntelligence.UseVisualStyleBackColor = true;
+            this.cboBetaIntelligence.CheckedChanged += new System.EventHandler(this.cboBetaIntelligence_CheckedChanged_1);
             // 
             // nudBetaIntelligenceDeviation
             // 
@@ -943,7 +955,7 @@
             -2147483648});
             this.nudBetaIntelligenceDeviation.Name = "nudBetaIntelligenceDeviation";
             this.nudBetaIntelligenceDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaIntelligenceDeviation.TabIndex = 48;
+            this.nudBetaIntelligenceDeviation.TabIndex = 46;
             // 
             // label67
             // 
@@ -973,7 +985,7 @@
             0});
             this.nudBetaIntelligenceWeight.Name = "nudBetaIntelligenceWeight";
             this.nudBetaIntelligenceWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaIntelligenceWeight.TabIndex = 46;
+            this.nudBetaIntelligenceWeight.TabIndex = 45;
             // 
             // label69
             // 
@@ -988,7 +1000,7 @@
             // 
             this.nudBetaIntelligenceValue.Location = new System.Drawing.Point(170, 129);
             this.nudBetaIntelligenceValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -1031,7 +1043,9 @@
             this.cboBetaConstitution.Name = "cboBetaConstitution";
             this.cboBetaConstitution.Size = new System.Drawing.Size(15, 14);
             this.cboBetaConstitution.TabIndex = 41;
+            this.cboBetaConstitution.TabStop = false;
             this.cboBetaConstitution.UseVisualStyleBackColor = true;
+            this.cboBetaConstitution.CheckedChanged += new System.EventHandler(this.cboBetaConstitution_CheckedChanged_1);
             // 
             // nudBetaConstitutionDeviation
             // 
@@ -1048,7 +1062,7 @@
             -2147483648});
             this.nudBetaConstitutionDeviation.Name = "nudBetaConstitutionDeviation";
             this.nudBetaConstitutionDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaConstitutionDeviation.TabIndex = 39;
+            this.nudBetaConstitutionDeviation.TabIndex = 43;
             // 
             // label72
             // 
@@ -1078,7 +1092,7 @@
             0});
             this.nudBetaConstitutionWeight.Name = "nudBetaConstitutionWeight";
             this.nudBetaConstitutionWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaConstitutionWeight.TabIndex = 37;
+            this.nudBetaConstitutionWeight.TabIndex = 42;
             // 
             // label74
             // 
@@ -1093,7 +1107,7 @@
             // 
             this.nudBetaConstitutionValue.Location = new System.Drawing.Point(170, 101);
             this.nudBetaConstitutionValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -1104,7 +1118,7 @@
             0});
             this.nudBetaConstitutionValue.Name = "nudBetaConstitutionValue";
             this.nudBetaConstitutionValue.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaConstitutionValue.TabIndex = 35;
+            this.nudBetaConstitutionValue.TabIndex = 41;
             this.nudBetaConstitutionValue.Value = new decimal(new int[] {
             1,
             0,
@@ -1136,7 +1150,9 @@
             this.cboBetaDexterity.Name = "cboBetaDexterity";
             this.cboBetaDexterity.Size = new System.Drawing.Size(15, 14);
             this.cboBetaDexterity.TabIndex = 32;
+            this.cboBetaDexterity.TabStop = false;
             this.cboBetaDexterity.UseVisualStyleBackColor = true;
+            this.cboBetaDexterity.CheckedChanged += new System.EventHandler(this.cboBetaDexterity_CheckedChanged_1);
             // 
             // nudBetaDexterityDeviation
             // 
@@ -1153,7 +1169,7 @@
             -2147483648});
             this.nudBetaDexterityDeviation.Name = "nudBetaDexterityDeviation";
             this.nudBetaDexterityDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaDexterityDeviation.TabIndex = 30;
+            this.nudBetaDexterityDeviation.TabIndex = 40;
             // 
             // label77
             // 
@@ -1183,7 +1199,7 @@
             0});
             this.nudBetaDexterityWeight.Name = "nudBetaDexterityWeight";
             this.nudBetaDexterityWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaDexterityWeight.TabIndex = 28;
+            this.nudBetaDexterityWeight.TabIndex = 39;
             // 
             // label79
             // 
@@ -1198,7 +1214,7 @@
             // 
             this.nudBetaDexterityValue.Location = new System.Drawing.Point(170, 74);
             this.nudBetaDexterityValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -1209,7 +1225,7 @@
             0});
             this.nudBetaDexterityValue.Name = "nudBetaDexterityValue";
             this.nudBetaDexterityValue.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaDexterityValue.TabIndex = 26;
+            this.nudBetaDexterityValue.TabIndex = 38;
             this.nudBetaDexterityValue.Value = new decimal(new int[] {
             1,
             0,
@@ -1241,7 +1257,9 @@
             this.cboBetaStrength.Name = "cboBetaStrength";
             this.cboBetaStrength.Size = new System.Drawing.Size(15, 14);
             this.cboBetaStrength.TabIndex = 23;
+            this.cboBetaStrength.TabStop = false;
             this.cboBetaStrength.UseVisualStyleBackColor = true;
+            this.cboBetaStrength.CheckedChanged += new System.EventHandler(this.cboBetaStrength_CheckedChanged_1);
             // 
             // nudBetaStrengthDeviation
             // 
@@ -1258,7 +1276,7 @@
             -2147483648});
             this.nudBetaStrengthDeviation.Name = "nudBetaStrengthDeviation";
             this.nudBetaStrengthDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaStrengthDeviation.TabIndex = 21;
+            this.nudBetaStrengthDeviation.TabIndex = 37;
             // 
             // label82
             // 
@@ -1288,7 +1306,7 @@
             0});
             this.nudBetaStrengthWeight.Name = "nudBetaStrengthWeight";
             this.nudBetaStrengthWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaStrengthWeight.TabIndex = 19;
+            this.nudBetaStrengthWeight.TabIndex = 36;
             // 
             // label84
             // 
@@ -1303,7 +1321,7 @@
             // 
             this.nudBetaStrengthValue.Location = new System.Drawing.Point(170, 47);
             this.nudBetaStrengthValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -1314,7 +1332,7 @@
             0});
             this.nudBetaStrengthValue.Name = "nudBetaStrengthValue";
             this.nudBetaStrengthValue.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaStrengthValue.TabIndex = 17;
+            this.nudBetaStrengthValue.TabIndex = 35;
             this.nudBetaStrengthValue.Value = new decimal(new int[] {
             1,
             0,
@@ -1346,6 +1364,7 @@
             this.cboBetaRace.Name = "cboBetaRace";
             this.cboBetaRace.Size = new System.Drawing.Size(15, 14);
             this.cboBetaRace.TabIndex = 14;
+            this.cboBetaRace.TabStop = false;
             this.cboBetaRace.UseVisualStyleBackColor = true;
             this.cboBetaRace.CheckedChanged += new System.EventHandler(this.cboBetaRace_CheckedChanged_1);
             // 
@@ -1364,7 +1383,7 @@
             -2147483648});
             this.nudBetaRaceDeviation.Name = "nudBetaRaceDeviation";
             this.nudBetaRaceDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaRaceDeviation.TabIndex = 6;
+            this.nudBetaRaceDeviation.TabIndex = 34;
             // 
             // label87
             // 
@@ -1394,7 +1413,7 @@
             0});
             this.nudBetaRaceWeight.Name = "nudBetaRaceWeight";
             this.nudBetaRaceWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaRaceWeight.TabIndex = 4;
+            this.nudBetaRaceWeight.TabIndex = 33;
             // 
             // label89
             // 
@@ -1409,7 +1428,7 @@
             // 
             this.nudBetaRaceValue.Location = new System.Drawing.Point(170, 20);
             this.nudBetaRaceValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -1420,7 +1439,7 @@
             0});
             this.nudBetaRaceValue.Name = "nudBetaRaceValue";
             this.nudBetaRaceValue.Size = new System.Drawing.Size(50, 26);
-            this.nudBetaRaceValue.TabIndex = 2;
+            this.nudBetaRaceValue.TabIndex = 32;
             this.nudBetaRaceValue.Value = new decimal(new int[] {
             1,
             0,
@@ -1542,6 +1561,7 @@
             this.cboAlphaDivine.Name = "cboAlphaDivine";
             this.cboAlphaDivine.Size = new System.Drawing.Size(15, 14);
             this.cboAlphaDivine.TabIndex = 86;
+            this.cboAlphaDivine.TabStop = false;
             this.cboAlphaDivine.UseVisualStyleBackColor = true;
             this.cboAlphaDivine.CheckedChanged += new System.EventHandler(this.cboAlphaDivine_CheckedChanged);
             // 
@@ -1560,7 +1580,7 @@
             -2147483648});
             this.nudAlphaDivineDeviation.Name = "nudAlphaDivineDeviation";
             this.nudAlphaDivineDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaDivineDeviation.TabIndex = 84;
+            this.nudAlphaDivineDeviation.TabIndex = 31;
             // 
             // label42
             // 
@@ -1590,7 +1610,7 @@
             0});
             this.nudAlphaDivineWeight.Name = "nudAlphaDivineWeight";
             this.nudAlphaDivineWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaDivineWeight.TabIndex = 82;
+            this.nudAlphaDivineWeight.TabIndex = 30;
             // 
             // label44
             // 
@@ -1605,7 +1625,7 @@
             // 
             this.nudAlphaDivineValue.Location = new System.Drawing.Point(170, 238);
             this.nudAlphaDivineValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -1616,7 +1636,7 @@
             0});
             this.nudAlphaDivineValue.Name = "nudAlphaDivineValue";
             this.nudAlphaDivineValue.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaDivineValue.TabIndex = 80;
+            this.nudAlphaDivineValue.TabIndex = 29;
             this.nudAlphaDivineValue.Value = new decimal(new int[] {
             1,
             0,
@@ -1648,6 +1668,7 @@
             this.cboAlphaArcane.Name = "cboAlphaArcane";
             this.cboAlphaArcane.Size = new System.Drawing.Size(15, 14);
             this.cboAlphaArcane.TabIndex = 77;
+            this.cboAlphaArcane.TabStop = false;
             this.cboAlphaArcane.UseVisualStyleBackColor = true;
             this.cboAlphaArcane.CheckedChanged += new System.EventHandler(this.cboAlphaArcane_CheckedChanged);
             // 
@@ -1666,7 +1687,7 @@
             -2147483648});
             this.nudAlphaArcaneDeviation.Name = "nudAlphaArcaneDeviation";
             this.nudAlphaArcaneDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaArcaneDeviation.TabIndex = 75;
+            this.nudAlphaArcaneDeviation.TabIndex = 28;
             // 
             // label37
             // 
@@ -1696,7 +1717,7 @@
             0});
             this.nudAlphaArcaneWeight.Name = "nudAlphaArcaneWeight";
             this.nudAlphaArcaneWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaArcaneWeight.TabIndex = 73;
+            this.nudAlphaArcaneWeight.TabIndex = 27;
             // 
             // label39
             // 
@@ -1711,7 +1732,7 @@
             // 
             this.nudAlphaArcaneValue.Location = new System.Drawing.Point(170, 210);
             this.nudAlphaArcaneValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -1722,7 +1743,7 @@
             0});
             this.nudAlphaArcaneValue.Name = "nudAlphaArcaneValue";
             this.nudAlphaArcaneValue.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaArcaneValue.TabIndex = 71;
+            this.nudAlphaArcaneValue.TabIndex = 26;
             this.nudAlphaArcaneValue.Value = new decimal(new int[] {
             1,
             0,
@@ -1755,6 +1776,7 @@
             this.cboAlphaCharisma.Name = "cboAlphaCharisma";
             this.cboAlphaCharisma.Size = new System.Drawing.Size(15, 14);
             this.cboAlphaCharisma.TabIndex = 68;
+            this.cboAlphaCharisma.TabStop = false;
             this.cboAlphaCharisma.UseVisualStyleBackColor = true;
             this.cboAlphaCharisma.CheckedChanged += new System.EventHandler(this.cboAlphaCharisma_CheckedChanged);
             // 
@@ -1773,7 +1795,7 @@
             -2147483648});
             this.nudAlphaCharismaDeviation.Name = "nudAlphaCharismaDeviation";
             this.nudAlphaCharismaDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaCharismaDeviation.TabIndex = 66;
+            this.nudAlphaCharismaDeviation.TabIndex = 25;
             // 
             // label32
             // 
@@ -1803,7 +1825,7 @@
             0});
             this.nudAlphaCharismaWeight.Name = "nudAlphaCharismaWeight";
             this.nudAlphaCharismaWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaCharismaWeight.TabIndex = 64;
+            this.nudAlphaCharismaWeight.TabIndex = 24;
             // 
             // label34
             // 
@@ -1818,7 +1840,7 @@
             // 
             this.nudAlphaCharismaValue.Location = new System.Drawing.Point(170, 183);
             this.nudAlphaCharismaValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -1829,7 +1851,7 @@
             0});
             this.nudAlphaCharismaValue.Name = "nudAlphaCharismaValue";
             this.nudAlphaCharismaValue.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaCharismaValue.TabIndex = 62;
+            this.nudAlphaCharismaValue.TabIndex = 23;
             this.nudAlphaCharismaValue.Value = new decimal(new int[] {
             1,
             0,
@@ -1861,6 +1883,7 @@
             this.cboAlphaWisdom.Name = "cboAlphaWisdom";
             this.cboAlphaWisdom.Size = new System.Drawing.Size(15, 14);
             this.cboAlphaWisdom.TabIndex = 59;
+            this.cboAlphaWisdom.TabStop = false;
             this.cboAlphaWisdom.UseVisualStyleBackColor = true;
             this.cboAlphaWisdom.CheckedChanged += new System.EventHandler(this.cboAlphaWisdom_CheckedChanged);
             // 
@@ -1879,7 +1902,7 @@
             -2147483648});
             this.nudAlphaWisdomDeviation.Name = "nudAlphaWisdomDeviation";
             this.nudAlphaWisdomDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaWisdomDeviation.TabIndex = 57;
+            this.nudAlphaWisdomDeviation.TabIndex = 22;
             this.nudAlphaWisdomDeviation.ValueChanged += new System.EventHandler(this.numericUpDown13_ValueChanged);
             // 
             // label27
@@ -1910,7 +1933,7 @@
             0});
             this.nudAlphaWisdomWeight.Name = "nudAlphaWisdomWeight";
             this.nudAlphaWisdomWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaWisdomWeight.TabIndex = 55;
+            this.nudAlphaWisdomWeight.TabIndex = 21;
             // 
             // label29
             // 
@@ -1925,7 +1948,7 @@
             // 
             this.nudAlphaWisdomValue.Location = new System.Drawing.Point(170, 156);
             this.nudAlphaWisdomValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -1936,7 +1959,7 @@
             0});
             this.nudAlphaWisdomValue.Name = "nudAlphaWisdomValue";
             this.nudAlphaWisdomValue.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaWisdomValue.TabIndex = 53;
+            this.nudAlphaWisdomValue.TabIndex = 20;
             this.nudAlphaWisdomValue.Value = new decimal(new int[] {
             1,
             0,
@@ -1968,6 +1991,7 @@
             this.cboAlphaIntelligence.Name = "cboAlphaIntelligence";
             this.cboAlphaIntelligence.Size = new System.Drawing.Size(15, 14);
             this.cboAlphaIntelligence.TabIndex = 50;
+            this.cboAlphaIntelligence.TabStop = false;
             this.cboAlphaIntelligence.UseVisualStyleBackColor = true;
             this.cboAlphaIntelligence.CheckedChanged += new System.EventHandler(this.cboAlphaIntelligence_CheckedChanged);
             // 
@@ -1986,7 +2010,7 @@
             -2147483648});
             this.nudAlphaIntelligenceDeviation.Name = "nudAlphaIntelligenceDeviation";
             this.nudAlphaIntelligenceDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaIntelligenceDeviation.TabIndex = 48;
+            this.nudAlphaIntelligenceDeviation.TabIndex = 19;
             // 
             // label22
             // 
@@ -2016,7 +2040,7 @@
             0});
             this.nudAlphaIntelligenceWeight.Name = "nudAlphaIntelligenceWeight";
             this.nudAlphaIntelligenceWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaIntelligenceWeight.TabIndex = 46;
+            this.nudAlphaIntelligenceWeight.TabIndex = 18;
             // 
             // label24
             // 
@@ -2031,7 +2055,7 @@
             // 
             this.nudAlphaIntelligenceValue.Location = new System.Drawing.Point(170, 129);
             this.nudAlphaIntelligenceValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -2042,7 +2066,7 @@
             0});
             this.nudAlphaIntelligenceValue.Name = "nudAlphaIntelligenceValue";
             this.nudAlphaIntelligenceValue.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaIntelligenceValue.TabIndex = 44;
+            this.nudAlphaIntelligenceValue.TabIndex = 17;
             this.nudAlphaIntelligenceValue.Value = new decimal(new int[] {
             1,
             0,
@@ -2074,6 +2098,7 @@
             this.cboAlphaConstitution.Name = "cboAlphaConstitution";
             this.cboAlphaConstitution.Size = new System.Drawing.Size(15, 14);
             this.cboAlphaConstitution.TabIndex = 41;
+            this.cboAlphaConstitution.TabStop = false;
             this.cboAlphaConstitution.UseVisualStyleBackColor = true;
             this.cboAlphaConstitution.CheckedChanged += new System.EventHandler(this.cboAlphaConstitution_CheckedChanged);
             // 
@@ -2092,7 +2117,7 @@
             -2147483648});
             this.nudAlphaConstitutionDeviation.Name = "nudAlphaConstitutionDeviation";
             this.nudAlphaConstitutionDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaConstitutionDeviation.TabIndex = 39;
+            this.nudAlphaConstitutionDeviation.TabIndex = 16;
             // 
             // label17
             // 
@@ -2122,7 +2147,7 @@
             0});
             this.nudAlphaConstitutionWeight.Name = "nudAlphaConstitutionWeight";
             this.nudAlphaConstitutionWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaConstitutionWeight.TabIndex = 37;
+            this.nudAlphaConstitutionWeight.TabIndex = 15;
             // 
             // label19
             // 
@@ -2137,7 +2162,7 @@
             // 
             this.nudAlphaConstitutionValue.Location = new System.Drawing.Point(170, 101);
             this.nudAlphaConstitutionValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -2148,7 +2173,7 @@
             0});
             this.nudAlphaConstitutionValue.Name = "nudAlphaConstitutionValue";
             this.nudAlphaConstitutionValue.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaConstitutionValue.TabIndex = 35;
+            this.nudAlphaConstitutionValue.TabIndex = 14;
             this.nudAlphaConstitutionValue.Value = new decimal(new int[] {
             1,
             0,
@@ -2180,6 +2205,7 @@
             this.cboAlphaDexterity.Name = "cboAlphaDexterity";
             this.cboAlphaDexterity.Size = new System.Drawing.Size(15, 14);
             this.cboAlphaDexterity.TabIndex = 32;
+            this.cboAlphaDexterity.TabStop = false;
             this.cboAlphaDexterity.UseVisualStyleBackColor = true;
             this.cboAlphaDexterity.CheckedChanged += new System.EventHandler(this.cboAlphaDexterity_CheckedChanged);
             // 
@@ -2198,7 +2224,7 @@
             -2147483648});
             this.nudAlphaDexterityDeviation.Name = "nudAlphaDexterityDeviation";
             this.nudAlphaDexterityDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaDexterityDeviation.TabIndex = 30;
+            this.nudAlphaDexterityDeviation.TabIndex = 13;
             // 
             // label12
             // 
@@ -2228,7 +2254,7 @@
             0});
             this.nudAlphaDexterityWeight.Name = "nudAlphaDexterityWeight";
             this.nudAlphaDexterityWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaDexterityWeight.TabIndex = 28;
+            this.nudAlphaDexterityWeight.TabIndex = 12;
             // 
             // label14
             // 
@@ -2243,7 +2269,7 @@
             // 
             this.nudAlphaDexterityValue.Location = new System.Drawing.Point(170, 74);
             this.nudAlphaDexterityValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -2254,7 +2280,7 @@
             0});
             this.nudAlphaDexterityValue.Name = "nudAlphaDexterityValue";
             this.nudAlphaDexterityValue.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaDexterityValue.TabIndex = 26;
+            this.nudAlphaDexterityValue.TabIndex = 11;
             this.nudAlphaDexterityValue.Value = new decimal(new int[] {
             1,
             0,
@@ -2287,6 +2313,7 @@
             this.cboAlphaStrength.Name = "cboAlphaStrength";
             this.cboAlphaStrength.Size = new System.Drawing.Size(15, 14);
             this.cboAlphaStrength.TabIndex = 23;
+            this.cboAlphaStrength.TabStop = false;
             this.cboAlphaStrength.UseVisualStyleBackColor = true;
             this.cboAlphaStrength.CheckedChanged += new System.EventHandler(this.cboAlphaStrength_CheckedChanged);
             // 
@@ -2305,7 +2332,7 @@
             -2147483648});
             this.nudAlphaStrengthDeviation.Name = "nudAlphaStrengthDeviation";
             this.nudAlphaStrengthDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaStrengthDeviation.TabIndex = 21;
+            this.nudAlphaStrengthDeviation.TabIndex = 10;
             // 
             // label7
             // 
@@ -2335,7 +2362,7 @@
             0});
             this.nudAlphaStrengthWeight.Name = "nudAlphaStrengthWeight";
             this.nudAlphaStrengthWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaStrengthWeight.TabIndex = 19;
+            this.nudAlphaStrengthWeight.TabIndex = 9;
             // 
             // label9
             // 
@@ -2350,7 +2377,7 @@
             // 
             this.nudAlphaStrengthValue.Location = new System.Drawing.Point(170, 47);
             this.nudAlphaStrengthValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -2361,7 +2388,7 @@
             0});
             this.nudAlphaStrengthValue.Name = "nudAlphaStrengthValue";
             this.nudAlphaStrengthValue.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaStrengthValue.TabIndex = 17;
+            this.nudAlphaStrengthValue.TabIndex = 8;
             this.nudAlphaStrengthValue.Value = new decimal(new int[] {
             1,
             0,
@@ -2393,6 +2420,7 @@
             this.cboAlphaRace.Name = "cboAlphaRace";
             this.cboAlphaRace.Size = new System.Drawing.Size(15, 14);
             this.cboAlphaRace.TabIndex = 14;
+            this.cboAlphaRace.TabStop = false;
             this.cboAlphaRace.UseVisualStyleBackColor = true;
             this.cboAlphaRace.CheckedChanged += new System.EventHandler(this.cboAlphaRace_CheckedChanged);
             // 
@@ -2411,7 +2439,7 @@
             -2147483648});
             this.nudAlphaRaceDeviation.Name = "nudAlphaRaceDeviation";
             this.nudAlphaRaceDeviation.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaRaceDeviation.TabIndex = 6;
+            this.nudAlphaRaceDeviation.TabIndex = 7;
             // 
             // label6
             // 
@@ -2441,7 +2469,7 @@
             0});
             this.nudAlphaRaceWeight.Name = "nudAlphaRaceWeight";
             this.nudAlphaRaceWeight.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaRaceWeight.TabIndex = 4;
+            this.nudAlphaRaceWeight.TabIndex = 6;
             // 
             // label4
             // 
@@ -2456,7 +2484,7 @@
             // 
             this.nudAlphaRaceValue.Location = new System.Drawing.Point(170, 20);
             this.nudAlphaRaceValue.Maximum = new decimal(new int[] {
-            10,
+            9999,
             0,
             0,
             0});
@@ -2467,7 +2495,7 @@
             0});
             this.nudAlphaRaceValue.Name = "nudAlphaRaceValue";
             this.nudAlphaRaceValue.Size = new System.Drawing.Size(50, 26);
-            this.nudAlphaRaceValue.TabIndex = 2;
+            this.nudAlphaRaceValue.TabIndex = 5;
             this.nudAlphaRaceValue.Value = new decimal(new int[] {
             1,
             0,
@@ -2492,25 +2520,25 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Race";
             // 
-            // button1
+            // btnOK
             // 
-            this.button1.Location = new System.Drawing.Point(532, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 40);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnOK.Location = new System.Drawing.Point(532, 6);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(100, 40);
+            this.btnOK.TabIndex = 59;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.Location = new System.Drawing.Point(532, 52);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 40);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "CANCEL";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnCancel.Location = new System.Drawing.Point(532, 52);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 40);
+            this.btnCancel.TabIndex = 60;
+            this.btnCancel.Text = "CANCEL";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.button2_Click);
             // 
             // EditCreatureDialog
             // 
@@ -2518,8 +2546,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(644, 756);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.gbxDNA);
             this.Controls.Add(this.cbxParentsRandom);
             this.Controls.Add(this.label1);
@@ -2788,7 +2816,7 @@
         private System.Windows.Forms.NumericUpDown nudBetaRaceValue;
         private System.Windows.Forms.Label label90;
         private System.Windows.Forms.Label label91;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

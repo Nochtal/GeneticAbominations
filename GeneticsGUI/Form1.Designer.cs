@@ -348,6 +348,7 @@
             this.editCreatureToolStripMenuItem.Name = "editCreatureToolStripMenuItem";
             this.editCreatureToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.editCreatureToolStripMenuItem.Text = "Edit Creature";
+            this.editCreatureToolStripMenuItem.Click += new System.EventHandler(this.editCreatureToolStripMenuItem_Click);
             // 
             // editNewCreatureToolStripMenuItem
             // 
@@ -427,18 +428,21 @@
             this.removeCreatureToolStripMenuItem.Name = "removeCreatureToolStripMenuItem";
             this.removeCreatureToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.removeCreatureToolStripMenuItem.Text = "Remove Creature";
+            this.removeCreatureToolStripMenuItem.Click += new System.EventHandler(this.removeCreatureToolStripMenuItem_Click);
             // 
             // visitGraveyardToolStripMenuItem
             // 
             this.visitGraveyardToolStripMenuItem.Name = "visitGraveyardToolStripMenuItem";
             this.visitGraveyardToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.visitGraveyardToolStripMenuItem.Text = "Visit Graveyard";
+            this.visitGraveyardToolStripMenuItem.Click += new System.EventHandler(this.visitGraveyardToolStripMenuItem_Click);
             // 
             // advanceAgeToolStripMenuItem
             // 
             this.advanceAgeToolStripMenuItem.Name = "advanceAgeToolStripMenuItem";
             this.advanceAgeToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.advanceAgeToolStripMenuItem.Text = "Advance Age";
+            this.advanceAgeToolStripMenuItem.Click += new System.EventHandler(this.advanceAgeToolStripMenuItem_Click);
             // 
             // Form1
             // 

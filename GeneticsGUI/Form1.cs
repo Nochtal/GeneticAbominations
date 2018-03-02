@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 
 namespace GeneticsGUI
 {
@@ -33,6 +34,13 @@ namespace GeneticsGUI
             rtbDisplay.Clear();
             rtbDisplay.AppendText(creatureList[i].ToString());
         }
+        private void UpdateDisplay(string input)
+        {
+            rtbDisplay.Clear();
+            rtbDisplay.AppendText(input);
+        }
+
+
         private void RefreshCreatureList()
         {
             creatureList.Clear();
@@ -57,11 +65,12 @@ namespace GeneticsGUI
 
         private void UpdatePopulationLabel()
         {
-            lblPopulation.Text = String.Format("{0} of {1}: Population ({2}), Deceased ({3})",
+            lblPopulation.Text = String.Format("{0} of {1}: Population ({2}), Deceased ({3}). Year: {4}",
                     society.Classification,
                     society.Name,
                     creatureList.Count,
-                    (society.Graveyard.Count > 0 ? society.Graveyard.Count : 0));
+                    (society.Graveyard.Count > 0 ? society.Graveyard.Count : 0),
+                    society.Year);
         }
 
         private Creature GetRandomCreature()
@@ -276,7 +285,7 @@ namespace GeneticsGUI
                 }
                 else if (saveCheck == DialogResult.No)
                 {
-                    
+
                 }
                 else { return; }
             }
@@ -358,8 +367,69 @@ namespace GeneticsGUI
                 {
                     society.AddCreature(dialog.ReturnCreature);
                     RefreshCreatureList();
+                    RefreshPopulation();
                 }
             }
+        }
+
+        private void editCreatureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (siOne > -1)
+                using (var dialog = new EditCreatureDialog(creatureList[siOne]))
+                {
+                    var result = dialog.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        society.AddCreature(dialog.ReturnCreature);
+                        RefreshCreatureList();
+                        RefreshPopulation();
+                    }
+                }
+            else MessageBox.Show("Please select a creature to edit", "Creature Editor", MessageBoxButtons.OK);
+        }
+
+        private void removeCreatureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (siOne > -1)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete " + creatureList[siOne].Name + " ? ", "Creature Deletion", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    society.RemoveCreature(creatureList[siOne]);
+                    RefreshCreatureList();
+                    RefreshPopulation();
+                }
+            }
+            else MessageBox.Show("Please select a creature to remove", "Creature Deletion", MessageBoxButtons.OK);
+        }
+
+        private void advanceAgeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int years = ExtensionMethods.GetRandom(1, 100);
+            int dead = society.Graveyard.Count;
+            society.AdvanceAge(years);
+            RefreshCreatureList();
+            RefreshPopulation();
+            string MESSAGE = string.Format("As {0} years pass, {1} creature{2}.",
+                years,
+                society.Graveyard.Count - dead,
+                (society.Graveyard.Count - dead < 2 ? " died" :"s have died"));
+            MessageBox.Show(MESSAGE, "Time Passed: " + years + "years.", MessageBoxButtons.OK);
+
+        }
+
+        private void visitGraveyardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder cemetary = new StringBuilder();
+            lblDisplay.Text = string.Format("Cemetary of {0}", society.Name);
+            List<string> graveyard = new List<string>();
+            society.GetGraveyard(out graveyard);
+            graveyard.Sort((x, y) => x.CompareTo(y));
+            foreach (string s in graveyard)
+            {
+                cemetary.Append(s + "\n");
+            }
+            UpdateDisplay(cemetary.ToString());
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)

@@ -36,9 +36,9 @@ namespace GeneticDLL
                 Genetics = new DNA(pOneZygot, pTwoZygot);
             }
         }
-        public Creature(int generation, string parentOne, string parentTwo, DNA genetics, string name = null, int age = 1)
+        public Creature(int generation, string parentOne, string parentTwo, DNA genetics, string name = "RANDOM", int age = 1)
         {
-            if (Name == null) Name = ExtensionMethods.GenerateName();
+            if (name == "RANDOM") Name = ExtensionMethods.GenerateName();
             else Name = name;
             Age = age;
             Generation = generation;
@@ -63,8 +63,9 @@ namespace GeneticDLL
 
         public string DeathString()
         {
-            return String.Format("{0}, Died at {1} years of age. Generation: {2}. Parents: {3} and {4}",
+            return String.Format("{0}, {1}, Died at {2} years of age. Generation: {3}. Parents: {4} and {5}",
                 Name,
+                GetRace(),
                 GetMaxAge(),
                 Generation,
                 ParentOne,
