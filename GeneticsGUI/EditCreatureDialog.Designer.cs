@@ -318,7 +318,7 @@
             // 
             this.nudAge.Location = new System.Drawing.Point(107, 38);
             this.nudAge.Maximum = new decimal(new int[] {
-            650,
+            2147483647,
             0,
             0,
             0});
@@ -330,7 +330,7 @@
             // 
             this.nudGeneration.Location = new System.Drawing.Point(107, 70);
             this.nudGeneration.Maximum = new decimal(new int[] {
-            1000,
+            2147483647,
             0,
             0,
             0});
@@ -572,15 +572,15 @@
             // 
             this.nudBetaDivineValue.Location = new System.Drawing.Point(170, 238);
             this.nudBetaDivineValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudBetaDivineValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudBetaDivineValue.Name = "nudBetaDivineValue";
             this.nudBetaDivineValue.Size = new System.Drawing.Size(50, 26);
             this.nudBetaDivineValue.TabIndex = 56;
@@ -679,15 +679,15 @@
             // 
             this.nudBetaArcaneValue.Location = new System.Drawing.Point(170, 210);
             this.nudBetaArcaneValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudBetaArcaneValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudBetaArcaneValue.Name = "nudBetaArcaneValue";
             this.nudBetaArcaneValue.Size = new System.Drawing.Size(50, 26);
             this.nudBetaArcaneValue.TabIndex = 53;
@@ -786,15 +786,15 @@
             // 
             this.nudBetaCharismaValue.Location = new System.Drawing.Point(170, 183);
             this.nudBetaCharismaValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudBetaCharismaValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudBetaCharismaValue.Name = "nudBetaCharismaValue";
             this.nudBetaCharismaValue.Size = new System.Drawing.Size(50, 26);
             this.nudBetaCharismaValue.TabIndex = 50;
@@ -893,15 +893,15 @@
             // 
             this.nudBetaWisdomValue.Location = new System.Drawing.Point(170, 156);
             this.nudBetaWisdomValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudBetaWisdomValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudBetaWisdomValue.Name = "nudBetaWisdomValue";
             this.nudBetaWisdomValue.Size = new System.Drawing.Size(50, 26);
             this.nudBetaWisdomValue.TabIndex = 47;
@@ -1000,15 +1000,15 @@
             // 
             this.nudBetaIntelligenceValue.Location = new System.Drawing.Point(170, 129);
             this.nudBetaIntelligenceValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudBetaIntelligenceValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudBetaIntelligenceValue.Name = "nudBetaIntelligenceValue";
             this.nudBetaIntelligenceValue.Size = new System.Drawing.Size(50, 26);
             this.nudBetaIntelligenceValue.TabIndex = 44;
@@ -1107,15 +1107,15 @@
             // 
             this.nudBetaConstitutionValue.Location = new System.Drawing.Point(170, 101);
             this.nudBetaConstitutionValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudBetaConstitutionValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudBetaConstitutionValue.Name = "nudBetaConstitutionValue";
             this.nudBetaConstitutionValue.Size = new System.Drawing.Size(50, 26);
             this.nudBetaConstitutionValue.TabIndex = 41;
@@ -1214,15 +1214,15 @@
             // 
             this.nudBetaDexterityValue.Location = new System.Drawing.Point(170, 74);
             this.nudBetaDexterityValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudBetaDexterityValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudBetaDexterityValue.Name = "nudBetaDexterityValue";
             this.nudBetaDexterityValue.Size = new System.Drawing.Size(50, 26);
             this.nudBetaDexterityValue.TabIndex = 38;
@@ -1321,15 +1321,15 @@
             // 
             this.nudBetaStrengthValue.Location = new System.Drawing.Point(170, 47);
             this.nudBetaStrengthValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudBetaStrengthValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudBetaStrengthValue.Name = "nudBetaStrengthValue";
             this.nudBetaStrengthValue.Size = new System.Drawing.Size(50, 26);
             this.nudBetaStrengthValue.TabIndex = 35;
@@ -1428,15 +1428,15 @@
             // 
             this.nudBetaRaceValue.Location = new System.Drawing.Point(170, 20);
             this.nudBetaRaceValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudBetaRaceValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudBetaRaceValue.Name = "nudBetaRaceValue";
             this.nudBetaRaceValue.Size = new System.Drawing.Size(50, 26);
             this.nudBetaRaceValue.TabIndex = 32;
@@ -1625,15 +1625,15 @@
             // 
             this.nudAlphaDivineValue.Location = new System.Drawing.Point(170, 238);
             this.nudAlphaDivineValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudAlphaDivineValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudAlphaDivineValue.Name = "nudAlphaDivineValue";
             this.nudAlphaDivineValue.Size = new System.Drawing.Size(50, 26);
             this.nudAlphaDivineValue.TabIndex = 29;
@@ -1732,15 +1732,15 @@
             // 
             this.nudAlphaArcaneValue.Location = new System.Drawing.Point(170, 210);
             this.nudAlphaArcaneValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudAlphaArcaneValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudAlphaArcaneValue.Name = "nudAlphaArcaneValue";
             this.nudAlphaArcaneValue.Size = new System.Drawing.Size(50, 26);
             this.nudAlphaArcaneValue.TabIndex = 26;
@@ -1840,15 +1840,15 @@
             // 
             this.nudAlphaCharismaValue.Location = new System.Drawing.Point(170, 183);
             this.nudAlphaCharismaValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudAlphaCharismaValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudAlphaCharismaValue.Name = "nudAlphaCharismaValue";
             this.nudAlphaCharismaValue.Size = new System.Drawing.Size(50, 26);
             this.nudAlphaCharismaValue.TabIndex = 23;
@@ -1903,7 +1903,6 @@
             this.nudAlphaWisdomDeviation.Name = "nudAlphaWisdomDeviation";
             this.nudAlphaWisdomDeviation.Size = new System.Drawing.Size(50, 26);
             this.nudAlphaWisdomDeviation.TabIndex = 22;
-            this.nudAlphaWisdomDeviation.ValueChanged += new System.EventHandler(this.numericUpDown13_ValueChanged);
             // 
             // label27
             // 
@@ -1948,15 +1947,15 @@
             // 
             this.nudAlphaWisdomValue.Location = new System.Drawing.Point(170, 156);
             this.nudAlphaWisdomValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudAlphaWisdomValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudAlphaWisdomValue.Name = "nudAlphaWisdomValue";
             this.nudAlphaWisdomValue.Size = new System.Drawing.Size(50, 26);
             this.nudAlphaWisdomValue.TabIndex = 20;
@@ -2055,15 +2054,15 @@
             // 
             this.nudAlphaIntelligenceValue.Location = new System.Drawing.Point(170, 129);
             this.nudAlphaIntelligenceValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudAlphaIntelligenceValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudAlphaIntelligenceValue.Name = "nudAlphaIntelligenceValue";
             this.nudAlphaIntelligenceValue.Size = new System.Drawing.Size(50, 26);
             this.nudAlphaIntelligenceValue.TabIndex = 17;
@@ -2162,15 +2161,15 @@
             // 
             this.nudAlphaConstitutionValue.Location = new System.Drawing.Point(170, 101);
             this.nudAlphaConstitutionValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudAlphaConstitutionValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudAlphaConstitutionValue.Name = "nudAlphaConstitutionValue";
             this.nudAlphaConstitutionValue.Size = new System.Drawing.Size(50, 26);
             this.nudAlphaConstitutionValue.TabIndex = 14;
@@ -2269,15 +2268,15 @@
             // 
             this.nudAlphaDexterityValue.Location = new System.Drawing.Point(170, 74);
             this.nudAlphaDexterityValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudAlphaDexterityValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudAlphaDexterityValue.Name = "nudAlphaDexterityValue";
             this.nudAlphaDexterityValue.Size = new System.Drawing.Size(50, 26);
             this.nudAlphaDexterityValue.TabIndex = 11;
@@ -2377,15 +2376,15 @@
             // 
             this.nudAlphaStrengthValue.Location = new System.Drawing.Point(170, 47);
             this.nudAlphaStrengthValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudAlphaStrengthValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudAlphaStrengthValue.Name = "nudAlphaStrengthValue";
             this.nudAlphaStrengthValue.Size = new System.Drawing.Size(50, 26);
             this.nudAlphaStrengthValue.TabIndex = 8;
@@ -2484,15 +2483,15 @@
             // 
             this.nudAlphaRaceValue.Location = new System.Drawing.Point(170, 20);
             this.nudAlphaRaceValue.Maximum = new decimal(new int[] {
-            9999,
+            2147483647,
             0,
             0,
             0});
             this.nudAlphaRaceValue.Minimum = new decimal(new int[] {
-            1,
+            -2147483648,
             0,
             0,
-            0});
+            -2147483648});
             this.nudAlphaRaceValue.Name = "nudAlphaRaceValue";
             this.nudAlphaRaceValue.Size = new System.Drawing.Size(50, 26);
             this.nudAlphaRaceValue.TabIndex = 5;

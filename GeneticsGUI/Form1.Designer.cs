@@ -45,29 +45,29 @@
             this.newSocietyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openSocietyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeSocietyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeSocietyNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeSocietyClassifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.editCreatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editNewCreatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.removeCreatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.advanceAgeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visitGraveyardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.basicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.advancedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.removeCreatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.visitGraveyardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.advanceAgeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.nudRandAmount)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +82,7 @@
             this.rtbDisplay.Location = new System.Drawing.Point(268, 80);
             this.rtbDisplay.Name = "rtbDisplay";
             this.rtbDisplay.ReadOnly = true;
-            this.rtbDisplay.Size = new System.Drawing.Size(644, 539);
+            this.rtbDisplay.Size = new System.Drawing.Size(704, 619);
             this.rtbDisplay.TabIndex = 0;
             this.rtbDisplay.Text = "";
             // 
@@ -101,7 +101,7 @@
             this.lsvPopulation.Location = new System.Drawing.Point(12, 52);
             this.lsvPopulation.MultiSelect = false;
             this.lsvPopulation.Name = "lsvPopulation";
-            this.lsvPopulation.Size = new System.Drawing.Size(250, 390);
+            this.lsvPopulation.Size = new System.Drawing.Size(250, 470);
             this.lsvPopulation.TabIndex = 1;
             this.lsvPopulation.UseCompatibleStateImageBehavior = false;
             this.lsvPopulation.View = System.Windows.Forms.View.Details;
@@ -141,7 +141,7 @@
             // 
             this.btnSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSort.Location = new System.Drawing.Point(12, 496);
+            this.btnSort.Location = new System.Drawing.Point(12, 576);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(107, 42);
             this.btnSort.TabIndex = 4;
@@ -169,16 +169,17 @@
             "Charisma",
             "Arcane",
             "Divine"});
-            this.cboSort.Location = new System.Drawing.Point(125, 504);
+            this.cboSort.Location = new System.Drawing.Point(125, 584);
             this.cboSort.Name = "cboSort";
             this.cboSort.Size = new System.Drawing.Size(137, 28);
             this.cboSort.TabIndex = 5;
+            this.cboSort.SelectedIndexChanged += new System.EventHandler(this.cboSort_SelectedIndexChanged);
             // 
             // btnMate
             // 
             this.btnMate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnMate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMate.Location = new System.Drawing.Point(12, 577);
+            this.btnMate.Location = new System.Drawing.Point(12, 657);
             this.btnMate.Name = "btnMate";
             this.btnMate.Size = new System.Drawing.Size(250, 42);
             this.btnMate.TabIndex = 6;
@@ -190,7 +191,7 @@
             // 
             this.btnRandMate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRandMate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRandMate.Location = new System.Drawing.Point(12, 448);
+            this.btnRandMate.Location = new System.Drawing.Point(12, 528);
             this.btnRandMate.Name = "btnRandMate";
             this.btnRandMate.Size = new System.Drawing.Size(107, 42);
             this.btnRandMate.TabIndex = 9;
@@ -201,7 +202,7 @@
             // nudRandAmount
             // 
             this.nudRandAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nudRandAmount.Location = new System.Drawing.Point(126, 464);
+            this.nudRandAmount.Location = new System.Drawing.Point(126, 544);
             this.nudRandAmount.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -221,13 +222,14 @@
             0,
             0});
             this.nudRandAmount.ValueChanged += new System.EventHandler(this.nudRandAmount_ValueChanged);
+            this.nudRandAmount.KeyUp += new System.Windows.Forms.KeyEventHandler(this.nudRandAmount_KeyUp);
             // 
             // lblMateSelected
             // 
             this.lblMateSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMateSelected.AutoSize = true;
             this.lblMateSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMateSelected.Location = new System.Drawing.Point(8, 554);
+            this.lblMateSelected.Location = new System.Drawing.Point(8, 634);
             this.lblMateSelected.Name = "lblMateSelected";
             this.lblMateSelected.Size = new System.Drawing.Size(210, 20);
             this.lblMateSelected.TabIndex = 11;
@@ -242,7 +244,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(924, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -265,49 +267,60 @@
             // newSocietyToolStripMenuItem
             // 
             this.newSocietyToolStripMenuItem.Name = "newSocietyToolStripMenuItem";
-            this.newSocietyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newSocietyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.newSocietyToolStripMenuItem.Text = "New Society";
             this.newSocietyToolStripMenuItem.Click += new System.EventHandler(this.newSocietyToolStripMenuItem_Click);
             // 
             // openSocietyToolStripMenuItem
             // 
             this.openSocietyToolStripMenuItem.Name = "openSocietyToolStripMenuItem";
-            this.openSocietyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openSocietyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.openSocietyToolStripMenuItem.Text = "Open Society";
             this.openSocietyToolStripMenuItem.Click += new System.EventHandler(this.openSocietyToolStripMenuItem_Click);
             // 
             // closeSocietyToolStripMenuItem
             // 
             this.closeSocietyToolStripMenuItem.Name = "closeSocietyToolStripMenuItem";
-            this.closeSocietyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeSocietyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.closeSocietyToolStripMenuItem.Text = "Close Society";
             this.closeSocietyToolStripMenuItem.Click += new System.EventHandler(this.closeSocietyToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.printToolStripMenuItem.Text = "Print";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // editToolStripMenuItem
             // 
@@ -357,16 +370,24 @@
             this.editNewCreatureToolStripMenuItem.Text = "Edit New Creature";
             this.editNewCreatureToolStripMenuItem.Click += new System.EventHandler(this.editNewCreatureToolStripMenuItem_Click);
             // 
-            // toolStripSeparator3
+            // toolStripSeparator4
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(203, 6);
             // 
-            // printToolStripMenuItem
+            // removeCreatureToolStripMenuItem
             // 
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.printToolStripMenuItem.Text = "Print";
+            this.removeCreatureToolStripMenuItem.Name = "removeCreatureToolStripMenuItem";
+            this.removeCreatureToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.removeCreatureToolStripMenuItem.Text = "Remove Creature";
+            this.removeCreatureToolStripMenuItem.Click += new System.EventHandler(this.removeCreatureToolStripMenuItem_Click);
+            // 
+            // advanceAgeToolStripMenuItem
+            // 
+            this.advanceAgeToolStripMenuItem.Name = "advanceAgeToolStripMenuItem";
+            this.advanceAgeToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.advanceAgeToolStripMenuItem.Text = "Advance Age";
+            this.advanceAgeToolStripMenuItem.Click += new System.EventHandler(this.advanceAgeToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -390,6 +411,13 @@
             this.fontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fontToolStripMenuItem.Text = "Font";
             // 
+            // visitGraveyardToolStripMenuItem
+            // 
+            this.visitGraveyardToolStripMenuItem.Name = "visitGraveyardToolStripMenuItem";
+            this.visitGraveyardToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.visitGraveyardToolStripMenuItem.Text = "Visit Graveyard";
+            this.visitGraveyardToolStripMenuItem.Click += new System.EventHandler(this.visitGraveyardToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -403,53 +431,27 @@
             // basicsToolStripMenuItem
             // 
             this.basicsToolStripMenuItem.Name = "basicsToolStripMenuItem";
-            this.basicsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.basicsToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.basicsToolStripMenuItem.Text = "Basics";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // advancedToolStripMenuItem
             // 
             this.advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
-            this.advancedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.advancedToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.advancedToolStripMenuItem.Text = "Advanced";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(203, 6);
-            // 
-            // removeCreatureToolStripMenuItem
-            // 
-            this.removeCreatureToolStripMenuItem.Name = "removeCreatureToolStripMenuItem";
-            this.removeCreatureToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.removeCreatureToolStripMenuItem.Text = "Remove Creature";
-            this.removeCreatureToolStripMenuItem.Click += new System.EventHandler(this.removeCreatureToolStripMenuItem_Click);
-            // 
-            // visitGraveyardToolStripMenuItem
-            // 
-            this.visitGraveyardToolStripMenuItem.Name = "visitGraveyardToolStripMenuItem";
-            this.visitGraveyardToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.visitGraveyardToolStripMenuItem.Text = "Visit Graveyard";
-            this.visitGraveyardToolStripMenuItem.Click += new System.EventHandler(this.visitGraveyardToolStripMenuItem_Click);
-            // 
-            // advanceAgeToolStripMenuItem
-            // 
-            this.advanceAgeToolStripMenuItem.Name = "advanceAgeToolStripMenuItem";
-            this.advanceAgeToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.advanceAgeToolStripMenuItem.Text = "Advance Age";
-            this.advanceAgeToolStripMenuItem.Click += new System.EventHandler(this.advanceAgeToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(924, 631);
+            this.ClientSize = new System.Drawing.Size(984, 711);
             this.Controls.Add(this.lblMateSelected);
             this.Controls.Add(this.nudRandAmount);
             this.Controls.Add(this.btnRandMate);
@@ -463,6 +465,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Genetic Abominations";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudRandAmount)).EndInit();

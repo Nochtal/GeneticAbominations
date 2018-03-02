@@ -101,7 +101,7 @@ namespace GeneticsGUI
                         creatureList.Sort((x, y) => -1 * x.Age.CompareTo(y.Age));
                         break;
                     case "Generation":
-                        creatureList.Sort((x, y) => -1 * x.Genetics.Race.CompareTo(y.Genetics.Race));
+                        creatureList.Sort((x, y) => -1 * x.Generation.CompareTo(y.Generation));
                         break;
                     case "Deviation":
                         creatureList.Sort((x, y) => -1 * x.Genetics.DeviationIndex.CompareTo(y.Genetics.DeviationIndex));
@@ -197,15 +197,19 @@ namespace GeneticsGUI
 
         private void UpdateMateSelected()
         {
-            if (siOne > -1 && siTwo > -1)
+            if (lsvPopulation.Items.Count > 0)
             {
-                lblMateSelected.Text = string.Format("{0} and {1}", creatureList[siOne].Name, creatureList[siTwo].Name);
+                if (siOne > -1 && siTwo > -1)
+                {
+                    lblMateSelected.Text = string.Format("{0} and {1}", creatureList[siOne].Name, creatureList[siTwo].Name);
+                }
+                else if (siOne > -1 || siTwo > -1)
+                {
+                    lblMateSelected.Text = string.Format("{0}, select one more", (siOne > siTwo ? creatureList[siOne].Name : creatureList[siTwo].Name));
+                }
+                else lblMateSelected.Text = "Select two creatures above.";
             }
-            else if (siOne > -1 || siTwo > -1)
-            {
-                lblMateSelected.Text = string.Format("{0}, select one more", (siOne > siTwo ? creatureList[siOne].Name : creatureList[siTwo].Name));
-            }
-            else lblMateSelected.Text = "Select Two Creatures Above";
+            else lblMateSelected.Text = "Select two creatures above.";
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -413,7 +417,7 @@ namespace GeneticsGUI
             string MESSAGE = string.Format("As {0} years pass, {1} creature{2}.",
                 years,
                 society.Graveyard.Count - dead,
-                (society.Graveyard.Count - dead < 2 ? " died" :"s have died"));
+                (society.Graveyard.Count - dead < 2 ? " died" : "s have died"));
             MessageBox.Show(MESSAGE, "Time Passed: " + years + "years.", MessageBoxButtons.OK);
 
         }
@@ -449,6 +453,30 @@ namespace GeneticsGUI
                 MessageBox.Show(se.Message);
             }
             finally { fs.Close(); }
+        }
+
+        private void cboSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboSort.Enabled = false;
+            btnSort.PerformClick();
+            cboSort.Enabled = true;
+        }
+
+        private void nudRandAmount_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                btnRandMate.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void rtbDisplay_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

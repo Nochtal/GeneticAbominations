@@ -27,7 +27,6 @@ namespace GeneticsGUI
                 _DNA = ReturnCreature.Genetics;
                 A_HELIX = ReturnCreature.Genetics.Alpha;
                 B_HELIX = ReturnCreature.Genetics.Beta;
-
                 A_RACE = ReturnCreature.Genetics.Alpha.Race;
                 A_STRENGTH = ReturnCreature.Genetics.Alpha.Strength;
                 A_DEXTERITY = ReturnCreature.Genetics.Alpha.Dexterity;
@@ -37,7 +36,6 @@ namespace GeneticsGUI
                 A_CHARISMA = ReturnCreature.Genetics.Alpha.Charisma;
                 A_ARCANE = ReturnCreature.Genetics.Alpha.Arcane;
                 A_DIVINE = ReturnCreature.Genetics.Alpha.Divine;
-
                 B_RACE = ReturnCreature.Genetics.Beta.Race;
                 B_STRENGTH = ReturnCreature.Genetics.Beta.Strength;
                 B_DEXTERITY = ReturnCreature.Genetics.Beta.Dexterity;
@@ -47,7 +45,6 @@ namespace GeneticsGUI
                 B_CHARISMA = ReturnCreature.Genetics.Beta.Charisma;
                 B_ARCANE = ReturnCreature.Genetics.Beta.Arcane;
                 B_DIVINE = ReturnCreature.Genetics.Beta.Divine;
-
                 FillSheet();
             }
         }
@@ -59,7 +56,6 @@ namespace GeneticsGUI
             nudGeneration.Value = ReturnCreature.Generation;
             txtParentOne.Text = ReturnCreature.ParentOne;
             txtParentTwo.Text = ReturnCreature.ParentTwo;
-
             nudAlphaRaceValue.Value = A_RACE.Value;
             nudAlphaRaceWeight.Value = A_RACE.Weight;
             nudAlphaRaceDeviation.Value = A_RACE.Deviation;
@@ -87,7 +83,6 @@ namespace GeneticsGUI
             nudAlphaDivineValue.Value = A_DIVINE.Value;
             nudAlphaDivineWeight.Value = A_DIVINE.Weight;
             nudAlphaDivineDeviation.Value = A_DIVINE.Deviation;
-
             nudBetaRaceValue.Value = B_RACE.Value;
             nudBetaRaceWeight.Value = B_RACE.Weight;
             nudBetaRaceDeviation.Value = B_RACE.Deviation;
@@ -192,11 +187,6 @@ namespace GeneticsGUI
             MessageBox.Show("Wah Wah!", "This isn't a secret button.", MessageBoxButtons.OK);
         }
 
-        private void numericUpDown13_ValueChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         public Creature ReturnCreature { get; set; }
         string NAME;
         int AGE;
@@ -215,15 +205,15 @@ namespace GeneticsGUI
                 nudAlphaDivineValue.Value = A_DIVINE.Value;
                 nudAlphaDivineWeight.Value = A_DIVINE.Weight;
                 nudAlphaDivineDeviation.Value = A_DIVINE.Deviation;
-                nudAlphaDivineValue.ReadOnly = true;
-                nudAlphaDivineWeight.ReadOnly = true;
-                nudAlphaDivineDeviation.ReadOnly = true;
+                nudAlphaDivineValue.Enabled = true;
+                nudAlphaDivineWeight.Enabled = true;
+                nudAlphaDivineDeviation.Enabled = true;
             }
             else
             {
-                nudAlphaDivineValue.ReadOnly = false;
-                nudAlphaDivineWeight.ReadOnly = false;
-                nudAlphaDivineDeviation.ReadOnly = false;
+                nudAlphaDivineValue.Enabled = false;
+                nudAlphaDivineWeight.Enabled = false;
+                nudAlphaDivineDeviation.Enabled = false;
             }
         }
 
@@ -235,15 +225,15 @@ namespace GeneticsGUI
                 nudAlphaArcaneValue.Value = A_ARCANE.Value;
                 nudAlphaArcaneWeight.Value = A_ARCANE.Weight;
                 nudAlphaArcaneDeviation.Value = A_ARCANE.Deviation;
-                nudAlphaArcaneValue.ReadOnly = true;
-                nudAlphaArcaneWeight.ReadOnly = true;
-                nudAlphaArcaneDeviation.ReadOnly = true;
+                nudAlphaArcaneValue.Enabled = true;
+                nudAlphaArcaneWeight.Enabled = true;
+                nudAlphaArcaneDeviation.Enabled = true;
             }
             else
             {
-                nudAlphaArcaneValue.ReadOnly = false;
-                nudAlphaArcaneWeight.ReadOnly = false;
-                nudAlphaArcaneDeviation.ReadOnly = false;
+                nudAlphaArcaneValue.Enabled = false;
+                nudAlphaArcaneWeight.Enabled = false;
+                nudAlphaArcaneDeviation.Enabled = false;
             }
         }
         
@@ -255,15 +245,15 @@ namespace GeneticsGUI
                 nudAlphaCharismaValue.Value = A_CHARISMA.Value;
                 nudAlphaCharismaWeight.Value = A_CHARISMA.Weight;
                 nudAlphaCharismaDeviation.Value = A_CHARISMA.Deviation;
-                nudAlphaCharismaValue.ReadOnly = true;
-                nudAlphaCharismaWeight.ReadOnly = true;
-                nudAlphaCharismaDeviation.ReadOnly = true;
+                nudAlphaCharismaValue.Enabled = true;
+                nudAlphaCharismaWeight.Enabled = true;
+                nudAlphaCharismaDeviation.Enabled = true;
             }
             else
             {
-                nudAlphaCharismaValue.ReadOnly = false;
-                nudAlphaCharismaWeight.ReadOnly = false;
-                nudAlphaCharismaDeviation.ReadOnly = false;
+                nudAlphaCharismaValue.Enabled = false;
+                nudAlphaCharismaWeight.Enabled = false;
+                nudAlphaCharismaDeviation.Enabled = false;
             }
         }
 
@@ -275,15 +265,15 @@ namespace GeneticsGUI
                 nudAlphaWisdomValue.Value = A_WISDOM.Value;
                 nudAlphaWisdomWeight.Value = A_WISDOM.Weight;
                 nudAlphaWisdomDeviation.Value = A_WISDOM.Deviation;
-                nudAlphaWisdomValue.ReadOnly = true;
-                nudAlphaWisdomWeight.ReadOnly = true;
-                nudAlphaWisdomDeviation.ReadOnly = true;
+                nudAlphaWisdomValue.Enabled = true;
+                nudAlphaWisdomWeight.Enabled = true;
+                nudAlphaWisdomDeviation.Enabled = true;
             }
             else
             {
-                nudAlphaWisdomValue.ReadOnly = false;
-                nudAlphaWisdomWeight.ReadOnly = false;
-                nudAlphaWisdomDeviation.ReadOnly = false;
+                nudAlphaWisdomValue.Enabled = false;
+                nudAlphaWisdomWeight.Enabled = false;
+                nudAlphaWisdomDeviation.Enabled = false;
             }
         }
         
@@ -295,15 +285,15 @@ namespace GeneticsGUI
                 nudAlphaIntelligenceValue.Value = A_INTELLIGENCE.Value;
                 nudAlphaIntelligenceWeight.Value = A_INTELLIGENCE.Weight;
                 nudAlphaIntelligenceDeviation.Value = A_INTELLIGENCE.Deviation;
-                nudAlphaIntelligenceValue.ReadOnly = true;
-                nudAlphaIntelligenceWeight.ReadOnly = true;
-                nudAlphaIntelligenceDeviation.ReadOnly = true;
+                nudAlphaIntelligenceValue.Enabled = true;
+                nudAlphaIntelligenceWeight.Enabled = true;
+                nudAlphaIntelligenceDeviation.Enabled = true;
             }
             else
             {
-                nudAlphaIntelligenceValue.ReadOnly = false;
-                nudAlphaIntelligenceWeight.ReadOnly = false;
-                nudAlphaIntelligenceDeviation.ReadOnly = false;
+                nudAlphaIntelligenceValue.Enabled = false;
+                nudAlphaIntelligenceWeight.Enabled = false;
+                nudAlphaIntelligenceDeviation.Enabled = false;
             }
         }
 
@@ -315,15 +305,15 @@ namespace GeneticsGUI
                 nudAlphaConstitutionValue.Value = A_CONSTITUTION.Value;
                 nudAlphaConstitutionWeight.Value = A_CONSTITUTION.Weight;
                 nudAlphaConstitutionDeviation.Value = A_CONSTITUTION.Deviation;
-                nudAlphaConstitutionValue.ReadOnly = true;
-                nudAlphaConstitutionWeight.ReadOnly = true;
-                nudAlphaConstitutionDeviation.ReadOnly = true;
+                nudAlphaConstitutionValue.Enabled = true;
+                nudAlphaConstitutionWeight.Enabled = true;
+                nudAlphaConstitutionDeviation.Enabled = true;
             }
             else
             {
-                nudAlphaConstitutionValue.ReadOnly = false;
-                nudAlphaConstitutionWeight.ReadOnly = false;
-                nudAlphaConstitutionDeviation.ReadOnly = false;
+                nudAlphaConstitutionValue.Enabled = false;
+                nudAlphaConstitutionWeight.Enabled = false;
+                nudAlphaConstitutionDeviation.Enabled = false;
             }
         }
 
@@ -335,15 +325,15 @@ namespace GeneticsGUI
                 nudAlphaDexterityValue.Value = A_DEXTERITY.Value;
                 nudAlphaDexterityWeight.Value = A_DEXTERITY.Weight;
                 nudAlphaDexterityDeviation.Value = A_DEXTERITY.Deviation;
-                nudAlphaDexterityValue.ReadOnly = true;
-                nudAlphaDexterityWeight.ReadOnly = true;
-                nudAlphaDexterityDeviation.ReadOnly = true;
+                nudAlphaDexterityValue.Enabled = true;
+                nudAlphaDexterityWeight.Enabled = true;
+                nudAlphaDexterityDeviation.Enabled = true;
             }
             else
             {
-                nudAlphaDexterityValue.ReadOnly = false;
-                nudAlphaDexterityWeight.ReadOnly = false;
-                nudAlphaDexterityDeviation.ReadOnly = false;
+                nudAlphaDexterityValue.Enabled = false;
+                nudAlphaDexterityWeight.Enabled = false;
+                nudAlphaDexterityDeviation.Enabled = false;
             }
         }
 
@@ -355,15 +345,15 @@ namespace GeneticsGUI
                 nudAlphaStrengthValue.Value = A_STRENGTH.Value;
                 nudAlphaStrengthWeight.Value = A_STRENGTH.Weight;
                 nudAlphaStrengthDeviation.Value = A_STRENGTH.Deviation;
-                nudAlphaStrengthValue.ReadOnly = true;
-                nudAlphaStrengthWeight.ReadOnly = true;
-                nudAlphaStrengthDeviation.ReadOnly = true;
+                nudAlphaStrengthValue.Enabled = true;
+                nudAlphaStrengthWeight.Enabled = true;
+                nudAlphaStrengthDeviation.Enabled = true;
             }
             else
             {
-                nudAlphaStrengthValue.ReadOnly = false;
-                nudAlphaStrengthWeight.ReadOnly = false;
-                nudAlphaStrengthDeviation.ReadOnly = false;
+                nudAlphaStrengthValue.Enabled = false;
+                nudAlphaStrengthWeight.Enabled = false;
+                nudAlphaStrengthDeviation.Enabled = false;
             }
         }
 
@@ -375,15 +365,15 @@ namespace GeneticsGUI
                 nudAlphaRaceValue.Value = A_RACE.Value;
                 nudAlphaRaceWeight.Value = A_RACE.Weight;
                 nudAlphaRaceDeviation.Value = A_RACE.Deviation;
-                nudAlphaRaceValue.ReadOnly = true;
-                nudAlphaRaceWeight.ReadOnly = true;
-                nudAlphaRaceDeviation.ReadOnly = true;
+                nudAlphaRaceValue.Enabled = true;
+                nudAlphaRaceWeight.Enabled = true;
+                nudAlphaRaceDeviation.Enabled = true;
             }
             else
             {
-                nudAlphaRaceValue.ReadOnly = false;
-                nudAlphaRaceWeight.ReadOnly = false;
-                nudAlphaRaceDeviation.ReadOnly = false;
+                nudAlphaRaceValue.Enabled = false;
+                nudAlphaRaceWeight.Enabled = false;
+                nudAlphaRaceDeviation.Enabled = false;
             }
         }
 
@@ -395,15 +385,15 @@ namespace GeneticsGUI
                 nudBetaDivineValue.Value = B_DIVINE.Value;
                 nudBetaDivineWeight.Value = B_DIVINE.Weight;
                 nudBetaDivineDeviation.Value = B_DIVINE.Deviation;
-                nudBetaDivineValue.ReadOnly = true;
-                nudBetaDivineWeight.ReadOnly = true;
-                nudBetaDivineDeviation.ReadOnly = true;
+                nudBetaDivineValue.Enabled = true;
+                nudBetaDivineWeight.Enabled = true;
+                nudBetaDivineDeviation.Enabled = true;
             }
             else
             {
-                nudBetaDivineValue.ReadOnly = false;
-                nudBetaDivineWeight.ReadOnly = false;
-                nudBetaDivineDeviation.ReadOnly = false;
+                nudBetaDivineValue.Enabled = false;
+                nudBetaDivineWeight.Enabled = false;
+                nudBetaDivineDeviation.Enabled = false;
             }
         }
 
@@ -415,15 +405,15 @@ namespace GeneticsGUI
                 nudBetaArcaneValue.Value = B_ARCANE.Value;
                 nudBetaArcaneWeight.Value = B_ARCANE.Weight;
                 nudBetaArcaneDeviation.Value = B_ARCANE.Deviation;
-                nudBetaArcaneValue.ReadOnly = true;
-                nudBetaArcaneWeight.ReadOnly = true;
-                nudBetaArcaneDeviation.ReadOnly = true;
+                nudBetaArcaneValue.Enabled = true;
+                nudBetaArcaneWeight.Enabled = true;
+                nudBetaArcaneDeviation.Enabled = true;
             }
             else
             {
-                nudBetaArcaneValue.ReadOnly = false;
-                nudBetaArcaneWeight.ReadOnly = false;
-                nudBetaArcaneDeviation.ReadOnly = false;
+                nudBetaArcaneValue.Enabled = false;
+                nudBetaArcaneWeight.Enabled = false;
+                nudBetaArcaneDeviation.Enabled = false;
             }
         }
 
@@ -435,15 +425,15 @@ namespace GeneticsGUI
                 nudBetaCharismaValue.Value = B_CHARISMA.Value;
                 nudBetaCharismaWeight.Value = B_CHARISMA.Weight;
                 nudBetaCharismaDeviation.Value = B_CHARISMA.Deviation;
-                nudBetaCharismaValue.ReadOnly = true;
-                nudBetaCharismaWeight.ReadOnly = true;
-                nudBetaCharismaDeviation.ReadOnly = true;
+                nudBetaCharismaValue.Enabled = true;
+                nudBetaCharismaWeight.Enabled = true;
+                nudBetaCharismaDeviation.Enabled = true;
             }
             else
             {
-                nudBetaCharismaValue.ReadOnly = false;
-                nudBetaCharismaWeight.ReadOnly = false;
-                nudBetaCharismaDeviation.ReadOnly = false;
+                nudBetaCharismaValue.Enabled = false;
+                nudBetaCharismaWeight.Enabled = false;
+                nudBetaCharismaDeviation.Enabled = false;
             }
         }
 
@@ -455,15 +445,15 @@ namespace GeneticsGUI
                 nudBetaWisdomValue.Value = B_WISDOM.Value;
                 nudBetaWisdomWeight.Value = B_WISDOM.Weight;
                 nudBetaWisdomDeviation.Value = B_WISDOM.Deviation;
-                nudBetaWisdomValue.ReadOnly = true;
-                nudBetaWisdomWeight.ReadOnly = true;
-                nudBetaWisdomDeviation.ReadOnly = true;
+                nudBetaWisdomValue.Enabled = true;
+                nudBetaWisdomWeight.Enabled = true;
+                nudBetaWisdomDeviation.Enabled = true;
             }
             else
             {
-                nudBetaWisdomValue.ReadOnly = false;
-                nudBetaWisdomWeight.ReadOnly = false;
-                nudBetaWisdomDeviation.ReadOnly = false;
+                nudBetaWisdomValue.Enabled = false;
+                nudBetaWisdomWeight.Enabled = false;
+                nudBetaWisdomDeviation.Enabled = false;
             }
         }
 
@@ -475,15 +465,15 @@ namespace GeneticsGUI
                 nudBetaIntelligenceValue.Value = B_INTELLIGENCE.Value;
                 nudBetaIntelligenceWeight.Value = B_INTELLIGENCE.Weight;
                 nudBetaIntelligenceDeviation.Value = B_INTELLIGENCE.Deviation;
-                nudBetaIntelligenceValue.ReadOnly = true;
-                nudBetaIntelligenceWeight.ReadOnly = true;
-                nudBetaIntelligenceDeviation.ReadOnly = true;
+                nudBetaIntelligenceValue.Enabled = true;
+                nudBetaIntelligenceWeight.Enabled = true;
+                nudBetaIntelligenceDeviation.Enabled = true;
             }
             else
             {
-                nudBetaIntelligenceValue.ReadOnly = false;
-                nudBetaIntelligenceWeight.ReadOnly = false;
-                nudBetaIntelligenceDeviation.ReadOnly = false;
+                nudBetaIntelligenceValue.Enabled = false;
+                nudBetaIntelligenceWeight.Enabled = false;
+                nudBetaIntelligenceDeviation.Enabled = false;
             }
         }
 
@@ -495,15 +485,15 @@ namespace GeneticsGUI
                 nudBetaConstitutionValue.Value = B_CONSTITUTION.Value;
                 nudBetaConstitutionWeight.Value = B_CONSTITUTION.Weight;
                 nudBetaConstitutionDeviation.Value = B_CONSTITUTION.Deviation;
-                nudBetaConstitutionValue.ReadOnly = true;
-                nudBetaConstitutionWeight.ReadOnly = true;
-                nudBetaConstitutionDeviation.ReadOnly = true;
+                nudBetaConstitutionValue.Enabled = true;
+                nudBetaConstitutionWeight.Enabled = true;
+                nudBetaConstitutionDeviation.Enabled = true;
             }
             else
             {
-                nudBetaConstitutionValue.ReadOnly = false;
-                nudBetaConstitutionWeight.ReadOnly = false;
-                nudBetaConstitutionDeviation.ReadOnly = false;
+                nudBetaConstitutionValue.Enabled = false;
+                nudBetaConstitutionWeight.Enabled = false;
+                nudBetaConstitutionDeviation.Enabled = false;
             }
         }
 
@@ -515,15 +505,15 @@ namespace GeneticsGUI
                 nudBetaDexterityValue.Value = B_DEXTERITY.Value;
                 nudBetaDexterityWeight.Value = B_DEXTERITY.Weight;
                 nudBetaDexterityDeviation.Value = B_DEXTERITY.Deviation;
-                nudBetaDexterityValue.ReadOnly = true;
-                nudBetaDexterityWeight.ReadOnly = true;
-                nudBetaDexterityDeviation.ReadOnly = true;
+                nudBetaDexterityValue.Enabled = true;
+                nudBetaDexterityWeight.Enabled = true;
+                nudBetaDexterityDeviation.Enabled = true;
             }
             else
             {
-                nudBetaDexterityValue.ReadOnly = false;
-                nudBetaDexterityWeight.ReadOnly = false;
-                nudBetaDexterityDeviation.ReadOnly = false;
+                nudBetaDexterityValue.Enabled = false;
+                nudBetaDexterityWeight.Enabled = false;
+                nudBetaDexterityDeviation.Enabled = false;
             }
         }
 
@@ -535,15 +525,15 @@ namespace GeneticsGUI
                 nudBetaStrengthValue.Value = B_STRENGTH.Value;
                 nudBetaStrengthWeight.Value = B_STRENGTH.Weight;
                 nudBetaStrengthDeviation.Value = B_STRENGTH.Deviation;
-                nudBetaStrengthValue.ReadOnly = true;
-                nudBetaStrengthWeight.ReadOnly = true;
-                nudBetaStrengthDeviation.ReadOnly = true;
+                nudBetaStrengthValue.Enabled = true;
+                nudBetaStrengthWeight.Enabled = true;
+                nudBetaStrengthDeviation.Enabled = true;
             }
             else
             {
-                nudBetaStrengthValue.ReadOnly = false;
-                nudBetaStrengthWeight.ReadOnly = false;
-                nudBetaStrengthDeviation.ReadOnly = false;
+                nudBetaStrengthValue.Enabled = false;
+                nudBetaStrengthWeight.Enabled = false;
+                nudBetaStrengthDeviation.Enabled = false;
             }
         }
 
@@ -555,15 +545,15 @@ namespace GeneticsGUI
                 nudBetaRaceValue.Value = B_RACE.Value;
                 nudBetaRaceWeight.Value = B_RACE.Weight;
                 nudBetaRaceDeviation.Value = B_RACE.Deviation;
-                nudBetaRaceValue.ReadOnly = true;
-                nudBetaRaceWeight.ReadOnly = true;
-                nudBetaRaceDeviation.ReadOnly = true;
+                nudBetaRaceValue.Enabled = true;
+                nudBetaRaceWeight.Enabled = true;
+                nudBetaRaceDeviation.Enabled = true;
             }
             else
             {
-                nudBetaRaceValue.ReadOnly = false;
-                nudBetaRaceWeight.ReadOnly = false;
-                nudBetaRaceDeviation.ReadOnly = false;
+                nudBetaRaceValue.Enabled = false;
+                nudBetaRaceWeight.Enabled = false;
+                nudBetaRaceDeviation.Enabled = false;
             }
         }
 
