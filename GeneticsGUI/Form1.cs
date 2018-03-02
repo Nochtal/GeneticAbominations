@@ -349,6 +349,19 @@ namespace GeneticsGUI
             }
         }
 
+        private void editNewCreatureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new EditCreatureDialog())
+            {
+                var result = dialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    society.AddCreature(dialog.ReturnCreature);
+                    RefreshCreatureList();
+                }
+            }
+        }
+
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (fileName == "" || fileName == null) fileName = @"Societies\" + society.Name + ".dat";

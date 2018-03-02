@@ -354,6 +354,7 @@
             this.editNewCreatureToolStripMenuItem.Name = "editNewCreatureToolStripMenuItem";
             this.editNewCreatureToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.editNewCreatureToolStripMenuItem.Text = "Edit New Creature";
+            this.editNewCreatureToolStripMenuItem.Click += new System.EventHandler(this.editNewCreatureToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
