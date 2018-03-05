@@ -6,6 +6,8 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Drawing;
+using System.Drawing.Printing;
 
 namespace GeneticsGUI
 {
@@ -21,13 +23,14 @@ namespace GeneticsGUI
             society = new Society();
             society.GetCreatures(out creatureList);
             RefreshPopulation();
-            nudRandAmount.Maximum = creatureList.Count;
+            nudRandAmount.Maximum = creatureList.Count / 2;
         }
 
         private Society society;
         private List<Creature> creatureList = new List<Creature>();
         int siOne = -1, siTwo = -1;
         string fileName;
+        string linesToPrint;
 
         private void UpdateDisplay(int i)
         {
@@ -192,7 +195,8 @@ namespace GeneticsGUI
 
         private void nudRandAmount_ValueChanged(object sender, EventArgs e)
         {
-            nudRandAmount.Maximum = creatureList.Count;
+            nudRandAmount.Maximum = creatureList.Count / 2;
+            if (nudRandAmount.Maximum < 2) nudRandAmount.Maximum = 2;
         }
 
         private void UpdateMateSelected()
@@ -417,9 +421,8 @@ namespace GeneticsGUI
             string MESSAGE = string.Format("As {0} years pass, {1} creature{2}.",
                 years,
                 society.Graveyard.Count - dead,
-                (society.Graveyard.Count - dead < 2 ? " died" : "s have died"));
-            MessageBox.Show(MESSAGE, "Time Passed: " + years + "years.", MessageBoxButtons.OK);
-
+                (society.Graveyard.Count - dead == 1 ? " died" : "s have died"));
+            MessageBox.Show(MESSAGE, "Time Passed: " + years + " years", MessageBoxButtons.OK);
         }
 
         private void visitGraveyardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -469,6 +472,80 @@ namespace GeneticsGUI
                 btnRandMate.PerformClick();
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrintDialog pdl = new PrintDialog();
+            //linesToPrint = string.Format("{0}\nInhabitants:\n{1}\nCemetary:\n{2}",
+            //    society.societyPrintString(),
+            //    printCreatures(),
+            //    printGraveyard());
+            pdl.ShowDialog();
+            if (DialogResult == DialogResult.OK)
+            {
+                linesToPrint = string.Format("{0}\nInhabitants:\n{1}\nCemetary:\n{2}", society.societyPrintString(), printCreatures(), printGraveyard());
+                printDocument1.Print();
+            }
+            
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Font printFont = new Font("Times New Romans", 12, FontStyle.Regular);
+            float LinesPerPage = 0;
+            float yPos = 0;
+            int count = 0;
+            float leftMargin = e.MarginBounds.Left;
+            float topMargin = e.MarginBounds.Top;
+            string line;
+            StringReader sr = new StringReader(linesToPrint);
+            LinesPerPage = e.MarginBounds.Height / printFont.GetHeight(e.Graphics);
+            line = sr.ReadLine();
+            while (count < LinesPerPage && line != null)
+            {
+                yPos = topMargin + (count * printFont.GetHeight(e.Graphics));
+                e.Graphics.DrawString(line, printFont, Brushes.Black, leftMargin, yPos, new StringFormat());
+                count++;
+                if (sr.ReadLine() == null) line = sr.ReadLine();
+                else line = null;
+            }
+            if (line != null) e.HasMorePages = true;
+            else e.HasMorePages = false;
+            //linesToPrint = string.Format("{0}\nInhabitants:\n{1}\nCemetary:\n{2}", society.societyPrintString(), printCreatures(), printGraveyard());
+            //e.Graphics.DrawString(linesToPrint, printFont, Brushes.Black, leftMargin, yPos);
+            
+        }
+
+
+        private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            linesToPrint = string.Format("{0}\n\nInhabitants:\n{1}\nCemetary:\n{2}", society.societyPrintString(), printCreatures(), printGraveyard());
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private string printCreatures()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (Creature c in creatureList)
+            {
+                sb.Append(c.PrintString() + "\n");
+            }
+
+            return sb.ToString();
+        }
+
+        private string printGraveyard()
+        {
+            StringBuilder sb = new StringBuilder();
+            List<string> graveyard = new List<string>();
+            society.GetGraveyard(out graveyard);
+            graveyard.Sort((x, y) => x.CompareTo(y));
+            foreach (string s in graveyard)
+            {
+                sb.Append(s + "\n");
+            }
+            return sb.ToString();
         }
 
         private void rtbDisplay_KeyUp(object sender, KeyEventArgs e)

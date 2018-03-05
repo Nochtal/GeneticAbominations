@@ -100,11 +100,12 @@ namespace GeneticDLL
         {
             Parallel.ForEach(Creatures, (currentCreature) =>
             {
+                int StartAge = currentCreature.Value.Age;
                 currentCreature.Value.Age += years;
                 if (currentCreature.Value.Age > currentCreature.Value.GetMaxAge())
                 {
                     RemoveCreature(currentCreature.Value);
-                    Graveyard.Add(currentCreature.Value.DeathString());
+                    Graveyard.Add(currentCreature.Value.DeathString(Year - StartAge + currentCreature.Value.GetMaxAge()));
                 }
             });
             Year += years;
@@ -114,6 +115,16 @@ namespace GeneticDLL
         public int GetPopulation()
         {
             return Creatures.Count;
+        }
+
+        public string societyPrintString()
+        {
+            return string.Format("The {0} of {1}\nPopulation: {2}\tGraveyard: {3} deceased.\nYear: {4}", 
+                Classification, 
+                Name,
+                Creatures.Count,
+                Graveyard.Count,
+                Year);
         }
 
         public override string ToString()
@@ -159,7 +170,5 @@ namespace GeneticDLL
             else return "0";
             return sb.ToString();
         }
-
-        
     }
 }

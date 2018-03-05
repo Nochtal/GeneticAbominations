@@ -61,13 +61,25 @@ namespace GeneticDLL
             else return "Elf";
         }
 
-        public string DeathString()
+        public string DeathString(int Year)
         {
-            return String.Format("{0}, {1}, Died at {2} years of age. Generation: {3}. Parents: {4} and {5}",
+            return String.Format("{0}, {1}, Died at {2} years of age in the Year {3}. Generation: {4}.\n\t\tParents: {5} and {6}.",
                 Name,
                 GetRace(),
                 GetMaxAge(),
+                Year,
                 Generation,
+                ParentOne,
+                ParentTwo);
+        }
+
+        public string PrintString()
+        {
+            return string.Format("{0}, {1} year old {2}. {3} generation. Parents: {4} and {5}.",
+                Name,
+                Age,
+                GetRace(),
+                GetGenerationString(),
                 ParentOne,
                 ParentTwo);
         }
