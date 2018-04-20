@@ -1,7 +1,8 @@
 # GeneticAbominations
-Algorithm testing through mini genetics based game.
 
-Basics branch to fill out help/basics
+About Branch: Establish ribbon menu option Help\About
+
+Algorithm testing through mini genetics based game.
 
 Starting with three individuals, choose which genetic sequence will reproduce. 
 Offspring will have genetic code resulting from parents. (Creatures now record parents)
