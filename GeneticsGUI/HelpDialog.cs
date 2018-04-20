@@ -42,7 +42,10 @@ namespace GeneticsGUI
 
         private string advancedContext()
         {
-            throw new NotImplementedException();
+            return string.Format("Welcome to Genetic Abominations!\n\n" +
+                "Creatures mate, either randomly or by your choice, to create new creatures! You get to pick what you want to breed for! For each mating, each parent will create a helix of genes which will then combine to create the DNA of the new creature born! Each time this is done, any aberations on a parents passed-on gene is folded into the effect of the gene, and the new, resulting gene has a small chance to mutate itself.\n" +
+                "By creatively picking who to mate, you can raise specific attributes! Depending on the species, each creature has a maximum lifespan! Once they reach that age, they die, and can no longer participate in reproduction of creatures. Under View, you can always visit the graveyard to see creatures that have passed in the society."
+                );
         }
 
         private string aboutContext()
@@ -60,7 +63,14 @@ namespace GeneticsGUI
 
         private string basicContext()
         {
-            throw new NotImplementedException();
+            return string.Format("Welcome to Genetic Abominations!\n\n" + 
+                "This is a simple little game with no distinct endgoal. A random society with 4 random creatures will start you off. By clicking on a name in the list to the left, you can see their attribute values, age, name, and parentage.\n" +
+                "Below the list of creatures, there are three options:\n" +
+                "\t\u2022Randomly Mate (choose how many times to the right)\n" +
+                "\t\u2022Sort by: (pick which attribute to sort by to the right)\n" +
+                "\t\u2022Mate\nFor the Mate option, click on one name in the population list, and then a second name on the population list. When you click Mate, the current and previous selections will mate to produce a new creature.\n" +
+                "On the ribbon bar, you can save/open societies."
+                );
         }        
     }
 }
