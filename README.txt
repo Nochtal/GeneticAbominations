@@ -4,6 +4,8 @@ About Branch: Establish ribbon menu option Help\About
 
 Algorithm testing through mini genetics based game.
 
+Advanced Branch to fill out help/advanced
+
 Starting with three individuals, choose which genetic sequence will reproduce. 
 Offspring will have genetic code resulting from parents. (Creatures now record parents)
 See what you can get! 
