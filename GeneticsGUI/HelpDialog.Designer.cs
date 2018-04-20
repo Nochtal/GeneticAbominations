@@ -29,40 +29,48 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.lblContext = new System.Windows.Forms.Label();
+            this.rtbContext = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
-            this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(236, 9);
+            this.lblTitle.Location = new System.Drawing.Point(12, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(50, 24);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Title";
             // 
-            // lblContext
+            // rtbContext
             // 
-            this.lblContext.AutoSize = true;
-            this.lblContext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContext.Location = new System.Drawing.Point(12, 50);
-            this.lblContext.Name = "lblContext";
-            this.lblContext.Size = new System.Drawing.Size(64, 20);
-            this.lblContext.TabIndex = 1;
-            this.lblContext.Text = "Context";
+            this.rtbContext.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbContext.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.rtbContext.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbContext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbContext.Location = new System.Drawing.Point(12, 51);
+            this.rtbContext.Name = "rtbContext";
+            this.rtbContext.ReadOnly = true;
+            this.rtbContext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
+            this.rtbContext.Size = new System.Drawing.Size(490, 428);
+            this.rtbContext.TabIndex = 2;
+            this.rtbContext.TabStop = false;
+            this.rtbContext.Text = "";
             // 
             // HelpDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(567, 492);
-            this.Controls.Add(this.lblContext);
+            this.ClientSize = new System.Drawing.Size(514, 491);
+            this.Controls.Add(this.rtbContext);
             this.Controls.Add(this.lblTitle);
+            this.MaximumSize = new System.Drawing.Size(530, 530);
+            this.MinimumSize = new System.Drawing.Size(530, 530);
             this.Name = "HelpDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HelpDialog";
             this.Load += new System.EventHandler(this.HelpDialog_Load);
             this.ResumeLayout(false);
@@ -73,6 +81,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblContext;
+        private System.Windows.Forms.RichTextBox rtbContext;
     }
 }
