@@ -5,14 +5,13 @@ Starting with three individuals, choose which genetic sequence will reproduce.
 Offspring will have genetic code resulting from parents. (Creatures now record parents)
 See what you can get! 
 
-Individuals have a double helix setup. Alpha Helix and Beta Helix.
-Each set of genes has both. 
-Each Gene has a Key, which is the name of the gene, and three variables.
+Individuals have a double helix setup inside their DNA. Alpha Helix and Beta Helix.
+DNA has a key name, and three variables.
   Variable One: Value of gene (1 through 10)
   Variable Two: Weight of gene (1 for dominate, 0 for recessive)
-  Variable Three: Aberration (-2 through 2, with 0 being no aberration.)
+  Variable Three: Deviation (-2 through 2, with 0 being no aberration.)
 
-Aberrations can cause a gene's value to be below 1 or above 10.
+Deviations can cause a gene's value to be below 1 or above 10.
 
 When reproducing, both parental individuals generate a Zygot, which chooses randomly 
 from Alpha Helix or Beta Helix the values it passes on. Both Zygots are then combined
@@ -32,14 +31,6 @@ Both recessive genes:
   The gene with the highest value will be used for calcuation:
   Result = [Value + Aberrations].
 
-These genes are stored as parallel Dictionary<string, double[]> _alpha and _beta (as private fields).
-
-A full diagnostic of an indiviual can be called upon, showing the following text for each gene-key.
-  {Gene Key}: Alpha: Value #; Weight #; Aberration #.
-              Beta: Value #; Weight #; Aberration #.
-              Result: #
-              
-              
 During development, the following Genes will be implemented:
   Race
   Strength
@@ -47,8 +38,6 @@ During development, the following Genes will be implemented:
   Constitution
   Intelligence
   Wisdom
-  Height
-  Eyes
   Arcane
   Divine
   

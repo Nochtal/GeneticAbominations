@@ -1,137 +1,155 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Text;
 
 namespace GeneticDLL
 {
+    [Serializable]
     public class Creature
     {
-        #region FIELDS
-        private string _name;
-        private string[] _parents = new string[2];
-        private Genes _genes;
-        private int _generation;
-        private double _age;
-        #endregion FIELDS
-        #region PROPERTIES
-        public string Name { get { return _name; } private set { _name = value; } }
-        public double Age { get { return _age; } set { _age = value; } }
-        public string[] Parents { get { return _parents; } }
-        public object Genetics { get { return _genes.ToString(); } private set { _genes = (Genes)value; } }
-        public Genes GeneSequence { get { return _genes; } }
-        public Dictionary<string, List<double>> Zygot { get { return _genes.Zygot(); } }
-        public int Generation { get { return _generation; } private set { _generation = value; } }
-        public string[] GeneKeys { get { return _genes.GeneKeys; } }
-        #endregion PROPERITES
-        #region CONSTRUCTORS
-        /// <summary>
-        /// Creature Consturctors: 
-        /// No parameters: new creatures starting at generation 1.
-        /// Two parent creatures: produces Zygots to create new genetics.
-        /// Private constructor with Partner for self contained birthing (?... ok... whatever that means...)
-        /// </summary>
-        /// <param name="parentOne">First parent to donate genes, or only external parent</param>
-        /// <param name="parentTwo">Second parent to donate genes</param>
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int Generation { get; set; }
+        public string ParentOne { get; set; }
+        public string ParentTwo { get; set; }
+        public DNA Genetics { get; set; }
+
         public Creature()
         {
-            _name = Utility.Name();
-            _parents = new string[] { "Underlord Ada (Diety of Science)", "Mysterious B (Diety of Madness)" };
-            _generation = 1;
-            _genes = new Genes();
-            _age = 25;
+            Name = ExtensionMethods.GenerateName();
+            Age = ExtensionMethods.GetRandom(16, 50);
+            Generation = 1;
+            ParentOne = "Underlord Ada";
+            ParentTwo = "Mysterious B";
+            Genetics = new DNA();
         }
-        public Creature(Creature parentOne, Creature parentTwo)
+        public Creature(Creature pOne, Creature pTwo)
         {
-            _name = Utility.Name();
-            _parents = new string[] 
+            Name = ExtensionMethods.GenerateName();
+            Age = 0;
+            Generation = (pOne.Generation == pTwo.Generation ? pOne.Generation + 1 : (pOne.Generation > pTwo.Generation ? pOne.Generation + 1 : pTwo.Generation + 1));
+            ParentOne = pOne.Name;
+            ParentTwo = pTwo.Name;
+            Helix pOneZygot;
+            Helix pTwoZygot;
+            if (pOne.Genetics.GenerateZygot(out pOneZygot) && pTwo.Genetics.GenerateZygot(out pTwoZygot))
             {
-                parentOne.Name + @"(" + parentOne._genes.Race() + ")",
-                parentTwo.Name + @"(" + parentOne._genes.Race() + ")"
-            };
-            if (parentOne.Generation != parentTwo.Generation) _generation = parentOne.Generation + 2;
-            else _generation = parentTwo.Generation + 1;
-            _genes = new Genes(parentOne.Zygot, parentTwo.Zygot);
-            _age = 0;
+                Genetics = new DNA(pOneZygot, pTwoZygot);
+            }
         }
-        private Creature(Creature parentTwo)
+        public Creature(int generation, string parentOne, string parentTwo, DNA genetics, string name = "RANDOM", int age = 1)
         {
-            _name = Utility.Name();
-            _parents = new string[] { this.Name, parentTwo.Name };
-            if (this.Generation < parentTwo.Generation) _generation = this.Generation + 1;
-            else _generation = parentTwo.Generation + 1;
-            _genes = new Genes(this.Zygot, parentTwo.Zygot);
+            if (name == "RANDOM") Name = ExtensionMethods.GenerateName();
+            else Name = name;
+            Age = age;
+            Generation = generation;
+            ParentOne = parentOne;
+            ParentTwo = parentTwo;
+            Genetics = genetics;
         }
-        #endregion CONSTRUCTORS
-        #region METHODS
-        /// <summary>
-        /// Returns a string formated for display with Creature information
-        /// </summary>
-        /// <returns>
-        ///     String in the following format:
-        ///         {Name}
-        ///         Generation: #
-        ///         Parents: {parent 1}, {parent 2}
-        ///         {Genes.ToString()}
-        /// </returns>
+        
+        public int GetMaxAge()
+        {
+            return (Genetics.Constitution * Genetics.Race + Genetics.Divine) + 50;
+        }
+
+        public string GetRace()
+        {
+            if (Genetics.Race <= 0) return "Troll";
+            else if (Genetics.Race >= 1 && Genetics.Race <= 4) return "Dwarf";
+            else if (Genetics.Race >= 5 && Genetics.Race <= 12) return "Human";
+            else if (Genetics.Race >= 13 && Genetics.Race <= 18) return "Half-Elf";
+            else return "Elf";
+        }
+
+        public string DeathString(int Year)
+        {
+            return String.Format("{0}, {1}, Died at {2} years of age in the Year {3}. Generation: {4}.\n\t\tParents: {5} and {6}.",
+                Name,
+                GetRace(),
+                GetMaxAge(),
+                Year,
+                Generation,
+                ParentOne,
+                ParentTwo);
+        }
+
+        public string PrintString()
+        {
+            return string.Format("{0}, {1} year old {2}. {3} generation. Parents: {4} and {5}.",
+                Name,
+                Age,
+                GetRace(),
+                GetGenerationString(),
+                ParentOne,
+                ParentTwo);
+        }
+
         public override string ToString()
         {
-            return string.Format("{0}, {1} years old.\nGeneration: {2}\nRace: {3}\nAberration Index: {4}\nParents: {5}, {6}\n\n{7}",
+            /// Name
+            /// Age year old Race
+            /// Generation generation
+            /// Parents: ParentOne, ParentTwo
+            /// 
+            /// Strength:       Result (2 tabs)
+            /// Dexterity:      Result (2 tabs)
+            /// Constitution:   Result (1 tab)
+            /// Intelligence:   Result (1 tab)
+            /// Wisdom:         Result (3 tab)
+            /// Charisma:       Result (2 tab)
+            /// Arcane:         Result (3 tab)
+            /// Divine:         Result (3 tab)
+            /// 
+            /// Alpha Helix string
+            /// Beta Helix string
+
+            return String.Format("{0}\n{1} year old {2}\n{3} generation\nParents: {4} and {5}\n\nStrength:\t\t{6, 2}\nDexterity:\t\t{7, 2}\nConstitution:\t\t{8, 2}\nIntelligence:\t\t{9, 2}\nWisdom:\t\t{10, 2}\nCharisma:\t\t{11, 2}\nArcane:\t\t{12, 2}\nDivine:\t\t\t{13, 2}\n\nAlpha Helix:\n{14}\n\nBeta Helix:\n{15}",
                 Name,
-                (_age < MaxAge() ?  _age.ToString() : "Deceased"),
-                Generation,
-                _genes.Race(),
-                AberrationIndex(), 
-                _parents[0],
-                _parents[1],
-                _genes.ToString());
+                Age,
+                GetRace(),
+                GetGenerationString(),
+                ParentOne,
+                ParentTwo,
+                Genetics.Strength,
+                Genetics.Dexterity,
+                Genetics.Constitution,
+                Genetics.Intelligence,
+                Genetics.Wisdom,
+                Genetics.Charisma,
+                Genetics.Arcane,
+                Genetics.Divine,
+                Genetics.Alpha.ToString(),
+                Genetics.Beta.ToString()
+                );
+
         }
-        /// <summary>
-        /// Counts absolute value of each Aberration.
-        /// Minimum: 0
-        /// Maximum: 40
-        /// </summary>
-        /// <returns>Returns absolute value of total Aberrations in genes</returns>
-        public double AberrationIndex()
+
+        private string GetGenerationString()
         {
-            double temp = 0;
-            Dictionary<string, List<double>>[] Helices = _genes.Helices;
-            foreach (string gk in _genes.GeneKeys)
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Generation);
+            switch (sb[sb.Length -1])
             {
-                temp += Math.Abs(Helices[0][gk][2]);
-                temp += Math.Abs(Helices[1][gk][2]);
+                case '1':
+                    sb.Append("st");
+                    break;
+                case '2':
+                    sb.Append("nd");
+                    break;
+                case '3':
+                    sb.Append("rd");
+                    break;
+                case '0':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    sb.Append("th");
+                    break;
             }
-            return temp;
+            return sb.ToString();
         }
-        /// <summary>
-        /// Calls private Constructor, referencing self and mate.
-        /// Currently not used...
-        /// </summary>
-        /// <param name="partner">Creature to mate with</param>
-        /// <returns>returns offspring creature</returns>
-        public Creature Mate(Creature partner)
-        {
-            return new Creature(partner);
-        }
-        /// <summary>
-        /// Determines max age of creature.
-        /// Minumum: 47 years
-        /// Maximum: 650 years
-        /// </summary>
-        /// <returns>(Con+Race+Div)/AberrationIndex + 50</returns>
-        public double MaxAge()
-        {
-            return ((_genes.Result("Constitution") * 
-                _genes.Result("Race") + 
-                _genes.Result("Divine")) / 
-                (AberrationIndex() > 0 ? AberrationIndex() : 1) + 
-                50);
-        }
-        /// <summary>
-        /// Increments age of creature by 1.
-        /// </summary>
-        public void AdvanceAge()
-        {
-            _age++;
-        }
-        #endregion METHODS
     }
 }

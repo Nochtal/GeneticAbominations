@@ -1,0 +1,139 @@
+public class Society
+{
+	public Society()
+	{
+		Name = ExtensionMethods.GenerateSocietyName();
+		Classification = ExtensionMethods.GenerateSocietyClassifier();
+		Creatures = new ConcurrentDictionary<string, Creature>();
+		Graveyard = new ConcurrentBag<string>();
+		bool check = false;
+		Parallel.For(0, 4, i => { AddCreature(new Creature()); });
+	}
+	public Society(params Creature[] creatures)
+	{
+		Name = ExtensionMethods.GenerateSocietyName();
+		Classification = ExtensionMethods.GenerateSocietyClassifier();
+		Creatures = new ConcurrentDictionary<string, Creature>();
+		Graveyard = new ConcurrentBag<string>();
+		Parallel.ForEach(creatures, (currentCreature) => { AddCreature(currentCreature); });
+	}
+	public Society(string name, string classifier, params Creature[] creatures)
+	{
+		Name = name;
+		Classification = classifier;
+		Creatures = new ConcurrentDictionary<string, Creature>();
+		Graveyard = new ConcurrentBag<string>();
+		Parallel.ForEach(creatures, (currentCreature) => { AddCreature(currentCreature); } );
+	}
+	public Society(string name, string classifier, List<Creature> creatures)
+	{
+		Name = name;
+		Classification = classifier;
+		Creatures = new ConcurrentDictionary<string, Creature>();
+		Graveyard = new ConcurrentBag<string>();
+		Parallel.ForEach(creatures, (currentCreature) => { AddCreature(currentCreature); });
+	}
+}
+
+public class Creature
+{
+	public Creature()
+	{
+		Name = ExtensionMethods.GenerateName();
+		Age = ExtensionMethods.GetRandom(1, 40);
+		Generation = 1;
+		ParentOne = "Underlord Ada";
+		ParentTwo = "Mysterious B";
+		Genetics = new DNA();
+	}
+	public Creature(Creature pOne, Creature pTwo)
+	{
+		Name = ExtensionMethods.GenerateName();
+		Age = 0;
+		Generation = (pOne.Generation == pTwo.Generation ? pOne.Generation + 1 : (pOne.Generation > pTwo.Generation ? pOne.Generation + 1 : pTwo.Generation + 1));
+		ParentOne = pOne.Name;
+		ParentTwo = pTwo.Name;
+		Helix pOneZygot;
+		Helix pTwoZygot;
+		if (pOne.Genetics.GenerateZygot(out pOneZygot) && pTwo.Genetics.GenerateZygot(out pTwoZygot))
+		{
+			Genetics = new DNA(pOneZygot, pTwoZygot);
+		}
+	}
+	public Creature(int generation, string parentOne, string parentTwo, DNA genetics, string name = null, int age = 1)
+	{
+		if (Name == null) Name = ExtensionMethods.GenerateName();
+		else Name = name;
+		Age = age;
+		Generation = generation;
+		ParentOne = parentOne;
+		ParentTwo = parentTwo;
+		Genetics = genetics;
+	}
+}
+
+public class DNA
+{
+	public DNA()
+	{
+		Alpha = new Helix();
+		Beta = new Helix();
+	}
+	public DNA(Helix alpha, Helix beta)
+	{
+		Alpha = alpha;
+		Beta = beta;
+	}
+}
+
+public class Helix
+{
+	public Helix()
+	{
+		Race = new Gene();
+		Strength = new Gene();
+		Dexterity = new Gene();
+		Constitution = new Gene();
+		Intelligence = new Gene();
+		Charisma = new Gene();
+		Wisdom = new Gene();
+		Arcane = new Gene();
+		Divine = new Gene();
+	}
+	public Helix(Gene race, Gene strength, Gene dexterity, 
+				 Gene constitution, Gene intelligence, Gene wisdom, 
+				 Gene charisma, Gene arcane, Gene divine)
+	{
+		Race = race;
+		Strength = strength;
+		Dexterity = dexterity;
+		Constitution = constitution;
+		Intelligence = intelligence;
+		Charisma = charisma;
+		Wisdom = wisdom;
+		Arcane = arcane;
+		Divine = divine;
+	}
+}
+
+public class Gene
+{
+	public Gene()
+	{
+		Value = ExtensionMethods.GetRandom(1, 10);
+		Weight = ExtensionMethods.GetRandom(0, 1);
+		Deviation = Mutate();
+	}
+	public Gene(int value, int weight)
+	{
+		Value = value;
+		Weight = weight;
+		Deviation = Mutate();
+	}
+	public Gene(int value, int weight, int deviation)
+	{
+		Value = value;
+		Weight = weight;
+		Deviation = deviation;
+	}
+}

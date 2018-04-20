@@ -1,0 +1,52 @@
+public class Society
+{
+	public string Name {get; set;}
+	public string Classification {get; set;}
+	private ConcurrentDictionary<string, Creature> Creatures {get; set;}
+}
+
+public class Creature
+{
+	public string Name { get; set; }
+	public int Age { get; set; }
+	public int Generation { get; set; }
+	public string ParentOne { get; set; }
+	public string ParentTwo { get; set; }
+	public DNA Genetics { get; set; }
+}
+
+public class DNA
+{
+	public Helix Alpha { get; set; }
+	public Helix Beta { get; set; }
+}
+
+public class Helix
+{
+	Race = new Gene();
+	Strength = new Gene();
+	Dexterity = new Gene();
+	Constitution = new Gene();
+	Intelligence = new Gene();
+	Charisma = new Gene();
+	Wisdom = new Gene();
+	Arcane = new Gene();
+	Divine = new Gene();
+	
+	public int Race { get { return CalculateGeneResult(Alpha.Race, Beta.Race); } }
+	public int Strength { get { return CalculateGeneResult(Alpha.Strength, Beta.Strength); } }
+	public int Dexterity { get { return CalculateGeneResult(Alpha.Dexterity, Beta.Dexterity); } }
+	public int Constitution { get { return CalculateGeneResult(Alpha.Constitution, Beta.Constitution); } }
+	public int Intelligence { get { return CalculateGeneResult(Alpha.Intelligence, Beta.Intelligence); } }
+	public int Wisdom { get { return CalculateGeneResult(Alpha.Wisdom, Beta.Wisdom); } }
+	public int Charisma { get { return CalculateGeneResult(Alpha.Charisma, Beta.Charisma); } }
+	public int Arcane { get { return CalculateGeneResult(Alpha.Arcane, Beta.Arcane); } }
+	public int Divine { get { return CalculateGeneResult(Alpha.Divine, Beta.Divine); } }
+}
+
+public class Gene
+{
+	public int Value { get; set; }
+	public int Weight { get; set; }
+	public int Deviation { get; set; }
+}
