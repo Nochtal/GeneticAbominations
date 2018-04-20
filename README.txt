@@ -1,4 +1,7 @@
 # GeneticAbominations
+
+About Branch: Establish ribbon menu option Help\About
+
 Algorithm testing through mini genetics based game.
 
 Starting with three individuals, choose which genetic sequence will reproduce. 

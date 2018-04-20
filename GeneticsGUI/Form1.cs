@@ -548,6 +548,23 @@ namespace GeneticsGUI
             return sb.ToString();
         }
 
+        private void basicsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new HelpDialog("About"))
+            {
+                var result = dialog.ShowDialog();
+                if (result != DialogResult.OK)
+                {
+                    dialog.Close();
+                }         
+            }
+        }
+
         private void rtbDisplay_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.F)
