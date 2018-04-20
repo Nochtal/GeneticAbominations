@@ -555,7 +555,14 @@ namespace GeneticsGUI
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            using (var dialog = new HelpDialog("About"))
+            {
+                var result = dialog.ShowDialog();
+                if (result != DialogResult.OK)
+                {
+                    dialog.Close();
+                }         
+            }
         }
 
         private void rtbDisplay_KeyUp(object sender, KeyEventArgs e)
