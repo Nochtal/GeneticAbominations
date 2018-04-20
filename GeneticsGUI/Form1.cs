@@ -548,6 +548,16 @@ namespace GeneticsGUI
             return sb.ToString();
         }
 
+        private void basicsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void rtbDisplay_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.F)
