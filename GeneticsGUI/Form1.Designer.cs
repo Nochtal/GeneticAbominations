@@ -272,66 +272,66 @@
             // newSocietyToolStripMenuItem
             // 
             this.newSocietyToolStripMenuItem.Name = "newSocietyToolStripMenuItem";
-            this.newSocietyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newSocietyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.newSocietyToolStripMenuItem.Text = "New Society";
             this.newSocietyToolStripMenuItem.Click += new System.EventHandler(this.newSocietyToolStripMenuItem_Click);
             // 
             // openSocietyToolStripMenuItem
             // 
             this.openSocietyToolStripMenuItem.Name = "openSocietyToolStripMenuItem";
-            this.openSocietyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openSocietyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.openSocietyToolStripMenuItem.Text = "Open Society";
             this.openSocietyToolStripMenuItem.Click += new System.EventHandler(this.openSocietyToolStripMenuItem_Click);
             // 
             // closeSocietyToolStripMenuItem
             // 
             this.closeSocietyToolStripMenuItem.Name = "closeSocietyToolStripMenuItem";
-            this.closeSocietyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeSocietyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.closeSocietyToolStripMenuItem.Text = "Close Society";
             this.closeSocietyToolStripMenuItem.Click += new System.EventHandler(this.closeSocietyToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
             // 
             // printPreviewToolStripMenuItem
             // 
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.printPreviewToolStripMenuItem.Text = "Print Preview";
             this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -460,6 +460,7 @@
             this.advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
             this.advancedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.advancedToolStripMenuItem.Text = "Advanced";
+            this.advancedToolStripMenuItem.Click += new System.EventHandler(this.advancedToolStripMenuItem_Click);
             // 
             // printDocument1
             // 

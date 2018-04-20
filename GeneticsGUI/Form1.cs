@@ -550,7 +550,14 @@ namespace GeneticsGUI
 
         private void basicsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            using (var dialog = new HelpDialog("Basics"))
+            {
+                var result = dialog.ShowDialog();
+                if (result != DialogResult.OK)
+                {
+                    dialog.Close();
+                }
+            }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -562,6 +569,18 @@ namespace GeneticsGUI
                 {
                     dialog.Close();
                 }         
+            }
+        }
+
+        private void advancedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new HelpDialog("Advanced"))
+            {
+                var result = dialog.ShowDialog();
+                if (result != DialogResult.OK)
+                {
+                    dialog.Close();
+                }
             }
         }
 

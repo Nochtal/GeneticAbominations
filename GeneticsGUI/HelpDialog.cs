@@ -29,7 +29,7 @@ namespace GeneticsGUI
         {
             switch (level.ToLower())
             {
-                case "basic":
+                case "basics":
                     return basicContext();
                 case "about":
                     return aboutContext();
