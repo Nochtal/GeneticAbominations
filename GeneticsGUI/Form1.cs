@@ -584,6 +584,35 @@ namespace GeneticsGUI
             }
         }
 
+        private void fontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            FontDialog fd = new FontDialog();
+            DialogResult results = fd.ShowDialog();
+            if (results == DialogResult.OK)
+            {
+                Font font = fd.Font;
+                UpdateFonts(font);
+                MessageBox.Show("Font: "+ font, "Debug Testing", MessageBoxButtons.OK);
+            }
+        }
+
+        private void UpdateFonts(Font font)
+        {
+            menuStrip1.Font = font;
+            lblDisplay.Font = font;
+            lblMateSelected.Font = font;
+            lblPopulation.Font = font;
+            lsvPopulation.Font = font;
+            btnRandMate.Font = font;
+            btnSort.Font = font;
+            btnMate.Font = font;
+            nudRandAmount.Font = font;
+            cboSort.Font = font;
+            rtbDisplay.Font = font;
+            Font = font;
+        }
+
         private void rtbDisplay_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.F)
